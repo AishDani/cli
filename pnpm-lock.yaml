@@ -78,7 +78,6 @@ importers:
       '@contentstack/cli-launch': 1.2.1_ogreqof3k35xezedraj6pnd45y
       '@contentstack/cli-migration': link:../contentstack-migration
       '@contentstack/cli-utilities': 1.7.2
-      'management': 1.17.2_debug@4.3.6
       '@oclif/core': 3.27.0
       '@oclif/plugin-help': 5.2.20_ogreqof3k35xezedraj6pnd45y
       '@oclif/plugin-not-found': 2.4.3_ogreqof3k35xezedraj6pnd45y
@@ -731,7 +730,6 @@ importers:
       '@contenstack/cli-audit': ~1.6.5
       '@contentstack/cli-command': ~1.2.19
       '@contentstack/cli-utilities': ~1.7.1
-      'management': ~1.17.0
       '@oclif/core': ^3.26.5
       '@oclif/test': ^2.5.6
       '@types/big-json': ^3.2.0
@@ -774,7 +772,7 @@ importers:
       '@contenstack/cli-audit': link:../contentstack-audit
       '@contentstack/cli-command': link:../contentstack-command
       '@contentstack/cli-utilities': 1.7.2
-      'management': 1.17.2_debug@4.3.6
+
       '@oclif/core': 3.27.0
       big-json: 3.2.0
       bluebird: 3.7.2
@@ -1044,7 +1042,7 @@ importers:
   packages/contentstack-utilities:
     specifiers:
       'cli-dev-dependencies': ^1.2.4
-      'management': ~1.17.0
+
       'marketplace-sdk': ^1.2.1
       '@oclif/core': ^3.26.5
       '@oclif/test': ^2.5.6
@@ -1093,7 +1091,6 @@ importers:
       winston: ^3.7.2
       xdg-basedir: ^4.0.0
     dependencies:
-      'management': 1.17.2_debug@4.3.6
       'marketplace-sdk': 1.2.3_debug@4.3.6
       '@oclif/core': 3.27.0
       axios: 1.7.7_debug@4.3.6
@@ -1704,7 +1701,7 @@ packages:
       '@contenstack/cli-audit': 1.6.5
       '@contentstack/cli-command': 1.3.0
       '@contentstack/cli-utilities': 1.7.2
-      'management': 1.17.2_debug@4.3.6
+
       '@oclif/core': 3.27.0
       big-json: 3.2.0
       bluebird: 3.7.2
@@ -1736,7 +1733,7 @@ packages:
       '@contenstack/cli-audit': 1.6.5_ogreqof3k35xezedraj6pnd45y
       '@contentstack/cli-command': 1.3.0
       '@contentstack/cli-utilities': 1.7.2
-      'management': 1.17.2_debug@4.3.6
+
       '@oclif/core': 3.27.0
       big-json: 3.2.0
       bluebird: 3.7.2
@@ -1828,7 +1825,6 @@ packages:
     resolution:
       { integrity: sha512-EpTKSXtUDhae/S0R4ltgwMsQ7k/f3kx+MrvdddtYH/1BNgn/juK/vlDG7FLAIgcO8/miyiPzrFnI5hpHxgfvIA== }
     dependencies:
-      'management': 1.17.2_debug@4.3.6
       'marketplace-sdk': 1.2.3_debug@4.3.6
       '@oclif/core': 3.27.0
       axios: 1.7.7_debug@4.3.6
@@ -1873,19 +1869,6 @@ packages:
       lodash.kebabcase: 4.1.1
       slate: 0.103.0
       uuid: 8.3.2
-    dev: false
-
-  /management/1.17.2_debug@4.3.6:
-    resolution:
-      { integrity: sha512-ufRY7VwQZGZhNe1Sd62GJGi16/fRZXgiIPuXo8XrDytdz/DvOqa+JD7FG9YqZD9RzxCx9h7Qwcl1PxmFz/H7Kw== }
-    engines: { node: '>=8.0.0' }
-    dependencies:
-      axios: 1.7.7_debug@4.3.6
-      form-data: 3.0.1
-      lodash: 4.17.21
-      qs: 6.13.0
-    transitivePeerDependencies:
-      - debug
     dev: false
 
   /marketplace-sdk/1.2.3_debug@4.3.6:
