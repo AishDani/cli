@@ -9,16 +9,16 @@ export default class TokensListCommand extends BaseCommand<typeof TokensListComm
 
   async run(): Promise<any> {
     try {
-      const @contentstack/managementTokens = configHandler.get('tokens');
+      const managementTokens = configHandler.get('tokens');
       const tokenOptions: Record<string, unknown>[] = [];
-      if (@contentstack/managementTokens && Object.keys(@contentstack/managementTokens).length > 0) {
-        Object.keys(@contentstack/managementTokens).forEach(function (item) {
+      if (managementTokens && Object.keys(managementTokens).length > 0) {
+        Object.keys(managementTokens).forEach(function (item) {
           tokenOptions.push({
             alias: item,
-            token: @contentstack/managementTokens[item].token,
-            apiKey: @contentstack/managementTokens[item].apiKey,
-            environment: @contentstack/managementTokens[item].environment ? @contentstack/managementTokens[item].environment : '-',
-            type: @contentstack/managementTokens[item].type,
+            token: managementTokens[item].token,
+            apiKey: managementTokens[item].apiKey,
+            environment: managementTokens[item].environment ? managementTokens[item].environment : '-',
+            type: managementTokens[item].type,
           });
         });
 

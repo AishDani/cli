@@ -12,7 +12,7 @@ const {
   cliux,
   HttpClient,
   NodeCrypto,
-  @contentstack/managementSDKClient,
+  managementSDKClient,
   isAuthenticated,
   HttpClientDecorator,
   OauthDecorator,
@@ -64,9 +64,9 @@ module.exports = class ImportMarketplaceApps {
 
     this.developerHubBaseUrl = this.config.developerHubBaseUrl || (await getDeveloperHubUrl(this.config));
     this.config.developerHubBaseUrl = this.developerHubBaseUrl;
-    this.client = await @contentstack/managementSDKClient({ endpoint: this.developerHubBaseUrl });
-    this.appSdkAxiosInstance = await @contentstack/managementSDKClient({
-      host: this.developerHubBaseUrl.split('://').pop(),
+    this.client = await managementSDKClient({ endpoint: this.developerHubBaseUrl });
+    this.appSdkAxiosInstance = await managementSDKClient({
+      host: this.developerHubBaseUrl.split('://').pop()
     });
     await this.getOrgUid();
 
@@ -88,7 +88,7 @@ module.exports = class ImportMarketplaceApps {
   }
 
   async getOrgUid() {
-    const tempAPIClient = await @contentstack/managementSDKClient({ host: this.config.host });
+    const tempAPIClient = await managementSDKClient({ host: this.config.host });
     const tempStackData = await tempAPIClient
       .stack({ api_key: this.config.target_stack })
       .fetch()
@@ -530,7 +530,7 @@ module.exports = class ImportMarketplaceApps {
     return this.appSdkAxiosInstance.axiosInstance
       .put(`${this.developerHubBaseUrl}/installations/${uid}`, payload, {
         headers: {
-          organization_uid: this.config.org_uid,
+          organization_uid: this.config.org_uid
         },
       })
       .then(({ data }) => {
@@ -543,7 +543,7 @@ module.exports = class ImportMarketplaceApps {
       })
       .catch((error) => {
         trace(data, 'error', true);
-        log(this.config, formatError(error), 'error');
+        log(this.config, formatError(error), 'error')
       });
   }
 

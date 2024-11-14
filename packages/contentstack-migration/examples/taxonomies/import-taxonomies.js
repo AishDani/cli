@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const fastcsv = require('fast-csv');
 
-module.exports = ({ migration, stackSDKInstance, @contentstack/managementAPIClient, config }) => {
+module.exports = ({ migration, stackSDKInstance, managementAPIClient, config }) => {
   const dataDir = config['data-dir'];
   const delimiter = config['delimiter'] ?? ','; // default comma
   //parent and child term pointer
@@ -13,7 +13,7 @@ module.exports = ({ migration, stackSDKInstance, @contentstack/managementAPIClie
   let taxonomies = {};
 
   const stackClient = () => {
-    return @contentstack/managementAPIClient.stack({ api_key: stackSDKInstance.api_key });
+    return managementAPIClient.stack({ api_key: stackSDKInstance.api_key });
   };
 
   const pushTaxonomyDetails = async (apiData) => {

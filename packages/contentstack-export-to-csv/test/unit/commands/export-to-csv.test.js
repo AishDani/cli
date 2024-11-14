@@ -28,7 +28,9 @@ describe('export-to-csv with action taxonomies', () => {
       })
       .nock(cma, (api) => {
         api
-          .get(`/v3/taxonomies/${mockData.taxonomiesResp.taxonomies[0].uid}/export?format=csv`)
+          .get(
+            `/v3/taxonomies/${mockData.taxonomiesResp.taxonomies[0].uid}/export?format=csv`,
+          )
           .reply(200, mockData.taxonomyCSVData);
       })
       .command([
@@ -61,12 +63,16 @@ describe('export-to-csv with action taxonomies', () => {
       })
       .nock(cma, (api) => {
         api
-          .get(`/v3/taxonomies/${mockData.taxonomiesResp.taxonomies[0].uid}/export?format=csv`)
+          .get(
+            `/v3/taxonomies/${mockData.taxonomiesResp.taxonomies[0].uid}/export?format=csv`,
+          )
           .reply(200, mockData.taxonomyCSVData);
       })
       .nock(cma, (api) => {
         api
-          .get(`/v3/taxonomies/${mockData.taxonomiesResp.taxonomies[1].uid}/export?format=csv`)
+          .get(
+            `/v3/taxonomies/${mockData.taxonomiesResp.taxonomies[1].uid}/export?format=csv`,
+          )
           .reply(200, mockData.taxonomyCSVData);
       })
       .command([
@@ -110,7 +116,9 @@ describe('export-to-csv with action taxonomies', () => {
       })
       .nock(cma, (api) => {
         api
-          .get(`/v3/taxonomies/${mockData.taxonomiesResp.taxonomies[0].uid}/export?format=csv`)
+          .get(
+            `/v3/taxonomies/${mockData.taxonomiesResp.taxonomies[0].uid}/export?format=csv`,
+          )
           .reply(200, mockData.taxonomyCSVData);
       })
       .command(['cm:export-to-csv', '--taxonomy-uid', 'taxonomy_uid_1'])

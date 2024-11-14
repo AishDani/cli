@@ -7,16 +7,16 @@ import {
   cliux,
   HttpClient,
   configHandler,
-  @contentstack/managementSDKClient,
+  managementSDKClient,
   marketplaceSDKClient,
   createDeveloperHubUrl,
 } from '@contentstack/cli-utilities';
 
 import { log } from './logger';
-import { trace } from './log';
+import { trace } from '../utils/log';
 import { ImportConfig, Installation } from '../types';
-import { formatError } from '.';
-import { getAppName, askAppName, selectConfiguration } from './interactive';
+import { formatError } from '../utils';
+import { getAppName, askAppName, selectConfiguration } from '../utils/interactive';
 
 export const getAllStackSpecificApps = async (
   config: ImportConfig,
@@ -59,7 +59,7 @@ export const getDeveloperHubUrl = async (config: ImportConfig): Promise<string> 
 };
 
 export const getOrgUid = async (config: ImportConfig): Promise<string> => {
-  const tempAPIClient = await @contentstack/managementSDKClient({ host: config.host });
+  const tempAPIClient = await managementSDKClient({ host: config.host });
   const tempStackData = await tempAPIClient
     .stack({ api_key: config.target_stack })
     .fetch()

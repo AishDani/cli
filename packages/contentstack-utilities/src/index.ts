@@ -16,11 +16,11 @@ export { default as messageHandler } from './message-handler';
 export { default as authHandler } from './auth-handler';
 export { default as configHandler } from './config-handler';
 export {
-  default as @contentstack/managementSDKClient,
-  @contentstack/managementSDKInitiator,
+  default as managementSDKClient,
+  managementSDKInitiator,
   ContentstackClient,
   ContentstackConfig,
-} from './contentstack-@contentstack/management-sdk';
+} from './contentstack-management-sdk';
 export { default as printFlagDeprecation } from './flag-deprecation-check';
 export * from './http-client';
 export * from './fs-utility';

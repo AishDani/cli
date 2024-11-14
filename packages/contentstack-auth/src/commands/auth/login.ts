@@ -4,7 +4,7 @@ import {
   CLIError,
   authHandler as oauthHandler,
   flags,
-  @contentstack/managementSDKClient,
+  managementSDKClient,
   FlagInput,
   formatError
 } from '@contentstack/cli-utilities';
@@ -65,9 +65,9 @@ export default class LoginCommand extends BaseCommand<typeof LoginCommand> {
 
   async run(): Promise<any> {
     try {
-      const @contentstack/managementAPIClient = await @contentstack/managementSDKClient({ host: this.cmaHost, skipTokenValidity: true });
+      const managementAPIClient = await managementSDKClient({ host: this.cmaHost, skipTokenValidity: true });
       const { flags: loginFlags } = await this.parse(LoginCommand);
-      authHandler.client = @contentstack/managementAPIClient;
+      authHandler.client = managementAPIClient;
       const oauth = loginFlags?.oauth;
       const setAuth = loginFlags?.authToken;
       const email = loginFlags?.email;

@@ -1,51 +1,42 @@
-const { join } = require('path');
-const { test } = require('cli-dev-dependencies');
-const { NodeCrypto, messageHandler } = require('@contentstack/cli-utilities');
+const { join } = require('path')
+const { test } = require("@contentstack/cli-dev-dependencies")
+const { NodeCrypto, messageHandler } = require("@contentstack/cli-utilities")
 
-const { getEnvData, getStackDetailsByRegion } = require('./utils/helper');
-const LoginCommand = require('@contenstack/cli-auth/lib/commands/auth/login').default;
-const AddTokenCommand = require('@contenstack/cli-auth/lib/commands/auth/tokens/add').default;
-const RegionSetCommand = require('@contentstack/cli-config/lib/commands/config/set/region').default;
-const { DEFAULT_TIMEOUT, PRINT_LOGS, ALIAS_NAME, encryptionKey } = require('./config.json');
+const { getEnvData, getStackDetailsByRegion } = require('./utils/helper')
+const LoginCommand = require('@contentstack/cli-auth/lib/commands/auth/login').default
+const AddTokenCommand = require('@contentstack/cli-auth/lib/commands/auth/tokens/add').default
+const RegionSetCommand = require('@contentstack/cli-config/lib/commands/config/set/region').default
+const { DEFAULT_TIMEOUT, PRINT_LOGS, ALIAS_NAME, encryptionKey } = require("./config.json")
 
-const { ENCRYPTION_KEY, USERNAME, PASSWORD } = getEnvData();
-const { APP_ENV, DELIMITER, KEY_VAL_DELIMITER } = process.env;
+const { ENCRYPTION_KEY, USERNAME, PASSWORD } = getEnvData()
+const { APP_ENV, DELIMITER, KEY_VAL_DELIMITER } = process.env
 
 const crypto = new NodeCrypto({
   typeIdentifier: '◈',
   algorithm: 'aes-192-cbc',
-  encryptionKey: ENCRYPTION_KEY || encryptionKey,
+  encryptionKey: ENCRYPTION_KEY || encryptionKey
 });
 
 module.exports = (region) => {
-  const username = ENCRYPTION_KEY ? crypto.decrypt(region.USERNAME) : region.USERNAME;
-  const password = ENCRYPTION_KEY ? crypto.decrypt(region.PASSWORD) : region.PASSWORD;
+  const username = ENCRYPTION_KEY ? crypto.decrypt(region.USERNAME) : region.USERNAME
+  const password = ENCRYPTION_KEY ? crypto.decrypt(region.PASSWORD) : region.PASSWORD
 
-  const stackDetails = getStackDetailsByRegion(region.REGION, DELIMITER, KEY_VAL_DELIMITER);
+  const stackDetails = getStackDetailsByRegion(region.REGION, DELIMITER, KEY_VAL_DELIMITER);  
 
   function addTokens(stacks) {
-    let stack = stacks.pop();
+    let stack = stacks.pop()
     test
-      .command(AddTokenCommand, [
-        '--alias',
-        stackDetails[stack].ALIAS_NAME,
-        '--stack-api-key',
-        stackDetails[stack].STACK_API_KEY,
-        '--@contentstack/management',
-        '--token',
-        stackDetails[stack].@contentstack/management_TOKEN,
-        '--yes',
-      ])
-      .it(`Adding token for ${stack}`, (_, done) => {
-        console.log('done');
-        done();
-      });
+    .command(AddTokenCommand, ['--alias', stackDetails[stack].ALIAS_NAME, '--stack-api-key', stackDetails[stack].STACK_API_KEY, '--management', '--token', stackDetails[stack].MANAGEMENT_TOKEN, '--yes'])
+    .it(`Adding token for ${stack}`, (_, done) => {
+      console.log('done')
+      done()
+    })
     if (stacks.length > 0) {
-      addTokens(stacks);
+      addTokens(stacks)
     }
   }
 
-  describe('Setting Pre-requests.', () => {
+  describe("Setting Pre-requests.", () => {
     let messageFilePath = join(__dirname, '..', '..', '..', 'contentstack-config', 'messages/index.json');
     messageHandler.init({ messageFilePath });
     test
@@ -62,10 +53,10 @@ module.exports = (region) => {
         messageHandler.init({ messageFilePath });
       })
       .it('Pre-config is done', () => {
-        messageFilePath = '';
-        messageHandler.init({ messageFilePath: '' });
-      });
+        messageFilePath = ''
+        messageHandler.init({ messageFilePath: '' })
+      })
 
-    addTokens(Object.keys(stackDetails));
-  });
-};
+      addTokens(Object.keys(stackDetails))
+  })
+}

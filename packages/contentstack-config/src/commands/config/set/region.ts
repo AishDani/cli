@@ -26,7 +26,7 @@ export default class RegionSetCommand extends BaseCommand<typeof RegionSetComman
     cma: _flags.string({
       char: 'm',
       description:
-        'Custom host to set for content @contentstack/management API, , if this flag is added then cda, ui-host and name flags are required',
+        'Custom host to set for content management API, , if this flag is added then cda, ui-host and name flags are required',
       dependsOn: ['cda', 'ui-host', 'name'],
       parse: printFlagDeprecation(['-m'], ['--cma']),
     }),

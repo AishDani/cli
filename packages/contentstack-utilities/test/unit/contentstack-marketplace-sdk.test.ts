@@ -1,5 +1,5 @@
 import { expect } from '@oclif/test';
-import { fancy } from 'cli-dev-dependencies';
+import { fancy } from '@contentstack/cli-dev-dependencies';
 
 import authHandler from '../../src/auth-handler';
 import configStore from '../../src/config-handler';
@@ -41,7 +41,7 @@ describe('MarketplaceSDKInitiator class', () => {
       })
       .nock(endpoint, (api) => api.persist().get(`/manifests`).reply(401))
       .it("should throw 'Session timed out error' if auth type is 'BASIC'", async () => {
-        const appSdk = await marketplaceSDKClient({ endpoint, @contentstack/management_token: '', retryDelay: 300, retryLimit: 1 });
+        const appSdk = await marketplaceSDKClient({ endpoint, management_token: '', retryDelay: 300, retryLimit: 1 });
         try {
           await appSdk.marketplace('UID').findAllApps();
         } catch (error) {
@@ -82,7 +82,7 @@ describe('MarketplaceSDKInitiator class', () => {
       })
       .nock(endpoint, (api) => api.get(`/manifests`).reply(500))
       .it('should not refresh the token if status code is not among [401, 429, 408]', async () => {
-        const appSdk = await marketplaceSDKClient({ endpoint, @contentstack/management_token: '' });
+        const appSdk = await marketplaceSDKClient({ endpoint, management_token: '' });
         try {
           await appSdk.marketplace('UID').findAllApps();
         } catch (error) {

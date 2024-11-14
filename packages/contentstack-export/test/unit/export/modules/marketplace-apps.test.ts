@@ -1,6 +1,6 @@
 import { expect } from '@oclif/test';
 import { App, FsUtility, cliux, marketplaceSDKClient } from '@contentstack/cli-utilities';
-import { fancy } from 'cli-dev-dependencies';
+import { fancy } from '@contentstack/cli-dev-dependencies';
 
 import defaultConfig from '../../../../src/config';
 import * as logUtil from '../../../../src/utils/logger';

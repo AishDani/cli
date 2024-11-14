@@ -89,9 +89,9 @@ module.exports = class ImportLanguages {
               .catch(function (err) {
                 let error = JSON.parse(err.message);
                 if (error.hasOwnProperty('errorCode') && error.errorCode === 247) {
-                  if (error?.errors?.code) {
+                  if(error?.errors?.code){
                     log(self.config, error.errors.code[0], 'error');
-                  } else {
+                  }else{
                     log(self.config, err, 'error');
                   }
                   return err;

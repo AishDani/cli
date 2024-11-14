@@ -2,13 +2,13 @@
 
 // Utils
 const { safePromise, constants, map: _map } = require('../utils');
-const { @contentstack/management_SDK } = constants;
+const { MANAGEMENT_SDK } = constants;
 const { get, getMapInstance } = _map;
 const mapInstance = getMapInstance();
 
 class LocaleService {
   constructor() {
-    this.stackSDKInstance = get(@contentstack/management_SDK, mapInstance);
+    this.stackSDKInstance = get(MANAGEMENT_SDK, mapInstance);
   }
 
   async getLocale() {

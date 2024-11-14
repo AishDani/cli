@@ -5,7 +5,7 @@ import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
 import unionWith from 'lodash/unionWith';
 import find from 'lodash/find';
-import { cliux, messageHandler, @contentstack/managementSDKClient } from '@contentstack/cli-utilities';
+import { cliux, messageHandler, managementSDKClient } from '@contentstack/cli-utilities';
 import isArray from 'lodash/isArray';
 import { diff } from 'just-diff';
 
@@ -66,8 +66,8 @@ async function fetchBranchesDiff(
  */
 async function branchCompareSDK(payload: BranchDiffPayload, skip?: number, limit?: number): Promise<any> {
   const { host } = payload;
-  const @contentstack/managementAPIClient = await @contentstack/managementSDKClient({ host });
-  const branchQuery = @contentstack/managementAPIClient
+  const managementAPIClient = await managementSDKClient({ host });
+  const branchQuery = managementAPIClient
     .stack({ api_key: payload.apiKey })
     .branch(payload.baseBranch)
     .compare(payload.compareBranch);

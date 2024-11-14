@@ -326,11 +326,11 @@ describe('Auth Handler', () => {
 
   describe('getUserDetails', () => {
     let sandbox;
-    let @contentstack/managementAPIClientStub;
+    let managementAPIClientStub;
 
     beforeEach(() => {
       sandbox = createSandbox();
-      @contentstack/managementAPIClientStub = sandbox.stub();
+      managementAPIClientStub = sandbox.stub();
     });
 
     afterEach(() => {
@@ -344,9 +344,9 @@ describe('Auth Handler', () => {
       const expectedError = new Error('The provided access token is invalid or expired or revoked');
 
       const getUserStub = sandbox.stub().rejects(expectedError);
-      @contentstack/managementAPIClientStub.returns({ getUser: getUserStub });
+      managementAPIClientStub.returns({ getUser: getUserStub });
 
-      authHandler.contentstack@contentstack/managementSDKClient = @contentstack/managementAPIClientStub;
+      authHandler.contentstackManagementSDKClient = managementAPIClientStub;
 
       authHandler.getUserDetails(data);
     });

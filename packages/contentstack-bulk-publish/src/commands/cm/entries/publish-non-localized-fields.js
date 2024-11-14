@@ -19,9 +19,9 @@ class NonlocalizedFieldChangesCommand extends Command {
       nonlocalizedFieldChangesFlags['source-env'] || nonlocalizedFieldChangesFlags.sourceEnv;
     nonlocalizedFieldChangesFlags.contentTypes =
       nonlocalizedFieldChangesFlags['content-types'] || nonlocalizedFieldChangesFlags.contentTypes;
-    nonlocalizedFieldChangesFlags.apiVersion = nonlocalizedFieldChangesFlags['api-version'] || '3';
-
-    delete nonlocalizedFieldChangesFlags['api-version'];
+      nonlocalizedFieldChangesFlags.apiVersion = nonlocalizedFieldChangesFlags['api-version'] || '3';
+      
+    delete nonlocalizedFieldChangesFlags['api-version']
     delete nonlocalizedFieldChangesFlags['retry-failed'];
     delete nonlocalizedFieldChangesFlags['bulk-publish'];
     delete nonlocalizedFieldChangesFlags['source-env'];
@@ -52,7 +52,7 @@ class NonlocalizedFieldChangesCommand extends Command {
             config.alias = updatedFlags.alias;
           } catch (error) {
             this.error(
-              `The configured @contentstack/management token alias ${updatedFlags.alias} has not been added yet. Add it using 'csdx auth:tokens:add -a ${updatedFlags.alias}'`,
+              `The configured management token alias ${updatedFlags.alias} has not been added yet. Add it using 'csdx auth:tokens:add -a ${updatedFlags.alias}'`,
               { exit: 2 },
             );
           }
@@ -129,7 +129,7 @@ But, if retryFailed flag is set, then only a logfile is required`;
 NonlocalizedFieldChangesCommand.flags = {
   alias: flags.string({
     char: 'a',
-    description: 'Alias(name) for the @contentstack/management token',
+    description: 'Alias(name) for the management token',
   }),
   'stack-api-key': flags.string({
     char: 'k',
@@ -187,7 +187,7 @@ NonlocalizedFieldChangesCommand.flags = {
     parse: printFlagDeprecation(['-b', '--bulkPublish'], ['--bulk-publish']),
   }),
   'api-version': flags.string({
-    description: 'API Version to be used. Values [Default: 3, Nested Reference Publishing: 3.2].',
+    description : "API Version to be used. Values [Default: 3, Nested Reference Publishing: 3.2].",
   }),
   sourceEnv: flags.string({
     char: 's',
@@ -206,7 +206,7 @@ NonlocalizedFieldChangesCommand.flags = {
 
 NonlocalizedFieldChangesCommand.examples = [
   'General Usage',
-  'csdx cm:entries:publish-non-localized-fields --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --alias [@contentstack/management TOKEN ALIAS] --source-env [SOURCE ENV]',
+  'csdx cm:entries:publish-non-localized-fields --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --alias [MANAGEMENT TOKEN ALIAS] --source-env [SOURCE ENV]',
   '',
   'Using --config or -c flag',
   'Generate a config file at the current working directory using `csdx cm:bulk-publish:configure -a [ALIAS]`',
@@ -217,7 +217,7 @@ NonlocalizedFieldChangesCommand.examples = [
   'csdx cm:entries:publish-non-localized-fields --retry-failed [LOG FILE NAME]',
   '',
   'Using --branch flag',
-  'csdx cm:entries:publish-non-localized-fields --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --alias [@contentstack/management TOKEN ALIAS] --source-env [SOURCE ENV] --branch [BRANCH NAME]',
+  'csdx cm:entries:publish-non-localized-fields --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --alias [MANAGEMENT TOKEN ALIAS] --source-env [SOURCE ENV] --branch [BRANCH NAME]',
   '',
   'Using --stack-api-key flag',
   'csdx cm:entries:publish-non-localized-fields --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --stack-api-key [STACK API KEY] --source-env [SOURCE ENV]',

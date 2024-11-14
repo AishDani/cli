@@ -14,20 +14,20 @@ const configKeyTokens = 'tokens';
 
 function resetConfig() {
   config.delete(`${configKeyTokens}.test-api-key-token2`);
-  config.delete(`${configKeyTokens}.test-@contentstack/management-token`);
-  config.delete(`${configKeyTokens}.test-@contentstack/management-token2`);
+  config.delete(`${configKeyTokens}.test-management-token`);
+  config.delete(`${configKeyTokens}.test-management-token2`);
   config.delete(`${configKeyTokens}.test-api-key-token`);
   config.delete(`${configKeyTokens}.newToken`);
 }
 describe('Tokens Add Command', () => {
   let apiKeyValidationStub;
   let deliveryTokenValidationStub;
-  let @contentstack/managementTokenValidationStub;
+  let managementTokenValidationStub;
   let environmentTokenValidationStub;
   let printStub;
   const validAPIKey = conf.validAPIKey;
   const validDeliveryToken = '***REMOVED***';
-  const valid@contentstack/managementToken = 'cmajhsd98939482';
+  const validmanagementToken = 'cmajhsd98939482';
   const validEnvironment = 'textenv';
 
   before(function () {
@@ -49,10 +49,10 @@ describe('Tokens Add Command', () => {
         }
         return Promise.resolve({ valid: false, message: 'failed' });
       });
-    @contentstack/managementTokenValidationStub = sinon
-      .stub(tokenValidation, 'validate@contentstack/managementToken')
-      .callsFake(function (client: any, apiKey: string, @contentstack/managementToken): Promise<any> {
-        if (@contentstack/managementToken === valid@contentstack/managementToken) {
+    managementTokenValidationStub = sinon
+      .stub(tokenValidation, 'validateManagementToken')
+      .callsFake(function (client: any, apiKey: string, managementToken): Promise<any> {
+        if (managementToken === validmanagementToken) {
           return Promise.resolve({ valid: true, message: 'success' });
         }
         return Promise.resolve({ valid: false, message: 'failed' });
@@ -71,7 +71,7 @@ describe('Tokens Add Command', () => {
   after(() => {
     apiKeyValidationStub.restore();
     deliveryTokenValidationStub.restore();
-    @contentstack/managementTokenValidationStub.restore();
+    managementTokenValidationStub.restore();
     environmentTokenValidationStub.restore();
     printStub.restore();
     resetConfig();
@@ -92,40 +92,40 @@ describe('Tokens Add Command', () => {
     inquireStub.restore();
   });
 
-  it('Add a valid @contentstack/management token, should be added scuccessfully', async function () {
+  it('Add a valid management token, should be added scuccessfully', async function () {
     await TokensAddCommand.run([
       '--alias',
-      'test-@contentstack/management-token',
+      'test-management-token',
       '--stack-api-key',
       validAPIKey,
-      '--@contentstack/management',
+      '--management',
       '--token',
-      valid@contentstack/managementToken,
+      validmanagementToken,
     ]);
-    expect(Boolean(config.get(`${configKeyTokens}.test-@contentstack/management-token`))).to.be.true;
+    expect(Boolean(config.get(`${configKeyTokens}.test-management-token`))).to.be.true;
   });
 
-  it('Add a invalid @contentstack/management token, should fail to add', async function () {
+  it('Add a invalid management token, should fail to add', async function () {
     await TokensAddCommand.run([
       '--alias',
-      'test-@contentstack/management-token2',
+      'test-management-token2',
       '--stack-api-key',
       validAPIKey,
-      '--@contentstack/management',
+      '--management',
       '--token',
       'invalid',
     ]);
-    expect(Boolean(config.get(`${configKeyTokens}.test-@contentstack/management-token2`))).to.be.false;
+    expect(Boolean(config.get(`${configKeyTokens}.test-management-token2`))).to.be.false;
   });
 
   it('Replace an existing token, should prompt for confirmation', async function () {
     const inquireStub = sinon.stub(cliux, 'inquire').resolves(true);
     await TokensAddCommand.run([
       '--alias',
-      'test-@contentstack/management-token',
+      'test-management-token',
       '--stack-api-key',
       validAPIKey,
-      '--@contentstack/management',
+      '--management',
       '--token',
       'invalid',
     ]);
@@ -135,13 +135,13 @@ describe('Tokens Add Command', () => {
 
   it('Add a token without alias, should prompt for alias', async function () {
     const inquireStub = sinon.stub(cliux, 'inquire').resolves(true);
-    await TokensAddCommand.run(['--stack-api-key', validAPIKey, '--@contentstack/management', '--token', 'invalid']);
+    await TokensAddCommand.run(['--stack-api-key', validAPIKey, '--management', '--token', 'invalid']);
     expect(inquireStub.calledOnce).to.be.true;
     inquireStub.restore();
   });
 });
 
-describe('@contentstack/management and Delivery token flags', () => {
+describe('Management and Delivery token flags', () => {
   let inquireStub;
   let errorStub;
   let successStub;
@@ -163,7 +163,7 @@ describe('@contentstack/management and Delivery token flags', () => {
     resetConfig();
   });
 
-  describe('- @contentstack/management token', () => {
+  describe('- Management token', () => {
     it('Should ask for a prompt to select type of token to add', async () => {
       await TokensAddCommand.run([]);
       assert.calledWith(inquireStub, {
@@ -171,31 +171,31 @@ describe('@contentstack/management and Delivery token flags', () => {
         name: 'tokenType',
         message: 'CLI_SELECT_TOKEN_TYPE',
         choices: [
-          { name: '@contentstack/management Token', value: '@contentstack/management' },
+          { name: 'Management Token', value: 'management' },
           { name: 'Delivery Token', value: 'delivery' },
         ],
       });
     });
 
     it('Should ask for api key ', async () => {
-      await TokensAddCommand.run(['--@contentstack/management', '--alias', 'newToken']);
+      await TokensAddCommand.run(['--management', '--alias', 'newToken']);
       assert.calledWith(inquireStub, { type: 'input', message: 'CLI_AUTH_TOKENS_ADD_ENTER_API_KEY', name: 'apiKey' });
     });
     it('Should ask for api key ', async () => {
-      await TokensAddCommand.run(['--@contentstack/management', '--alias', 'newToken']);
+      await TokensAddCommand.run(['--management', '--alias', 'newToken']);
       assert.calledWith(inquireStub, { type: 'input', message: 'CLI_AUTH_TOKENS_ADD_ENTER_API_KEY', name: 'apiKey' });
     });
     it('Invalid API key should throw error', async () => {
-      await TokensAddCommand.run(['--@contentstack/management', '--alias', 'newToken', '--stack-api-key', 'asdf', '--token', 'asdf']);
+      await TokensAddCommand.run(['--management', '--alias', 'newToken', '--stack-api-key', 'asdf', '--token', 'asdf']);
       assert.calledTwice(errorStub);
     });
     it('Throw error if api key is kept empty', async () => {
-      await TokensAddCommand.run(['--@contentstack/management', '--alias', 'newToken', '--stack-api-key', ' ', '--token', 'asdf']);
+      await TokensAddCommand.run(['--management', '--alias', 'newToken', '--stack-api-key', ' ', '--token', 'asdf']);
       assert.calledTwice(errorStub);
     });
     it('Throw error if token is kept empty', async () => {
       await TokensAddCommand.run([
-        '--@contentstack/management',
+        '--management',
         '--alias',
         'newToken',
         '--stack-api-key',
@@ -207,7 +207,7 @@ describe('@contentstack/management and Delivery token flags', () => {
     });
     it('Should add a token successfully after all the values are passed with stack having branches enabled', async () => {
       await TokensAddCommand.run([
-        '--@contentstack/management',
+        '--management',
         '--alias',
         'newToken',
         '--stack-api-key',
@@ -221,7 +221,7 @@ describe('@contentstack/management and Delivery token flags', () => {
     });
     it('Should add a token successfully for stack with branches disabled after all the values are passed', async () => {
       await TokensAddCommand.run([
-        '--@contentstack/management',
+        '--management',
         '--alias',
         'newToken',
         '--stack-api-key',
@@ -233,7 +233,7 @@ describe('@contentstack/management and Delivery token flags', () => {
     });
     it('Should throw an error if branch flag is passed along with stack not having branches enabled', async () => {
       await TokensAddCommand.run([
-        '--@contentstack/management',
+        '--management',
         '--alias',
         'newToken',
         '--stack-api-key',

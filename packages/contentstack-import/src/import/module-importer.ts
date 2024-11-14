@@ -1,6 +1,6 @@
 import { resolve } from 'path';
-import { AuditFix } from '@contenstack/cli-audit';
-import messages, { $t } from '@contenstack/cli-audit/lib/messages';
+import { AuditFix } from '@contentstack/cli-audit';
+import messages, { $t } from '@contentstack/cli-audit/lib/messages';
 import { addLocale, cliux, ContentstackClient, Logger } from '@contentstack/cli-utilities';
 
 import startModuleImport from './modules';
@@ -9,21 +9,21 @@ import { ImportConfig, Modules } from '../types';
 import { backupHandler, log, validateBranch, masterLocalDetails, sanitizeStack, initLogger, trace } from '../utils';
 
 class ModuleImporter {
-  private @contentstack/managementAPIClient: ContentstackClient;
+  private managementAPIClient: ContentstackClient;
   private importConfig: ImportConfig;
   private stackAPIClient: any;
 
-  constructor(@contentstack/managementAPIClient: ContentstackClient, importConfig: ImportConfig) {
-    this.@contentstack/managementAPIClient = @contentstack/managementAPIClient;
-    this.stackAPIClient = this.@contentstack/managementAPIClient.stack({
+  constructor(managementAPIClient: ContentstackClient, importConfig: ImportConfig) {
+    this.managementAPIClient = managementAPIClient;
+    this.stackAPIClient = this.managementAPIClient.stack({
       api_key: importConfig.apiKey,
-      @contentstack/management_token: importConfig.@contentstack/management_token,
+      management_token: importConfig.management_token,
     });
     this.importConfig = importConfig;
   }
 
   async start(): Promise<any> {
-    if (!this.importConfig.@contentstack/management_token) {
+    if (!this.importConfig.management_token) {
       const stackName: Record<string, unknown> = await this.stackAPIClient.fetch();
       this.importConfig.stackName = stackName.name as string;
     }
@@ -31,8 +31,8 @@ class ModuleImporter {
       await validateBranch(this.stackAPIClient, this.importConfig, this.importConfig.branchName);
     }
 
-    if (this.importConfig.@contentstack/management_token) {
-      await addLocale(this.importConfig.apiKey, this.importConfig.@contentstack/management_token, this.importConfig.host);
+    if (this.importConfig.management_token) {
+      await addLocale(this.importConfig.apiKey, this.importConfig.management_token, this.importConfig.host);
     }
 
     const backupDir = await backupHandler(this.importConfig);

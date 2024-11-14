@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const uniqBy = require('lodash/uniqBy');
 const { expect, test } = require('@oclif/test');
-const { test: customTest } = require('cli-dev-dependencies');
+const { test: customTest } = require('@contentstack/cli-dev-dependencies');
 const { messageHandler } = require('@contentstack/cli-utilities');
-const LoginCommand = require('@contenstack/cli-auth/lib/commands/auth/login').default;
-const AddTokenCommand = require('@contenstack/cli-auth/lib/commands/auth/tokens/add').default;
+const LoginCommand = require('@contentstack/cli-auth/lib/commands/auth/login').default;
+const AddTokenCommand = require('@contentstack/cli-auth/lib/commands/auth/tokens/add').default;
 const RegionSetCommand = require('@contentstack/cli-config/lib/commands/config/set/region').default;
 const ExportCommand = require('@contentstack/cli-cm-export/src/commands/cm/stacks/export');
 
@@ -51,9 +51,9 @@ module.exports = (region) => {
           stackDetails[stack].EXPORT_ALIAS_NAME,
           '-k',
           stackDetails[stack].EXPORT_STACK_API_KEY,
-          '--@contentstack/management',
+          '--management',
           '--token',
-          stackDetails[stack].EXPORT_@contentstack/management_TOKEN,
+          stackDetails[stack].EXPORT_MANAGEMENT_TOKEN,
           '-y',
         ])
         .it(`Adding token for ${stack}`, (_, done) => {
@@ -66,9 +66,9 @@ module.exports = (region) => {
           stackDetails[stack].ALIAS_NAME,
           '-k',
           stackDetails[stack].STACK_API_KEY,
-          '--@contentstack/management',
+          '--management',
           '--token',
-          stackDetails[stack].@contentstack/management_TOKEN,
+          stackDetails[stack].MANAGEMENT_TOKEN,
           '-y',
         ])
         .it(`Adding token for ${stack}`, (_, done) => {
@@ -127,7 +127,7 @@ module.exports = (region) => {
       after(async () => {
         await cleanUp(path.join(__dirname, '..', '..', `${IMPORT_PATH}_${stack}`));
         // await deleteStack({ apiKey: stackDetails[stack].STACK_API_KEY, authToken: configHandler.get('authtoken') });
-        defaultConfig.@contentstack/management_token = null;
+        defaultConfig.management_token = null;
         defaultConfig.branch = null;
         defaultConfig.branches = [];
         defaultConfig.moduleName = null;

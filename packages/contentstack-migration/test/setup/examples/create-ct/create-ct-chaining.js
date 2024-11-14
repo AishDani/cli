@@ -159,4 +159,4 @@ module.exports = async ({ migration, stackSDKInstance }) => {
 // Master > dev2 > Script
 // Master new brach > changes apply > test
 
-// NOTE: @contentstack/management token should have branch access README content
+// NOTE: Management token should have branch access README content

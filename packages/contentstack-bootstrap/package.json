@@ -1,5 +1,5 @@
 {
-  "name": "@contenstack/cli-cm-bootstrap",
+  "name": "@contentstack/cli-cm-bootstrap",
   "description": "Bootstrap contentstack apps",
   "version": "1.10.0",
   "author": "Contentstack",

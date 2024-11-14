@@ -22,10 +22,10 @@ class JsonMigrationCommand extends Command {
       }
       const stackOptions = { host: this.cmaHost };
       if (config.alias) {
-        stackOptions.token = getToken(config.alias);
+        stackOptions.token = getToken(config.alias)
       }
       if (config['stack-api-key']) {
-        stackOptions.stackApiKey = config['stack-api-key'];
+        stackOptions.stackApiKey = config['stack-api-key']
       }
       if (config.branch) stackOptions.branch = config.branch;
       let stack = await getStack(stackOptions);
@@ -71,7 +71,7 @@ JsonMigrationCommand.flags = {
   }),
   alias: flags.string({
     char: 'a',
-    description: 'Alias(name) for the @contentstack/management token',
+    description: 'Alias(name) for the management token',
     required: false,
   }),
   'stack-api-key': flags.string({

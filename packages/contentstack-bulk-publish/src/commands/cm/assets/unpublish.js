@@ -18,7 +18,7 @@ class UnpublishCommand extends Command {
     unpublishFlags.apiVersion = unpublishFlags['api-version'] || '3';
     unpublishFlags.onlyAssets = true;
     unpublishFlags.onlyEntries = false;
-    delete unpublishFlags['api-version'];
+    delete unpublishFlags['api-version']
     delete unpublishFlags['retry-failed'];
     delete unpublishFlags['bulk-unpublish'];
     delete unpublishFlags['delivery-token'];
@@ -39,13 +39,13 @@ class UnpublishCommand extends Command {
           branch: unpublishFlags.branch,
         };
         if (updatedFlags.alias) {
-          // Validate @contentstack/management token alias.
+          // Validate management token alias.
           try {
             this.getToken(updatedFlags.alias);
             config.alias = updatedFlags.alias;
           } catch (error) {
             this.error(
-              `The configured @contentstack/management token alias ${updatedFlags.alias} has not been added yet. Add it using 'csdx auth:tokens:add -a ${updatedFlags.alias}'`,
+              `The configured management token alias ${updatedFlags.alias} has not been added yet. Add it using 'csdx auth:tokens:add -a ${updatedFlags.alias}'`,
               { exit: 2 },
             );
           }
@@ -134,7 +134,7 @@ But, if retry-failed flag is set, then only a logfile is required`;
 UnpublishCommand.flags = {
   alias: flags.string({
     char: 'a',
-    description: 'Alias(name) for the @contentstack/management token',
+    description: 'Alias(name) for the management token',
   }),
   'stack-api-key': flags.string({
     char: 'k',
@@ -169,7 +169,7 @@ UnpublishCommand.flags = {
     default: 'true',
   }),
   'api-version': flags.string({
-    description: 'API Version to be used. Values [Default: 3, Nested Reference Publishing: 3.2].',
+    description : "API Version to be used. Values [Default: 3, Nested Reference Publishing: 3.2].",
   }),
   'delivery-token': flags.string({
     description: 'Delivery Token for source environment',
@@ -178,7 +178,7 @@ UnpublishCommand.flags = {
 
 UnpublishCommand.examples = [
   'General Usage',
-  'csdx cm:assets:unpublish --bulk-unpublish --environment [SOURCE ENV] --locale [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --delivery-token [DELIVERY TOKEN]',
+  'csdx cm:assets:unpublish --bulk-unpublish --environment [SOURCE ENV] --locale [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --delivery-token [DELIVERY TOKEN]',
   '',
   'Using --config or -c flag',
   'Generate a config file at the current working directory using `csdx cm:bulk-publish:configure --alias [ALIAS]`',
@@ -189,7 +189,7 @@ UnpublishCommand.examples = [
   'csdx cm:assets:unpublish --retry-failed [LOG FILE NAME]',
   '',
   'Using --branch flag',
-  'csdx cm:assets:unpublish --bulk-unpublish --environment [SOURCE ENV] --locale [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]',
+  'csdx cm:assets:unpublish --bulk-unpublish --environment [SOURCE ENV] --locale [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]',
   '',
   'Using --stack-api-key flag',
   'csdx cm:assets:unpublish --bulk-unpublish --environment [SOURCE ENV] --locale [LOCALE] --stack-api-key [STACK API KEY] --delivery-token [DELIVERY TOKEN]',

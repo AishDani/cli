@@ -2,7 +2,7 @@ export function assetFolderCreateScript(contentType) {
   return `
   const fs = require('fs');
   const path = require('path');
-  module.exports = async ({ migration, stackSDKInstance, @contentstack/managementAPIClient, config, branch, apiKey }) => {
+  module.exports = async ({ migration, stackSDKInstance, managementAPIClient, config, branch, apiKey }) => {
   let filePath = config['file-path'] || process.cwd();
   let compareBranch = config['compare-branch'];
   let folderMapper = {};
@@ -17,7 +17,7 @@ export function assetFolderCreateScript(contentType) {
 
     if (isDir) queryParam.query = { is_dir: true };
 
-    return await @contentstack/managementAPIClient
+    return await managementAPIClient
       .stack({ api_key: stackSDKInstance.api_key, branch_uid: branchName })
       .asset()
       .query(queryParam)
@@ -33,7 +33,7 @@ export function assetFolderCreateScript(contentType) {
       query: { is_dir: true },
     };
 
-    return await @contentstack/managementAPIClient
+    return await managementAPIClient
       .stack({ api_key: stackSDKInstance.api_key, branch_uid: branchName })
       .asset()
       .query(queryRequestObj)
@@ -101,7 +101,7 @@ export function assetFolderCreateScript(contentType) {
       // replace old uid with new
       payload.folderReq.asset.parent_uid = folderMapper[payload.folderReq.asset.parent_uid];
     }
-    await @contentstack/managementAPIClient
+    await managementAPIClient
       .stack({ api_key: apiKey, branch_uid: branch })
       .asset()
       .folder()

@@ -2,48 +2,44 @@
 
 The config namespace contains all the commands that you will need to configure the CLI as per your requirements. Contentstack currently supports four regions: North America, Europe, Azure North America and Azure Europe. [Configure the CLI documentation](https://www.contentstack.com/docs/developers/cli/configure-the-cli)
 
-[![License](https://img.shields.io/npm/l/cli)](https://github.com/contentstack/cli/blob/main/LICENSE)
+[![License](https://img.shields.io/npm/l/@contentstack/cli)](https://github.com/contentstack/cli/blob/main/LICENSE)
 
 <!-- toc -->
-
-- [@contentstack/cli-config](#contentstack@contentstack/cli-config)
-- [Usage](#usage)
-- [Commands](#commands)
+* [@contentstack/cli-config](#contentstackcli-config)
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g @contentstack/cli-config
 $ csdx COMMAND
 running command...
 $ csdx (--version)
-@contentstack/cli-config/1.6.5 darwin-arm64 node-v21.6.1
+@contentstack/cli-config/1.6.5 darwin-arm64 node-v18.17.1
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-
-- [`csdx config:get:base-branch`](#csdx-configgetbase-branch)
-- [`csdx config:get:ea-header`](#csdx-configgetea-header)
-- [`csdx config:get:early-access-header`](#csdx-configgetearly-access-header)
-- [`csdx config:get:region`](#csdx-configgetregion)
-- [`csdx config:remove:base-branch`](#csdx-configremovebase-branch)
-- [`csdx config:remove:ea-header`](#csdx-configremoveea-header)
-- [`csdx config:remove:early-access-header`](#csdx-configremoveearly-access-header)
-- [`csdx config:set:base-branch`](#csdx-configsetbase-branch)
-- [`csdx config:set:ea-header`](#csdx-configsetea-header)
-- [`csdx config:set:early-access-header`](#csdx-configsetearly-access-header)
-- [`csdx config:set:region [REGION]`](#csdx-configsetregion-region)
+* [`csdx config:get:base-branch`](#csdx-configgetbase-branch)
+* [`csdx config:get:ea-header`](#csdx-configgetea-header)
+* [`csdx config:get:early-access-header`](#csdx-configgetearly-access-header)
+* [`csdx config:get:region`](#csdx-configgetregion)
+* [`csdx config:remove:base-branch`](#csdx-configremovebase-branch)
+* [`csdx config:remove:ea-header`](#csdx-configremoveea-header)
+* [`csdx config:remove:early-access-header`](#csdx-configremoveearly-access-header)
+* [`csdx config:set:base-branch`](#csdx-configsetbase-branch)
+* [`csdx config:set:ea-header`](#csdx-configsetea-header)
+* [`csdx config:set:early-access-header`](#csdx-configsetearly-access-header)
+* [`csdx config:set:region [REGION]`](#csdx-configsetregion-region)
 
 ## `csdx config:get:base-branch`
 
@@ -277,7 +273,7 @@ ARGUMENTS
 FLAGS
   -d, --cda=<value>   Custom host to set for content delivery API, if this flag is added then cma, ui-host and name
                       flags are required
-  -m, --cma=<value>   Custom host to set for content @contentstack/management API, , if this flag is added then cda, ui-host and name
+  -m, --cma=<value>   Custom host to set for content management API, , if this flag is added then cda, ui-host and name
                       flags are required
   -n, --name=<value>  Name for the region, if this flag is added then cda, cma and ui-host flags are required
   --ui-host=<value>   Custom UI host to set for CLI, if this flag is added then cda, cma and name flags are required
@@ -302,5 +298,4 @@ EXAMPLES
 ```
 
 _See code: [src/commands/config/set/region.ts](https://github.com/contentstack/cli/blob/main/packages/contentstack-config/src/commands/config/set/region.ts)_
-
 <!-- commandsstop -->

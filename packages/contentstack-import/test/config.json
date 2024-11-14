@@ -2,7 +2,7 @@
     "IS_TS": false,
     "UNIT_EXECUTION_ORDER": [],
     "INTEGRATION_EXECUTION_ORDER": [
-        "@contentstack/management-token.test.js",
+        "management-token.test.js",
         "assets.test.js",
         "content-types.test.js",
         "custom-roles.test.js",

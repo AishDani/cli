@@ -15,7 +15,7 @@ const {
   configHandler,
   HttpClient,
   messageHandler,
-  @contentstack/managementSDKClient,
+  managementSDKClient,
   ContentstackClient,
 } = require('@contentstack/cli-utilities');
 
@@ -25,14 +25,14 @@ const delimeter = os.platform() === 'win32' ? '\\' : '/';
 // Register checkbox-plus here.
 inquirer.registerPrompt('checkbox-plus', checkboxPlus);
 
-function chooseOrganization(@contentstack/managementAPIClient, action) {
+function chooseOrganization(managementAPIClient, action) {
   return new Promise(async (resolve, reject) => {
     try {
       let organizations;
       if (action === config.exportUsers || action === config.exportTeams || action === 'teams') {
-        organizations = await getOrganizationsWhereUserIsAdmin(@contentstack/managementAPIClient);
+        organizations = await getOrganizationsWhereUserIsAdmin(managementAPIClient);
       } else {
-        organizations = await getOrganizations(@contentstack/managementAPIClient);
+        organizations = await getOrganizations(managementAPIClient);
       }
       let orgList = Object.keys(organizations);
       orgList.push(config.cancelString);
@@ -58,23 +58,23 @@ function chooseOrganization(@contentstack/managementAPIClient, action) {
   });
 }
 
-async function getOrganizations(@contentstack/managementAPIClient) {
+async function getOrganizations(managementAPIClient) {
   try {
-    return await getOrganizationList(@contentstack/managementAPIClient, { skip: 0, page: 1, limit: 100 }, []);
+    return await getOrganizationList(managementAPIClient, { skip: 0, page: 1, limit: 100 }, []);
   } catch (error) {
     throw error;
   }
 }
 
-async function getOrganizationList(@contentstack/managementAPIClient, params, result = []) {
+async function getOrganizationList(managementAPIClient, params, result = []) {
   let organizations;
   const configOrgUid = configHandler.get('oauthOrgUid');
 
   if (configOrgUid) {
-    organizations = await @contentstack/managementAPIClient.organization(configOrgUid).fetch();
+    organizations = await managementAPIClient.organization(configOrgUid).fetch();
     result = result.concat([organizations]);
   } else {
-    organizations = await @contentstack/managementAPIClient.organization().fetchAll({ limit: 100 });
+    organizations = await managementAPIClient.organization().fetchAll({ limit: 100 });
     result = result.concat(organizations.items);
   }
 
@@ -88,20 +88,20 @@ async function getOrganizationList(@contentstack/managementAPIClient, params, re
     params.skip = params.page * params.limit;
     params.page++;
     await wait(200);
-    return getOrganizationList(@contentstack/managementAPIClient, params, result);
+    return getOrganizationList(managementAPIClient, params, result);
   }
 }
 
-async function getOrganizationsWhereUserIsAdmin(@contentstack/managementAPIClient) {
+async function getOrganizationsWhereUserIsAdmin(managementAPIClient) {
   try {
     let result = {};
     const configOrgUid = configHandler.get('oauthOrgUid');
 
     if (configOrgUid) {
-      const response = await @contentstack/managementAPIClient.organization(configOrgUid).fetch();
+      const response = await managementAPIClient.organization(configOrgUid).fetch();
       result[response.name] = response.uid;
     } else {
-      const response = await @contentstack/managementAPIClient.getUser({ include_orgs_roles: true });
+      const response = await managementAPIClient.getUser({ include_orgs_roles: true });
       const organizations = response.organizations.filter((org) => {
         if (org.org_roles) {
           const org_role = org.org_roles.shift();
@@ -121,10 +121,10 @@ async function getOrganizationsWhereUserIsAdmin(@contentstack/managementAPIClien
   }
 }
 
-function chooseStack(@contentstack/managementAPIClient, orgUid, stackApiKey) {
+function chooseStack(managementAPIClient, orgUid, stackApiKey) {
   return new Promise(async (resolve, reject) => {
     try {
-      let stacks = await getStacks(@contentstack/managementAPIClient, orgUid);
+      let stacks = await getStacks(managementAPIClient, orgUid);
 
       if (stackApiKey) {
         const stackName = Object.keys(stacks).find((key) => stacks[key] === stackApiKey);
@@ -179,10 +179,10 @@ async function chooseBranch(branchList) {
   }
 }
 
-function getStacks(@contentstack/managementAPIClient, orgUid) {
+function getStacks(managementAPIClient, orgUid) {
   return new Promise((resolve, reject) => {
     let result = {};
-    @contentstack/managementAPIClient
+    managementAPIClient
       .stack({ organization_uid: orgUid })
       .query({ query: {} })
       .find()
@@ -388,7 +388,7 @@ function sanitizeData(flatData) {
   const CSVRegex = /^[\\+\\=@\\-]/;
   for (key in flatData) {
     if (typeof flatData[key] === 'string' && flatData[key].match(CSVRegex)) {
-      flatData[key] = flatData[key].replace(/\"/g, '""');
+      flatData[key] = flatData[key].replace(/\"/g, "\"\"");
       flatData[key] = `"'${flatData[key]}"`;
     } else if (typeof flatData[key] === 'object') {
       // convert any objects or arrays to string
@@ -485,15 +485,15 @@ function startupQuestions() {
   });
 }
 
-function getOrgUsers(@contentstack/managementAPIClient, orgUid) {
+function getOrgUsers(managementAPIClient, orgUid) {
   return new Promise((resolve, reject) => {
-    @contentstack/managementAPIClient
+    managementAPIClient
       .getUser({ include_orgs_roles: true })
       .then(async (response) => {
         let organization = response.organizations.filter((org) => org.uid === orgUid).pop();
         if (!organization) return reject(new Error('Org UID not found.'));
         if (organization.is_owner === true) {
-          return @contentstack/managementAPIClient
+          return managementAPIClient
             .organization(organization.uid)
             .getInvitations()
             .then((data) => {
@@ -505,7 +505,7 @@ function getOrgUsers(@contentstack/managementAPIClient, orgUid) {
           return reject(new Error(config.adminError));
         }
         try {
-          const users = await getUsers(@contentstack/managementAPIClient, organization, { skip: 0, page: 1, limit: 100 });
+          const users = await getUsers(managementAPIClient, organization, { skip: 0, page: 1, limit: 100 });
           return resolve({ items: users });
         } catch (error) {
           return reject(error);
@@ -515,9 +515,9 @@ function getOrgUsers(@contentstack/managementAPIClient, orgUid) {
   });
 }
 
-async function getUsers(@contentstack/managementAPIClient, organization, params, result = []) {
+async function getUsers(managementAPIClient, organization, params, result = []) {
   try {
-    const users = await @contentstack/managementAPIClient.organization(organization.uid).getInvitations(params);
+    const users = await managementAPIClient.organization(organization.uid).getInvitations(params);
     if (!users.items || (users.items && !users.items.length)) {
       return result;
     } else {
@@ -525,7 +525,7 @@ async function getUsers(@contentstack/managementAPIClient, organization, params,
       params.skip = params.page * params.limit;
       params.page++;
       await wait(200);
-      return getUsers(@contentstack/managementAPIClient, organization, params, result);
+      return getUsers(managementAPIClient, organization, params, result);
     }
   } catch (error) {}
 }
@@ -547,14 +547,14 @@ function getMappedRoles(roles) {
   return mappedRoles;
 }
 
-function getOrgRoles(@contentstack/managementAPIClient, orgUid, ecsv) {
+function getOrgRoles(managementAPIClient, orgUid, ecsv) {
   return new Promise((resolve, reject) => {
-    @contentstack/managementAPIClient
+    managementAPIClient
       .getUser({ include_orgs_roles: true })
       .then((response) => {
         let organization = response.organizations.filter((org) => org.uid === orgUid).pop();
         if (organization.is_owner === true) {
-          return @contentstack/managementAPIClient
+          return managementAPIClient
             .organization(organization.uid)
             .roles()
             .then((roles) => {
@@ -566,7 +566,7 @@ function getOrgRoles(@contentstack/managementAPIClient, orgUid, ecsv) {
           return reject(new Error(config.adminError));
         }
 
-        @contentstack/managementAPIClient
+        managementAPIClient
           .organization(organization.uid)
           .roles()
           .then((roles) => {
@@ -667,7 +667,7 @@ function formatError(error) {
       let entity = e;
       switch (e) {
         case 'authorization':
-          entity = '@contentstack/management Token';
+          entity = 'Management Token';
           break;
         case 'api_key':
           entity = 'Stack API key';
@@ -700,14 +700,14 @@ function handleErrorMsg(err) {
 
 /**
  * This function does the sdk calls to get all the teams in org
- * @param {object} @contentstack/managementAPIClient
+ * @param {object} managementAPIClient
  * @param {object} org
  * @param {object} queryParam
  * @returns
  */
-async function getAllTeams(@contentstack/managementAPIClient, org, queryParam = {}) {
+async function getAllTeams(managementAPIClient, org, queryParam = {}) {
   try {
-    return await @contentstack/managementAPIClient.organization(org.uid).teams().fetchAll(queryParam);
+    return await managementAPIClient.organization(org.uid).teams().fetchAll(queryParam);
   } catch (error) {
     handleErrorMsg(error);
   }
@@ -715,15 +715,15 @@ async function getAllTeams(@contentstack/managementAPIClient, org, queryParam = 
 
 /**
  * This function is used to handle the pagination and call the sdk
- * @param {object} @contentstack/managementAPIClient
+ * @param {object} managementAPIClient
  * @param {object} org
  */
-async function exportOrgTeams(@contentstack/managementAPIClient, org) {
+async function exportOrgTeams(managementAPIClient, org) {
   let allTeamsInOrg = [];
   let skip = 0;
   let limit = config?.limit || 100;
   do {
-    const data = await getAllTeams(@contentstack/managementAPIClient, org, {
+    const data = await getAllTeams(managementAPIClient, org, {
       skip: skip,
       limit: limit,
       includeUserDetails: true,
@@ -732,20 +732,20 @@ async function exportOrgTeams(@contentstack/managementAPIClient, org) {
     allTeamsInOrg.push(...data.items);
     if (skip >= data?.count) break;
   } while (1);
-  allTeamsInOrg = await cleanTeamsData(allTeamsInOrg, @contentstack/managementAPIClient, org);
+  allTeamsInOrg = await cleanTeamsData(allTeamsInOrg, managementAPIClient, org);
   return allTeamsInOrg;
 }
 
 /**
  * This function will get all the org level roles
- * @param {object} @contentstack/managementAPIClient
+ * @param {object} managementAPIClient
  * @param {object} org
  */
-async function getOrgRolesForTeams(@contentstack/managementAPIClient, org) {
+async function getOrgRolesForTeams(managementAPIClient, org) {
   let roleMap = {}; // for org level there are two roles only admin and member
 
   // SDK call to get the role UIDs
-  await @contentstack/managementAPIClient
+  await managementAPIClient
     .organization(org.uid)
     .roles()
     .then((roles) => {
@@ -764,11 +764,11 @@ async function getOrgRolesForTeams(@contentstack/managementAPIClient, org) {
 /**
  * Removes the unnecessary fields from the objects in the data and assign org level roles to the team based on role uid
  * @param {array} data
- * @param {object} @contentstack/managementAPIClient
+ * @param {object} managementAPIClient
  * @param {object} org
  */
-async function cleanTeamsData(data, @contentstack/managementAPIClient, org) {
-  const roleMap = await getOrgRolesForTeams(@contentstack/managementAPIClient, org);
+async function cleanTeamsData(data, managementAPIClient, org) {
+  const roleMap = await getOrgRolesForTeams(managementAPIClient, org);
   const fieldToBeDeleted = [
     '_id',
     'createdAt',
@@ -806,12 +806,12 @@ async function cleanTeamsData(data, @contentstack/managementAPIClient, org) {
 
 /**
  * This function is used to call all the other teams function to export the required files
- * @param {object} @contentstack/managementAPIClient
+ * @param {object} managementAPIClient
  * @param {object} organization
  * @param {string} teamUid
  * @param {character} delimiter
  */
-async function exportTeams(@contentstack/managementAPIClient, organization, teamUid, delimiter) {
+async function exportTeams(managementAPIClient, organization, teamUid, delimiter) {
   cliux.print(
     `info: Exporting the ${
       teamUid && organization?.name
@@ -820,7 +820,7 @@ async function exportTeams(@contentstack/managementAPIClient, organization, team
     }`,
     { color: 'blue' },
   );
-  const allTeamsData = await exportOrgTeams(@contentstack/managementAPIClient, organization);
+  const allTeamsData = await exportOrgTeams(managementAPIClient, organization);
   if (!allTeamsData?.length) {
     cliux.print(
       `info: The organization ${organization?.name} does not have any teams associated with it. Please verify and provide the correct organization name.`,
@@ -846,7 +846,7 @@ async function exportTeams(@contentstack/managementAPIClient, organization, team
       { color: 'blue' },
     );
     // Exporting the stack Role data for all the teams or exporting stack role data for a single team
-    await exportRoleMappings(@contentstack/managementAPIClient, allTeamsData, teamUid, delimiter);
+    await exportRoleMappings(managementAPIClient, allTeamsData, teamUid, delimiter);
   }
 }
 
@@ -883,12 +883,12 @@ async function getTeamsDetail(allTeamsData, organization, teamUid, delimiter) {
 
 /**
  * This will export the role mappings of the team, for which stack the team has which role
- * @param {object} @contentstack/managementAPIClient
+ * @param {object} managementAPIClient
  * @param {array} allTeamsData Data for all the teams in the stack
  * @param {string} teamUid for a particular team who's data we want
  * @param {character} delimiter
  */
-async function exportRoleMappings(@contentstack/managementAPIClient, allTeamsData, teamUid, delimiter) {
+async function exportRoleMappings(managementAPIClient, allTeamsData, teamUid, delimiter) {
   let stackRoleWithTeamData = [];
   let flag = false;
   const stackNotAdmin = [];
@@ -897,7 +897,7 @@ async function exportRoleMappings(@contentstack/managementAPIClient, allTeamsDat
       return teamObject?.uid === teamUid;
     });
     for (const stack of team?.stackRoleMapping) {
-      const roleData = await mapRoleWithTeams(@contentstack/managementAPIClient, stack, team?.name, team?.uid);
+      const roleData = await mapRoleWithTeams(managementAPIClient, stack, team?.name, team?.uid);
       stackRoleWithTeamData.push(...roleData);
       if (roleData[0]['Stack Name'] === '') {
         flag = true;
@@ -907,7 +907,7 @@ async function exportRoleMappings(@contentstack/managementAPIClient, allTeamsDat
   } else {
     for (const team of allTeamsData ?? []) {
       for (const stack of team?.stackRoleMapping ?? []) {
-        const roleData = await mapRoleWithTeams(@contentstack/managementAPIClient, stack, team?.name, team?.uid);
+        const roleData = await mapRoleWithTeams(managementAPIClient, stack, team?.name, team?.uid);
         stackRoleWithTeamData.push(...roleData);
         if (roleData[0]['Stack Name'] === '') {
           flag = true;
@@ -953,13 +953,13 @@ async function exportRoleMappings(@contentstack/managementAPIClient, allTeamsDat
 
 /**
  * Mapping the team stacks with the stack role and returning and array of object
- * @param {object} @contentstack/managementAPIClient
+ * @param {object} managementAPIClient
  * @param {array} stackRoleMapping
  * @param {string} teamName
  * @param {string} teamUid
  */
-async function mapRoleWithTeams(@contentstack/managementAPIClient, stackRoleMapping, teamName, teamUid) {
-  const roles = await getRoleData(@contentstack/managementAPIClient, stackRoleMapping.stackApiKey);
+async function mapRoleWithTeams(managementAPIClient, stackRoleMapping, teamName, teamUid) {
+  const roles = await getRoleData(managementAPIClient, stackRoleMapping.stackApiKey);
   const stackRole = {};
   roles?.items?.forEach((role) => {
     if (!stackRole.hasOwnProperty(role?.uid)) {
@@ -982,12 +982,12 @@ async function mapRoleWithTeams(@contentstack/managementAPIClient, stackRoleMapp
 
 /**
  * Making sdk call to get all the roles in the given stack
- * @param {object} @contentstack/managementAPIClient
+ * @param {object} managementAPIClient
  * @param {string} stackApiKey
  */
-async function getRoleData(@contentstack/managementAPIClient, stackApiKey) {
+async function getRoleData(managementAPIClient, stackApiKey) {
   try {
-    return await @contentstack/managementAPIClient.stack({ api_key: stackApiKey }).role().fetchAll();
+    return await managementAPIClient.stack({ api_key: stackApiKey }).role().fetchAll();
   } catch (error) {
     return {};
   }
@@ -1176,20 +1176,20 @@ function handleTaxonomyErrorMsg(err) {
  * @returns
  */
 async function createImportableCSV(payload, taxonomies) {
-  let taxonomiesData = [];
-  let headers = [];
-  payload['type'] = 'export-taxonomies';
-  payload['format'] = 'csv';
-  for (const taxonomy of taxonomies) {
-    if (taxonomy?.uid) {
-      payload['taxonomyUID'] = taxonomy?.uid;
-      const data = await taxonomySDKHandler(payload);
-      const taxonomies = await csvParse(data, headers);
-      taxonomiesData.push(...taxonomies);
+    let taxonomiesData = [];
+    let headers = [];
+    payload['type'] = 'export-taxonomies';
+    payload['format'] = 'csv';
+    for (const taxonomy of taxonomies) {
+      if (taxonomy?.uid) {
+        payload['taxonomyUID'] = taxonomy?.uid;
+        const data = await taxonomySDKHandler(payload);
+        const taxonomies = await csvParse(data, headers);
+        taxonomiesData.push(...taxonomies);
+      }
     }
-  }
 
-  return { taxonomiesData, headers };
+    return { taxonomiesData, headers };
 }
 
 /**

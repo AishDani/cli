@@ -7,7 +7,7 @@
 
 import * as _ from 'lodash';
 import * as path from 'path';
-import { HttpClient, @contentstack/managementSDKClient, isAuthenticated, sanitizePath } from '@contentstack/cli-utilities';
+import { HttpClient, managementSDKClient, isAuthenticated, sanitizePath } from '@contentstack/cli-utilities';
 import { readFileSync, readdirSync, readFile } from './file-helper';
 import chalk from 'chalk';
 import { log } from './logger';
@@ -32,11 +32,11 @@ export const validateConfig = (importConfig: ImportConfig) => {
   } else if (
     !importConfig.email &&
     !importConfig.password &&
-    !importConfig.@contentstack/management_token &&
+    !importConfig.management_token &&
     importConfig.target_stack &&
     !isAuthenticated()
   ) {
-    log(importConfig, chalk.red('Kindly provide @contentstack/management_token or email and password'), 'error');
+    log(importConfig, chalk.red('Kindly provide management_token or email and password'), 'error');
     return 'error';
   } else if (!importConfig.email && !importConfig.password && importConfig.preserveStackVersion) {
     log(importConfig, chalk.red('Kindly provide Email and password for old version stack'), 'error');
@@ -113,7 +113,7 @@ export const masterLocalDetails = (stackAPIClient: any): Promise<{ code: string 
 
 export const field_rules_update = (importConfig: ImportConfig, ctPath: string) => {
   return new Promise(async (resolve, reject) => {
-    let client = await @contentstack/managementSDKClient(config);
+    let client = await managementSDKClient(config);
 
     readFile(path.join(ctPath + '/field_rules_uid.json'))
       .then(async (data) => {
@@ -148,7 +148,7 @@ export const field_rules_update = (importConfig: ImportConfig, ctPath: string) =
                 }
                 const stackAPIClient = client.stack({
                   api_key: importConfig.target_stack,
-                  @contentstack/management_token: importConfig.@contentstack/management_token,
+                  management_token: importConfig.management_token,
                 });
                 let ctObj = stackAPIClient.contentType(schema.uid);
                 //NOTE:- Remove this code Object.assign(ctObj, _.cloneDeep(schema)); -> security vulnerabilities due to mass assignment
@@ -189,7 +189,7 @@ export const formatError = (error: any) => {
   if (error && error.errors && Object.keys(error.errors).length > 0) {
     Object.keys(error.errors).forEach((e) => {
       let entity = e;
-      if (e === 'authorization') entity = '@contentstack/management Token';
+      if (e === 'authorization') entity = 'Management Token';
       if (e === 'api_key') entity = 'Stack API key';
       if (e === 'uid') entity = 'Content Type';
       if (e === 'access_token') entity = 'Delivery Token';

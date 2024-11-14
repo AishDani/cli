@@ -119,7 +119,7 @@ export default class Logger {
     /secret/i,
     /token/i,
     /api[-._]?key/i,
-    /@contentstack/management[-._]?token/i,
+    /management[-._]?token/i,
   ];
 
   /**

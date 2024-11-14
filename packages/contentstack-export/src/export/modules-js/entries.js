@@ -9,11 +9,7 @@ class EntriesExport {
     this.stackAPIClient = stackAPIClient;
     this.exportConfig = exportConfig;
     this.entriesConfig = exportConfig.modules.entries;
-    this.entriesRootPath = path.resolve(
-      sanitizePath(exportConfig.data),
-      sanitizePath(exportConfig.branchName || ''),
-      sanitizePath(this.entriesConfig.dirName),
-    );
+    this.entriesRootPath = path.resolve((sanitizePath(exportConfig.data)), sanitizePath(exportConfig.branchName || ''), sanitizePath(this.entriesConfig.dirName));
     this.localesFilePath = path.resolve(
       sanitizePath(exportConfig.data),
       sanitizePath(exportConfig.branchName || ''),
@@ -83,10 +79,7 @@ class EntriesExport {
             if (versionedEntries.length > 0) {
               const write = (versionedEntry) =>
                 fileHelper.writeFile(
-                  path.join(
-                    sanitizePath(versionedEntryPath),
-                    'version-' + sanitizePath(versionedEntry._version) + '.json',
-                  ),
+                  path.join(sanitizePath(versionedEntryPath), 'version-' + sanitizePath(versionedEntry._version) + '.json'),
                   versionedEntry,
                 );
               await executeTask(versionedEntries, write.bind(this), { concurrency: this.writeConcurrency });

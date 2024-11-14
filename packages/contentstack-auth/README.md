@@ -1,48 +1,44 @@
-# @contenstack/cli-auth
+# @contentstack/cli-auth
 
 It is Contentstack’s CLI plugin to perform authentication-related activities. To get started with authentication, refer to the [CLI’s Authentication documentation](https://www.contentstack.com/docs/developers/cli/authentication)
 
-[![License](https://img.shields.io/npm/l/cli)](https://github.com/contentstack/cli/blob/main/LICENSE)
+[![License](https://img.shields.io/npm/l/@contentstack/cli)](https://github.com/contentstack/cli/blob/main/LICENSE)
 
 <!-- toc -->
-
-- [@contenstack/cli-auth](#contentstack@contenstack/cli-auth)
-- [Usage](#usage)
-- [Commands](#commands)
+* [@contentstack/cli-auth](#contentstackcli-auth)
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
-
 ```sh-session
-$ npm install -g @contenstack/cli-auth
+$ npm install -g @contentstack/cli-auth
 $ csdx COMMAND
 running command...
 $ csdx (--version)
-@contenstack/cli-auth/1.3.20 darwin-arm64 node-v21.6.1
+@contentstack/cli-auth/1.3.20 darwin-arm64 node-v18.17.1
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-
-- [`csdx auth:login`](#csdx-authlogin)
-- [`csdx auth:logout`](#csdx-authlogout)
-- [`csdx auth:tokens`](#csdx-authtokens)
-- [`csdx auth:tokens:add [-a <value>] [--delivery] [--@contentstack/management] [-e <value>] [-k <value>] [-y] [--token <value>]`](#csdx-authtokensadd--a-value---delivery---@contentstack/management--e-value--k-value--y---token-value)
-- [`csdx auth:tokens:remove`](#csdx-authtokensremove)
-- [`csdx auth:whoami`](#csdx-authwhoami)
-- [`csdx login`](#csdx-login)
-- [`csdx logout`](#csdx-logout)
-- [`csdx tokens`](#csdx-tokens)
-- [`csdx whoami`](#csdx-whoami)
+* [`csdx auth:login`](#csdx-authlogin)
+* [`csdx auth:logout`](#csdx-authlogout)
+* [`csdx auth:tokens`](#csdx-authtokens)
+* [`csdx auth:tokens:add [-a <value>] [--delivery] [--management] [-e <value>] [-k <value>] [-y] [--token <value>]`](#csdx-authtokensadd--a-value---delivery---management--e-value--k-value--y---token-value)
+* [`csdx auth:tokens:remove`](#csdx-authtokensremove)
+* [`csdx auth:whoami`](#csdx-authwhoami)
+* [`csdx login`](#csdx-login)
+* [`csdx logout`](#csdx-logout)
+* [`csdx tokens`](#csdx-tokens)
+* [`csdx whoami`](#csdx-whoami)
 
 ## `csdx auth:login`
 
@@ -138,25 +134,25 @@ EXAMPLES
 
 _See code: [src/commands/auth/tokens/index.ts](https://github.com/contentstack/cli/blob/main/packages/contentstack-auth/src/commands/auth/tokens/index.ts)_
 
-## `csdx auth:tokens:add [-a <value>] [--delivery] [--@contentstack/management] [-e <value>] [-k <value>] [-y] [--token <value>]`
+## `csdx auth:tokens:add [-a <value>] [--delivery] [--management] [-e <value>] [-k <value>] [-y] [--token <value>]`
 
-Adds @contentstack/management/delivery tokens to your session to use it with other CLI commands
+Adds management/delivery tokens to your session to use it with other CLI commands
 
 ```
 USAGE
-  $ csdx auth:tokens:add [-a <value>] [--delivery] [--@contentstack/management] [-e <value>] [-k <value>] [-y] [--token <value>]
+  $ csdx auth:tokens:add [-a <value>] [--delivery] [--management] [-e <value>] [-k <value>] [-y] [--token <value>]
 
 FLAGS
   -a, --alias=<value>          Name of the token alias
   -d, --delivery               Set this flag to save delivery token
   -e, --environment=<value>    Environment name for delivery token
   -k, --stack-api-key=<value>  Stack API Key
-  -m, --@contentstack/management             Set this flag to save @contentstack/management token
+  -m, --management             Set this flag to save management token
   -t, --token=<value>          Add the token name
   -y, --yes                    Use this flag to skip confirmation
 
 DESCRIPTION
-  Adds @contentstack/management/delivery tokens to your session to use it with other CLI commands
+  Adds management/delivery tokens to your session to use it with other CLI commands
 
 EXAMPLES
   $ csdx auth:tokens:add
@@ -167,17 +163,17 @@ EXAMPLES
 
   $ csdx auth:tokens:add --delivery
 
-  $ csdx auth:tokens:add --@contentstack/management
+  $ csdx auth:tokens:add --management
 
   $ csdx auth:tokens:add -e <environment>
 
   $ csdx auth:tokens:add --token <token>
 
-  $ csdx auth:tokens:add -a <alias> -k <stack api key> --@contentstack/management --token <@contentstack/management token>
+  $ csdx auth:tokens:add -a <alias> -k <stack api key> --management --token <management token>
 
   $ csdx auth:tokens:add -a <alias> -k <stack api key> --delivery -e <environment> --token <delivery token>
 
-  $ csdx auth:tokens:add --alias <alias> --stack-api-key <stack api key> --@contentstack/management --token <@contentstack/management token>
+  $ csdx auth:tokens:add --alias <alias> --stack-api-key <stack api key> --management --token <management token>
 
   $ csdx auth:tokens:add --alias <alias> --stack-api-key <stack api key> --delivery -e <environment> --token <delivery token>
 ```
@@ -332,5 +328,4 @@ ALIASES
 EXAMPLES
   $ csdx auth:whoami
 ```
-
 <!-- commandsstop -->

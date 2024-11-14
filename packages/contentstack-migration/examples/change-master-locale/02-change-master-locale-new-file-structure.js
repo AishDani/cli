@@ -18,10 +18,7 @@ module.exports = async ({ migration, config }) => {
       }
 
       async function tailorData() {
-        let locales = await fs.readFile(
-          pathValidator(path.resolve(sanitizePath(config.data_dir), 'locales/locales.json')),
-          'utf-8',
-        );
+        let locales = await fs.readFile(pathValidator(path.resolve(sanitizePath(config.data_dir), 'locales/locales.json')), 'utf-8');
         let masterLocale = await fs.readFile(
           pathValidator(path.resolve(sanitizePath(config.data_dir), 'locales/master-locale.json')),
           'utf-8',
@@ -75,12 +72,7 @@ module.exports = async ({ migration, config }) => {
           let sourceMasterLocaleEntries, targetMasterLocaleEntries;
 
           sourceMasterLocaleEntries = await fs.readFile(
-            pathValidator(
-              path.resolve(
-                sanitizePath(config.data_dir),
-                sanitizePath(`entries/${contentType}/${masterLocale}/index.json`),
-              ),
-            ),
+            pathValidator(path.resolve(sanitizePath(config.data_dir), sanitizePath(`entries/${contentType}/${masterLocale}/index.json`))),
             { encoding: 'utf8' },
           );
 
@@ -88,9 +80,7 @@ module.exports = async ({ migration, config }) => {
             pathValidator(
               path.resolve(
                 sanitizePath(config.data_dir),
-                `entries/${sanitizePath(contentType)}/${sanitizePath(masterLocale)}/${Object.values(
-                  JSON.parse(sanitizePath(sourceMasterLocaleEntries)),
-                )}`,
+                `entries/${sanitizePath(contentType)}/${sanitizePath(masterLocale)}/${Object.values(JSON.parse(sanitizePath(sourceMasterLocaleEntries)))}`,
               ),
             ),
             { encoding: 'utf8' },

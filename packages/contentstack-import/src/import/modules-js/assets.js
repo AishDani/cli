@@ -89,8 +89,8 @@ module.exports = class ImportAssets {
                     // the asset has been already imported
                     return void 0;
                   }
-                  if (!validateUids(assetUid)) {
-                    reject(`UID Not Valid`);
+                  if(!validateUids(assetUid)){
+                    reject(`UID Not Valid`)
                   }
                   let currentAssetFolderPath = path.join(sanitizePath(self.assetsFolderPath), sanitizePath(assetUid));
                   if (fs.existsSync(currentAssetFolderPath)) {
@@ -104,13 +104,10 @@ module.exports = class ImportAssets {
 
                     let uidContainer = {};
                     let urlContainer = {};
-                    if (!validateFileName(self.assets[assetUid].filename)) {
-                      reject(`File Name Not Valid`);
+                    if(!validateFileName(self.assets[assetUid].filename)){
+                      reject(`File Name Not Valid`)
                     }
-                    let assetPath = path.resolve(
-                      sanitizePath(currentAssetFolderPath),
-                      sanitizePath(self.assets[assetUid].filename),
-                    );
+                    let assetPath = path.resolve(sanitizePath(currentAssetFolderPath), sanitizePath(self.assets[assetUid].filename));
 
                     if (self.assets[assetUid].parent_uid && typeof self.assets[assetUid].parent_uid === 'string') {
                       if (self.mappedFolderUids.hasOwnProperty(self.assets[assetUid].parent_uid)) {
@@ -189,8 +186,8 @@ module.exports = class ImportAssets {
   uploadVersionedAssets(uid, assetFolderPath) {
     let self = this;
     return new Promise(function (resolve, reject) {
-      if (!validateUids(uid)) {
-        reject(`UID not valid`);
+      if(!validateUids(uid)){
+        reject(`UID not valid`)
       }
       let versionedAssetMetadata = fileHelper.readFileSync(
         path.join(sanitizePath(assetFolderPath), '_contentstack_' + sanitizePath(uid) + '.json'),
@@ -220,8 +217,8 @@ module.exports = class ImportAssets {
         versionedAssetMetadata,
         function () {
           let assetMetadata = versionedAssetMetadata[counter];
-          if (!validateFileName(assetMetadata.filename)) {
-            reject(`File Name not valid`);
+          if(!validateFileName(assetMetadata.filename)){
+            reject(`File Name not valid`)
           }
           let assetPath = path.join(sanitizePath(assetFolderPath), sanitizePath(assetMetadata.filename));
 
@@ -385,7 +382,7 @@ module.exports = class ImportAssets {
             .catch(function (err) {
               let error = JSON.parse(err.message);
               if (error.errors.authorization || error.errors.api_key) {
-                log(self.config, 'Api_key or @contentstack/management_token is not valid', 'error');
+                log(self.config, 'Api_key or management_token is not valid', 'error');
                 return reject(error);
               }
 

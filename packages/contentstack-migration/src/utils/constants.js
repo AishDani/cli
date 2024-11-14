@@ -6,9 +6,9 @@ exports.version = 3; // TODO: Fetch it from CMA
 
 exports.defaultDataType = 'text';
 
-exports.@contentstack/management_SDK = '@contentstack/management_SDK';
-exports.@contentstack/management_CLIENT = '@contentstack/management_CLIENT';
-exports.@contentstack/management_TOKEN = '@contentstack/management_TOKEN';
+exports.MANAGEMENT_SDK = 'MANAGEMENT_SDK';
+exports.MANAGEMENT_CLIENT = 'MANAGEMENT_CLIENT';
+exports.MANAGEMENT_TOKEN = 'MANAGEMENT_TOKEN';
 exports.AUTH_TOKEN = 'AUTH_TOKEN';
 exports.API_KEY = 'API_KEY';
 exports.BRANCH = 'BRANCH';

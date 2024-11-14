@@ -12,7 +12,7 @@ const {
   cliux,
   HttpClient,
   NodeCrypto,
-  @contentstack/managementSDKClient,
+  managementSDKClient,
   HttpClientDecorator,
   OauthDecorator,
   isAuthenticated,
@@ -44,7 +44,7 @@ module.exports = class ExportMarketplaceApps {
     }
 
     this.developerHubBaseUrl = this.config.developerHubBaseUrl || (await getDeveloperHubUrl(this.config));
-    this.appSdkAxiosInstance = await @contentstack/managementSDKClient({
+    this.appSdkAxiosInstance = await managementSDKClient({
       endpoint: this.developerHubBaseUrl,
     });
     await this.getOrgUid();
@@ -73,7 +73,7 @@ module.exports = class ExportMarketplaceApps {
   }
 
   async getOrgUid() {
-    const tempAPIClient = await @contentstack/managementSDKClient({ host: this.config.host });
+    const tempAPIClient = await managementSDKClient({ host: this.config.host });
     const tempStackData = await tempAPIClient
       .stack({ api_key: this.config.source_stack })
       .fetch()
@@ -88,7 +88,7 @@ module.exports = class ExportMarketplaceApps {
   }
 
   async exportInstalledExtensions() {
-    const client = await @contentstack/managementSDKClient({ host: this.developerHubBaseUrl.split('://').pop() });
+    const client = await managementSDKClient({ host: this.developerHubBaseUrl.split('://').pop() });
     const installedApps = (await this.getAllStackSpecificApps()) || [];
 
     if (!_.isEmpty(installedApps)) {
@@ -108,7 +108,7 @@ module.exports = class ExportMarketplaceApps {
     return this.appSdkAxiosInstance.axiosInstance
       .get(`/installations?target_uids=${this.config.source_stack}&skip=${skip}`, {
         headers: {
-          organization_uid: this.config.org_uid,
+          organization_uid: this.config.org_uid
         },
       })
       .then(async ({ data }) => {
