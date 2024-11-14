@@ -15,10 +15,7 @@ class StackPublishCommand extends Command {
 
       this.publishEntriesCommand = new PublishEntriesCommand(this.entriesPublishReceiver);
       this.publishAssetsCommand = new PublishAssetsCommand(this.assetsPublishReceiver);
-      this.publishEntriesAndAssetsCommand = new PublishEntriesAndAssetsCommand(
-        this.entriesPublishReceiver,
-        this.assetsPublishReceiver,
-      );
+      this.publishEntriesAndAssetsCommand = new PublishEntriesAndAssetsCommand(this.entriesPublishReceiver, this.assetsPublishReceiver);
 
       this.optionController.setCommand(0, this.publishEntriesCommand);
       this.optionController.setCommand(1, this.publishAssetsCommand);
@@ -82,7 +79,7 @@ class OptionController {
 }
 
 class NoCommand {
-  execute() {}
+  execute() { }
 }
 
 class PublishEntriesCommand {

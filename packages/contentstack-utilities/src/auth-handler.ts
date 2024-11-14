@@ -1,7 +1,7 @@
 import cliux from './cli-ux';
 import HttpClient from './http-client';
 import configHandler from './config-handler';
-import * as ContentstackManagementSDK from 'management';
+import * as ContentstackManagementSDK from '@contentstack/management';
 import messageHandler from './message-handler';
 const http = require('http');
 const url = require('url');

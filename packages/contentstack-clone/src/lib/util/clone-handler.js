@@ -8,7 +8,7 @@ let { default: importCmd } = require('@contentstack/cli-cm-import');
 const { CustomAbortController } = require('./abort-controller');
 const prompt = require('prompt');
 const colors = require('@colors/colors/safe');
-const cloneDeep = require('lodash/cloneDeep');
+const cloneDeep = require("lodash/cloneDeep")
 
 const {
   HandleOrgCommand,
@@ -21,7 +21,7 @@ const {
   Clone,
   HandleBranchCommand,
 } = require('../helpers/command-helpers');
-const { configHandler } = require('@contentstack/cli-utilities');
+const { configHandler } = require('@contentstack/cli-utilities')
 
 let client = {};
 let config;
@@ -471,7 +471,7 @@ class CloneHandler {
         } else {
           organizations = await client.organization().fetchAll({ limit: 100 });
         }
-
+        
         spinner.succeed('Fetched Organization');
         for (const element of organizations.items || [organizations]) {
           orgUidList[element.name] = element.uid;
@@ -618,7 +618,7 @@ class CloneHandler {
   async cmdExport() {
     return new Promise((resolve, reject) => {
       // Creating export specific config by merging external configurations
-      let exportConfig = Object.assign({}, cloneDeep(config), { ...config?.export });
+      let exportConfig = Object.assign({}, cloneDeep(config), {...config?.export});
       delete exportConfig.import;
       delete exportConfig.export;
 
@@ -648,7 +648,7 @@ class CloneHandler {
   async cmdImport() {
     return new Promise(async (resolve, _reject) => {
       // Creating export specific config by merging external configurations
-      let importConfig = Object.assign({}, cloneDeep(config), { ...config?.import });
+      let importConfig = Object.assign({}, cloneDeep(config), {...config?.import});
       delete importConfig.import;
       delete importConfig.export;
 
@@ -673,7 +673,7 @@ class CloneHandler {
 
       fs.writeFileSync(path.join(__dirname, 'dummyConfig.json'), JSON.stringify(importConfig));
       await importCmd.run(cmd);
-      fs.writeFileSync(path.join(__dirname, 'dummyConfig.json'), JSON.stringify({}));
+      fs.writeFileSync(path.join(__dirname, 'dummyConfig.json'), JSON.stringify({}))
       return resolve();
     });
   }

@@ -15,17 +15,7 @@ const locales = process.env.LOCALES.split(',');
 
 describe('AssetsUnpublish', () => {
   it('Should run successfully when all the flags are passed', async () => {
-    const args = [
-      '--environment',
-      environments[0],
-      '--locale',
-      locales[0],
-      '--alias',
-      process.env.MANAGEMENT_ALIAS,
-      '--delivery-token',
-      process.env.DELIVERY_TOKEN,
-      '--yes',
-    ];
+    const args = ['--environment', environments[0], '--locale', locales[0], '--alias', process.env.MANAGEMENT_ALIAS, '--delivery-token', process.env.DELIVERY_TOKEN, '--yes'];
     const inquireStub = stub(cliux, 'prompt');
     await AssetsUnpublish.run(args);
     sinon.assert.notCalled(inquireStub);
@@ -33,15 +23,7 @@ describe('AssetsUnpublish', () => {
   });
 
   it('Should ask for delivery token when the flag is not passed', async () => {
-    const args = [
-      '--environment',
-      environments[0],
-      '--locale',
-      locales[0],
-      '--alias',
-      process.env.MANAGEMENT_ALIAS,
-      '--yes',
-    ];
+    const args = ['--environment', environments[0], '--locale', locales[0], '--alias', process.env.MANAGEMENT_ALIAS, '--yes'];
     const inquireStub = stub(cliux, 'prompt').resolves(process.env.DELIVERY_TOKEN);
     await AssetsUnpublish.run(args);
     sinon.assert.calledOnce(inquireStub);
@@ -66,17 +48,7 @@ describe('AssetsUnpublish', () => {
   });
 
   it('Should run successfully when user is logged in and stack api key is passed', async () => {
-    const args = [
-      '--environment',
-      environments[0],
-      '--locale',
-      locales[0],
-      '--stack-api-key',
-      process.env.STACK_API_KEY,
-      '--delivery-token',
-      process.env.DELIVERY_TOKEN,
-      '--yes',
-    ];
+    const args = ['--environment', environments[0], '--locale', locales[0], '--stack-api-key', process.env.STACK_API_KEY, '--delivery-token', process.env.DELIVERY_TOKEN, '--yes'];
     const inquireStub = stub(cliux, 'prompt');
     await AssetsUnpublish.run(args);
     sinon.assert.notCalled(inquireStub);

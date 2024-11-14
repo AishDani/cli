@@ -1,6 +1,6 @@
 import ContentstackError from './error';
 import { managementSDKClient, configHandler } from '@contentstack/cli-utilities';
-import * as ContentstackManagementSDK from 'management';
+import * as ContentstackManagementSDK from '@contentstack/management';
 
 export interface Organization {
   uid: string;

@@ -9,7 +9,7 @@ const { getAllLogs } = require('../util/logger');
 const { getQueue } = require('../util/queue');
 const { validateFile } = require('../util/fs');
 const { configHandler } = require('@contentstack/cli-utilities');
-let config = configHandler;
+let config = configHandler
 const { initializeLogger, performBulkUnPublish, publishUsingVersion } = require('../consumer/publish');
 const getStack = require('../util/client.js').getStack;
 
@@ -182,7 +182,7 @@ async function revertUsingLogs(logFileName) {
         apikey: response.file[0].message.api_key,
         alias: response.file[0].message.alias,
         host: response.file[0].message.host,
-        branch: response.file[0].message.branch || 'main',
+        branch: response.file[0].message.branch || 'main'
       });
       logs = await formatLogData(stack, response.file);
 

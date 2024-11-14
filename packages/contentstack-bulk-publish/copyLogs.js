@@ -32,7 +32,5 @@ const logs = [
 ];
 
 logs.forEach((element) => {
-  fs.createReadStream(path.join(__dirname, dummyDir, sanitizePath(element))).pipe(
-    fs.createWriteStream(path.join(__dirname, logFileDir, sanitizePath(element))),
-  );
+  fs.createReadStream(path.join(__dirname, dummyDir, sanitizePath(element))).pipe(fs.createWriteStream(path.join(__dirname, logFileDir, sanitizePath(element))));
 });

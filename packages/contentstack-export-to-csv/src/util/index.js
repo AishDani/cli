@@ -388,7 +388,7 @@ function sanitizeData(flatData) {
   const CSVRegex = /^[\\+\\=@\\-]/;
   for (key in flatData) {
     if (typeof flatData[key] === 'string' && flatData[key].match(CSVRegex)) {
-      flatData[key] = flatData[key].replace(/\"/g, '""');
+      flatData[key] = flatData[key].replace(/\"/g, "\"\"");
       flatData[key] = `"'${flatData[key]}"`;
     } else if (typeof flatData[key] === 'object') {
       // convert any objects or arrays to string
@@ -1176,20 +1176,20 @@ function handleTaxonomyErrorMsg(err) {
  * @returns
  */
 async function createImportableCSV(payload, taxonomies) {
-  let taxonomiesData = [];
-  let headers = [];
-  payload['type'] = 'export-taxonomies';
-  payload['format'] = 'csv';
-  for (const taxonomy of taxonomies) {
-    if (taxonomy?.uid) {
-      payload['taxonomyUID'] = taxonomy?.uid;
-      const data = await taxonomySDKHandler(payload);
-      const taxonomies = await csvParse(data, headers);
-      taxonomiesData.push(...taxonomies);
+    let taxonomiesData = [];
+    let headers = [];
+    payload['type'] = 'export-taxonomies';
+    payload['format'] = 'csv';
+    for (const taxonomy of taxonomies) {
+      if (taxonomy?.uid) {
+        payload['taxonomyUID'] = taxonomy?.uid;
+        const data = await taxonomySDKHandler(payload);
+        const taxonomies = await csvParse(data, headers);
+        taxonomiesData.push(...taxonomies);
+      }
     }
-  }
 
-  return { taxonomiesData, headers };
+    return { taxonomiesData, headers };
 }
 
 /**

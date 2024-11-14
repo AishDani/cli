@@ -2,7 +2,7 @@
 
 Contentstack is a headless CMS with an API-first approach that puts content at the centre. It is designed to simplify the process of publication by separating code from content.
 
-CLI supports content management scripts through which you can perform the following tasks:
+CLI supports content @contentstack/management scripts through which you can perform the following tasks:
 
 - Bulk publish content
 - Export content
@@ -45,7 +45,7 @@ $ csdx --help
 
 **auth**: To perform [authentication-related](/packages/contentstack-auth) activities
 
-**cm**: To perform content management activities such as [bulk publish](/packages/contentstack-bulk-publish), [import](/packages/contentstack-import), and [export](/packages/contentstack-export), [export-to-csv] (/packages/contentstack-export-to-csv), [seed] (/packages/contentstack-seed)
+**cm**: To perform content @contentstack/management activities such as [bulk publish](/packages/contentstack-bulk-publish), [import](/packages/contentstack-import), and [export](/packages/contentstack-export), [export-to-csv] (/packages/contentstack-export-to-csv), [seed] (/packages/contentstack-seed)
 
 **help**: To list the helpful commands in CLI
 

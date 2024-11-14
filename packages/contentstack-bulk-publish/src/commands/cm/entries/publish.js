@@ -197,7 +197,7 @@ PublishEntriesCommand.flags = {
     default: 'true',
   }),
   'api-version': flags.string({
-    description: 'API Version to be used. Values [Default: 3, Nested Reference Publishing: 3.2].',
+    description : "API Version to be used. Values [Default: 3, Nested Reference Publishing: 3.2].",
   }),
   'publish-all-content-types': flags.boolean({
     description: '(optional) Publish all contenttypes (cannot be set when contentTypes flag is set)',

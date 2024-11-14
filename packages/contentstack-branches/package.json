@@ -1,5 +1,5 @@
 {
-  "name": "@contenstack/cli-cm-branches",
+  "name": "@contentstack/cli-cm-branches",
   "description": "Contentstack CLI plugin to do branches operations",
   "version": "1.1.2",
   "author": "Contentstack",
@@ -25,9 +25,9 @@
     "winston": "^3.7.2"
   },
   "devDependencies": {
-    "@contenstack/cli-auth": "~1.3.19",
+    "@contentstack/cli-auth": "~1.3.19",
     "@contentstack/cli-config": "~1.6.4",
-    "cli-dev-dependencies": "~1.2.4",
+    "@contentstack/cli-dev-dependencies": "~1.2.4",
     "@oclif/plugin-help": "^5.1.19",
     "@oclif/test": "^2.5.6",
     "@types/flat": "^5.0.2",

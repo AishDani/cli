@@ -2,9 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const uniqBy = require('lodash/uniqBy');
 const { expect, test } = require('@oclif/test');
-const { test: customTest } = require('cli-dev-dependencies');
+const { test: customTest } = require('@contentstack/cli-dev-dependencies');
 const { messageHandler } = require('@contentstack/cli-utilities');
-const LoginCommand = require('@contenstack/cli-auth/lib/commands/auth/login').default;
+const LoginCommand = require('@contentstack/cli-auth/lib/commands/auth/login').default;
 const RegionSetCommand = require('@contentstack/cli-config/lib/commands/config/set/region').default;
 const ExportCommand = require('@contentstack/cli-cm-export/src/commands/cm/stacks/export');
 

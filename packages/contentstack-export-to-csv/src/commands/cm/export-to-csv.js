@@ -6,7 +6,7 @@ const {
   isAuthenticated,
   cliux,
   doesBranchExist,
-  isManagementTokenValid,
+  isManagementTokenValid
 } = require('@contentstack/cli-utilities');
 const util = require('../../util');
 const config = require('../../util/config');
@@ -60,8 +60,8 @@ class ExportToCsvCommand extends Command {
       multiple: false,
       required: false,
     }),
-    'team-uid': flags.string({
-      description: 'Uid of the team whose user data and stack roles are required',
+    "team-uid": flags.string({
+      description: 'Uid of the team whose user data and stack roles are required'
     }),
     'taxonomy-uid': flags.string({
       description: 'Provide the taxonomy UID of the related terms you want to export',
@@ -86,9 +86,9 @@ class ExportToCsvCommand extends Command {
           'content-type': contentTypesFlag,
           alias: managementTokenAlias,
           branch: branchUid,
-          'team-uid': teamUid,
+          "team-uid": teamUid,
           'taxonomy-uid': taxonomyUID,
-          delimiter,
+          delimiter
         },
       } = await this.parse(ExportToCsvCommand);
 
@@ -222,15 +222,15 @@ class ExportToCsvCommand extends Command {
         }
         case config.exportTeams:
         case 'teams': {
-          try {
+          try{
             let organization;
             if (org) {
               organization = { uid: org, name: orgName || org };
             } else {
               organization = await util.chooseOrganization(managementAPIClient, action); // prompt for organization
             }
-
-            await util.exportTeams(managementAPIClient, organization, teamUid, delimiter);
+          
+            await util.exportTeams(managementAPIClient,organization,teamUid, delimiter);
           } catch (error) {
             if (error.message || error.errorMessage) {
               cliux.error(util.formatError(error));
@@ -333,14 +333,9 @@ class ExportToCsvCommand extends Command {
     let apiClient, stackDetails;
     const listOfTokens = configHandler.get('tokens');
     if (managementTokenAlias && listOfTokens[managementTokenAlias]) {
-      const checkManagementTokenValidity = await isManagementTokenValid(
-        listOfTokens[managementTokenAlias].apiKey,
-        listOfTokens[managementTokenAlias].token,
-      );
-      if (checkManagementTokenValidity.hasOwnProperty('message')) {
-        throw checkManagementTokenValidity.valid === 'failedToCheck'
-          ? checkManagementTokenValidity.message
-          : `error: Management token or stack API key is invalid. ${checkManagementTokenValidity.message}`;
+      const checkManagementTokenValidity = await isManagementTokenValid((listOfTokens[managementTokenAlias].apiKey) ,listOfTokens[managementTokenAlias].token);
+      if(checkManagementTokenValidity.hasOwnProperty('message')) {
+        throw checkManagementTokenValidity.valid==='failedToCheck'?checkManagementTokenValidity.message:(`error: Management token or stack API key is invalid. ${checkManagementTokenValidity.message}`);
       }
       apiClient = await managementSDKClient({
         host: this.cmaHost,
@@ -443,7 +438,7 @@ class ExportToCsvCommand extends Command {
       const fileName = `${stackName ?? stack.name}_taxonomies.csv`;
       const { taxonomiesData, headers } = await util.createImportableCSV(payload, taxonomies);
       if (taxonomiesData?.length) {
-        util.write(this, taxonomiesData, fileName, 'taxonomies', delimiter, headers);
+        util.write(this, taxonomiesData, fileName, 'taxonomies',delimiter, headers);
       }
     }
   }

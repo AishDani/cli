@@ -13,28 +13,12 @@ class ContentTypesImport {
     this.globalFieldConfig = importConfig.modules.globalfields;
     this.importConcurrency = this.contentTypeConfig.importConcurrency || this.importConfig.importConcurrency;
     this.writeConcurrency = this.contentTypeConfig.writeConcurrency || this.importConfig.writeConcurrency;
-    this.contentTypesFolderPath = path.join(
-      sanitizePath(this.importConfig.data),
-      sanitizePath(this.contentTypeConfig.dirName),
-    );
+    this.contentTypesFolderPath = path.join(sanitizePath(this.importConfig.data), sanitizePath(this.contentTypeConfig.dirName));
     this.mapperFolderPath = path.join(sanitizePath(this.importConfig.data), 'mapper', 'content_types');
     this.existingContentTypesPath = path.join(sanitizePath(this.mapperFolderPath), 'success.json');
-    this.globalFieldsFolderPath = path.resolve(
-      sanitizePath(this.importConfig.data),
-      sanitizePath(this.globalFieldConfig.dirName),
-    );
-    this.globalFieldMapperFolderPath = path.join(
-      sanitizePath(importConfig.data),
-      'mapper',
-      'global_fields',
-      'success.json',
-    );
-    this.globalFieldPendingPath = path.join(
-      sanitizePath(importConfig.data),
-      'mapper',
-      'global_fields',
-      'pending_global_fields.js',
-    );
+    this.globalFieldsFolderPath = path.resolve(sanitizePath(this.importConfig.data),sanitizePath(this.globalFieldConfig.dirName));
+    this.globalFieldMapperFolderPath = path.join(sanitizePath(importConfig.data), 'mapper', 'global_fields', 'success.json');
+    this.globalFieldPendingPath = path.join(sanitizePath(importConfig.data), 'mapper', 'global_fields', 'pending_global_fields.js');
     this.ignoredFilesInContentTypesFolder = new Map([
       ['__master.json', 'true'],
       ['__priority.json', 'true'],
@@ -120,7 +104,7 @@ class ContentTypesImport {
 
       log(this.importConfig, chalk.green('Content types imported successfully'), 'success');
     } catch (error) {
-      let message_content_type = '';
+      let message_content_type = "";
       if (error.request !== undefined && JSON.parse(error.request.data).content_type !== undefined) {
         if (JSON.parse(error.request.data).content_type.uid) {
           message_content_type =

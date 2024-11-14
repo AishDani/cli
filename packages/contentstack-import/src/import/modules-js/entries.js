@@ -39,7 +39,7 @@ module.exports = class ImportEntries {
   ctPath;
   lPath;
   importConcurrency;
-  skipFiles = ['__master.json', '__priority.json', 'schema.json', '.DS_Store'];
+  skipFiles = ['__master.json', '__priority.json', 'schema.json','.DS_Store'];
 
   constructor(importConfig, stackAPIClient) {
     this.config = _.merge(config, importConfig);
@@ -839,12 +839,7 @@ module.exports = class ImportEntries {
             return resolve();
           }
           self.mappedUids[query.entry.uid] = response.body.entries[0].uid;
-          let _ePath = path.join(
-            sanitizePath(this.entryMapperPath),
-            sanitizePath(query.locale),
-            sanitizePath(query.content_type),
-            'success.json',
-          );
+          let _ePath = path.join(sanitizePath(this.entryMapperPath), sanitizePath(query.locale), sanitizePath(query.content_type), 'success.json');
           let entries = fileHelper.readFileSync(_ePath);
           entries.push(query.entry);
           fileHelper.writeFileSync(_ePath, entries);
@@ -1233,7 +1228,7 @@ module.exports = class ImportEntries {
                 if (entryReferences.length > 0) {
                   jsonRteData.children = jsonRteData.children.filter((e) => !this.doEntryReferencesExist(e));
                   if (jsonRteData.children.length === 0) {
-                    jsonRteData.children.push(JSON.parse(structuredPTag));
+                    jsonRteData.children.push(JSON.parse(structuredPTag)); 
                   }
                   return jsonRteData; // return jsonRteData without entry references
                 } else {
@@ -1247,7 +1242,7 @@ module.exports = class ImportEntries {
                   (e) => !this.doEntryReferencesExist(e),
                 );
                 if (entry[element.uid].children.length === 0) {
-                  entry[element.uid].children.push(JSON.parse(structuredPTag));
+                  entry[element.uid].children.push(JSON.parse(structuredPTag)); 
                 }
               }
             }
@@ -1264,11 +1259,7 @@ module.exports = class ImportEntries {
 
     if (element.length) {
       for (const item of element) {
-        if (
-          (item.type === 'p' || item.type === 'a' || item.type === 'span') &&
-          item.children &&
-          item.children.length > 0
-        ) {
+        if ((item.type === 'p' || item.type === 'a' || item.type === 'span') && item.children && item.children.length > 0) {
           return this.doEntryReferencesExist(item.children);
         } else if (this.isEntryRef(item)) {
           return true;
@@ -1279,11 +1270,7 @@ module.exports = class ImportEntries {
         return true;
       }
 
-      if (
-        (element.type === 'p' || element.type === 'a' || element.type === 'span') &&
-        element.children &&
-        element.children.length > 0
-      ) {
+      if ((element.type === 'p' || element.type === 'a' || element.type ==='span') && element.children && element.children.length > 0) {
         return this.doEntryReferencesExist(element.children);
       }
     }

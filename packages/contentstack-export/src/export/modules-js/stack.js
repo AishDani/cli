@@ -31,7 +31,8 @@ class ExportStack {
       const tempStackData = await tempAPIClient
         .stack({ api_key: self.config.source_stack })
         .fetch()
-        .catch((error) => {});
+        .catch((error) => {
+        });
 
       if (tempStackData && tempStackData.org_uid) {
         self.config.org_uid = tempStackData.org_uid;

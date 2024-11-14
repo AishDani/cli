@@ -66,7 +66,7 @@ module.exports = class ImportMarketplaceApps {
     this.config.developerHubBaseUrl = this.developerHubBaseUrl;
     this.client = await managementSDKClient({ endpoint: this.developerHubBaseUrl });
     this.appSdkAxiosInstance = await managementSDKClient({
-      host: this.developerHubBaseUrl.split('://').pop(),
+      host: this.developerHubBaseUrl.split('://').pop()
     });
     await this.getOrgUid();
 
@@ -530,7 +530,7 @@ module.exports = class ImportMarketplaceApps {
     return this.appSdkAxiosInstance.axiosInstance
       .put(`${this.developerHubBaseUrl}/installations/${uid}`, payload, {
         headers: {
-          organization_uid: this.config.org_uid,
+          organization_uid: this.config.org_uid
         },
       })
       .then(({ data }) => {
@@ -543,7 +543,7 @@ module.exports = class ImportMarketplaceApps {
       })
       .catch((error) => {
         trace(data, 'error', true);
-        log(this.config, formatError(error), 'error');
+        log(this.config, formatError(error), 'error')
       });
   }
 

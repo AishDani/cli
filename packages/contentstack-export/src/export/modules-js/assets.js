@@ -11,13 +11,7 @@ const Promise = require('bluebird');
 const _ = require('lodash');
 const chalk = require('chalk');
 const progress = require('progress-stream');
-const {
-  HttpClient,
-  configHandler,
-  validateUids,
-  sanitizePath,
-  validateFileName,
-} = require('@contentstack/cli-utilities');
+const { HttpClient, configHandler, validateUids, sanitizePath, validateFileName } = require('@contentstack/cli-utilities');
 const { fileHelper, log, formatError } = require('../../utils');
 let { default: config } = require('../../config');
 
@@ -288,12 +282,8 @@ module.exports = class ExportAssets {
       }
 
       if (version <= 0) {
-        if (validateUids(uid)) {
-          const assetVersionInfoFile = path.resolve(
-            sanitizePath(self.assetsFolderPath),
-            sanitizePath(uid),
-            '_contentstack_' + sanitizePath(uid) + '.json',
-          );
+        if(validateUids(uid)){
+          const assetVersionInfoFile = path.resolve(sanitizePath(self.assetsFolderPath), sanitizePath(uid), '_contentstack_' + sanitizePath(uid) + '.json');
           fileHelper.writeFileSync(assetVersionInfoFile, assetVersionInfo);
           return resolve();
         }
@@ -339,8 +329,8 @@ module.exports = class ExportAssets {
   downloadAsset(asset) {
     const self = this;
     return new Promise(async (resolve, reject) => {
-      if (!validateUids(asset.uid) && !validateFileName(asset.filename)) {
-        reject(`UIDs not valid`);
+      if(!validateUids(asset.uid) && !validateFileName(asset.filename)) {
+        reject(`UIDs not valid`)
       }
       const assetFolderPath = path.resolve(sanitizePath(self.assetsFolderPath), sanitizePath(asset.uid));
       const assetFilePath = path.resolve(sanitizePath(assetFolderPath), sanitizePath(asset.filename));

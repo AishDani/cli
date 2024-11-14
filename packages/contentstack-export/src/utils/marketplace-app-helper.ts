@@ -1,6 +1,6 @@
 import { cliux, configHandler, NodeCrypto, managementSDKClient, createDeveloperHubUrl } from '@contentstack/cli-utilities';
 
-import { formatError, log } from '.';
+import { formatError, log } from '../utils';
 import { ExportConfig } from '../types';
 
 export const getDeveloperHubUrl = async (exportConfig: ExportConfig) => {

@@ -108,7 +108,7 @@ module.exports = class ExportMarketplaceApps {
     return this.appSdkAxiosInstance.axiosInstance
       .get(`/installations?target_uids=${this.config.source_stack}&skip=${skip}`, {
         headers: {
-          organization_uid: this.config.org_uid,
+          organization_uid: this.config.org_uid
         },
       })
       .then(async ({ data }) => {

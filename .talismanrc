@@ -35,7 +35,7 @@ fileignoreconfig:
   checksum: af5d0f6f6d6f5a5e57dc9dd4c9a6415cc6f87ea94c523a4456292204cf94df7d
 - filename: packages/contentstack-import/test/integration/locales.test.js
   checksum: 535c19c2f72d335df20dd6c39beecd7791af0e931cfb3c3bfb9b32897ba9984f
-- filename: packages/contentstack-import/test/integration/management-token.test.js
+- filename: packages/contentstack-import/test/integration/@contentstack/management-token.test.js
   checksum: 38f4a5015e525d13b4782fbeff726103b30fc718d5b3e38f544310aec9b442b7
 - filename: packages/contentstack-export/test/integration/workflows.test.js
   checksum: fc86976f89c6d5d51943929fcafc030560fca2a868b742e43f64cde25bf77ad9
