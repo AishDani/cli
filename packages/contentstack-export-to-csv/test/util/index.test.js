@@ -11,7 +11,7 @@ describe('test util functions', () => {
 	// test chooseOrganization when an organization is chosen
 	test
   .stdout()
-  .stub(ExportToCsvCommand.prototype, 'managementAPIClient', () => {
+  .stub(ExportToCsvCommand.prototype, '@contentstack/managementAPIClient', () => {
     const organizations = {
       items: [{name: 'org1', uid: 'org1'}, {name: 'org2', uid: 'org2'}, {name: 'org3', uid: 'org3'}]
     }
@@ -27,7 +27,7 @@ describe('test util functions', () => {
   })
   .stub(inquirer, 'prompt', () => new Promise(resolve => resolve({chosenOrg: 'org1'})))
   .it('checks if chosen organization is returned', async () => {
-    let data = await util.chooseOrganization(ExportToCsvCommand.prototype.managementAPIClient)
+    let data = await util.chooseOrganization(ExportToCsvCommand.prototype.@contentstack/managementAPIClient)
 		expect(data.name).to.equal('org1')
 		expect(data.uid).to.equal('org1')
   })
@@ -35,7 +35,7 @@ describe('test util functions', () => {
   // test chooseOrganization when user selects cancel
 	test
   .stdout()
-  .stub(ExportToCsvCommand.prototype, 'managementAPIClient', () => {
+  .stub(ExportToCsvCommand.prototype, '@contentstack/managementAPIClient', () => {
     const organizations = {
       items: [{name: 'org1', uid: 'org1'}, {name: 'org2', uid: 'org2'}, {name: 'org3', uid: 'org3'}]
     }
@@ -53,14 +53,14 @@ describe('test util functions', () => {
   // eslint-disable-next-line no-undef
   .stub(process, 'exit', () => {}) // stubbing the global process.exit method
   .it('checks code if cancel and exit is selected', async () => {
-    let data = await util.chooseOrganization(ExportToCsvCommand.prototype.managementAPIClient)
+    let data = await util.chooseOrganization(ExportToCsvCommand.prototype.@contentstack/managementAPIClient)
     // as process.exit has been stubbed, chooseOrganization would continue executing
 		expect(data.name).to.equal(config.cancelString)
   })
 
   test
   .stdout({print: true})
-  .stub(ExportToCsvCommand.prototype, 'managementAPIClient', () => {
+  .stub(ExportToCsvCommand.prototype, '@contentstack/managementAPIClient', () => {
     const organizations = [{name: 'org1', uid: 'org1', org_roles: [{admin: true}]}, {name: 'org2', uid: 'org2', is_owner: true}, {name: 'org3', uid: 'org3'}]
     return {
       getUser: function() {
@@ -72,7 +72,7 @@ describe('test util functions', () => {
   })
   .stub(inquirer, 'prompt', () => new Promise(resolve => resolve({chosenOrg: 'org1'})))
   .it('checks if chosen organization is returned when the action is exportUsers', async () => {
-    let data = await util.chooseOrganization(ExportToCsvCommand.prototype.managementAPIClient, config.exportUsers)
+    let data = await util.chooseOrganization(ExportToCsvCommand.prototype.@contentstack/managementAPIClient, config.exportUsers)
     expect(data.name).to.equal('org1')
     expect(data.uid).to.equal('org1')
   })
@@ -80,7 +80,7 @@ describe('test util functions', () => {
   // test chooseStack when a stack is chosen
 	test
   .stdout()
-  .stub(ExportToCsvCommand.prototype, 'managementAPIClient', () => {
+  .stub(ExportToCsvCommand.prototype, '@contentstack/managementAPIClient', () => {
     const stacks = {
       items: [{name: 'stack1', api_key: 'stack1'}, {name: 'stack2', api_key: 'stack2'}, {name: 'stack3', api_key: 'stack3'}]
     }
@@ -100,7 +100,7 @@ describe('test util functions', () => {
   })
   .stub(inquirer, 'prompt', () => new Promise(resolve => resolve({chosenStack: 'stack1'})))
   .it('checks if chosen stack is returned', async () => {
-    let data = await util.chooseStack(ExportToCsvCommand.prototype.managementAPIClient, 'someOrgUid')
+    let data = await util.chooseStack(ExportToCsvCommand.prototype.@contentstack/managementAPIClient, 'someOrgUid')
 		expect(data.name).to.equal('stack1')
 		expect(data.apiKey).to.equal('stack1')
   })
@@ -108,7 +108,7 @@ describe('test util functions', () => {
   // test chooseStack when user selects cancel
 	test
   .stdout()
-  .stub(ExportToCsvCommand.prototype, 'managementAPIClient', () => {
+  .stub(ExportToCsvCommand.prototype, '@contentstack/managementAPIClient', () => {
     const stacks = {
       items: [{name: 'stack1', api_key: 'stack1'}, {name: 'stack2', api_key: 'stack2'}, {name: 'stack3', api_key: 'stack3'}]
     }
@@ -130,14 +130,14 @@ describe('test util functions', () => {
   // eslint-disable-next-line no-undef
   .stub(process, 'exit', () => {}) // stubbing the global process.exit method
   .it('if the user selects cancel and exit instead of a stack', async () => {
-    let data = await util.chooseStack(ExportToCsvCommand.prototype.managementAPIClient, 'someOrgUid')
+    let data = await util.chooseStack(ExportToCsvCommand.prototype.@contentstack/managementAPIClient, 'someOrgUid')
 		expect(data.name).to.equal(config.cancelString)
   })
 
   // test chooseContentType when a content type is chosen
 	test
   .stdout()
-  .stub(ExportToCsvCommand.prototype, 'managementAPIClient', () => {
+  .stub(ExportToCsvCommand.prototype, '@contentstack/managementAPIClient', () => {
     const content_types = {
       items: [{title: 'ct1', uid: 'ct1'}, {title: 'ct2', uid: 'ct2'}, {title: 'ct3', uid: 'ct3'}]
     }
@@ -161,7 +161,7 @@ describe('test util functions', () => {
   })
   .stub(inquirer, 'prompt', () => new Promise(resolve => resolve({chosenContentTypes: ['ct1']})))
   .it('checks if chosen content type is returned', async () => {
-    let data = await util.chooseContentType(ExportToCsvCommand.prototype.managementAPIClient, 'someStackApiKey')
+    let data = await util.chooseContentType(ExportToCsvCommand.prototype.@contentstack/managementAPIClient, 'someStackApiKey')
     expect(data).to.be.an('array')
 		expect(data[0]).to.equal('ct1')
   })
@@ -171,7 +171,7 @@ describe('test util functions', () => {
   // test get Entries
   test
   .stdout()
-  .stub(ExportToCsvCommand.prototype, 'managementAPIClient', () => {
+  .stub(ExportToCsvCommand.prototype, '@contentstack/managementAPIClient', () => {
     const _entries = {
       items: [{title: 'ct1', uid: 'ct1'}, {title: 'ct2', uid: 'ct2'}, {title: 'ct3', uid: 'ct3'}]
     }
@@ -198,14 +198,14 @@ describe('test util functions', () => {
     }
   })
   .it('checks if getEntries return the required result', async () => {
-    let data = await util.getEntries(ExportToCsvCommand.prototype.managementAPIClient, 'someStackApiKey', 'someContentType', 'en-us')
+    let data = await util.getEntries(ExportToCsvCommand.prototype.@contentstack/managementAPIClient, 'someStackApiKey', 'someContentType', 'en-us')
     expect(data.items).to.be.an('array')
   })
   
   // test get Environments
   test
   .stdout()
-  .stub(ExportToCsvCommand.prototype, 'managementAPIClient', () => {
+  .stub(ExportToCsvCommand.prototype, '@contentstack/managementAPIClient', () => {
     const environments = {
       items: [{name: 'env1', uid: 'env1'}, {name: 'env2', uid: 'env2'}, {name: 'env3', uid: 'env3'}]
     }
@@ -228,14 +228,14 @@ describe('test util functions', () => {
     }
   })
   .it('checks if getEnvironmnets return the required result', async () => {
-    let data = await util.getEnvironments(ExportToCsvCommand.prototype.managementAPIClient, 'someStackApiKey')
+    let data = await util.getEnvironments(ExportToCsvCommand.prototype.@contentstack/managementAPIClient, 'someStackApiKey')
     expect(data).to.be.an('object')
   })
 
   // test choose Languages
   test
   .stdout()
-  .stub(ExportToCsvCommand.prototype, 'managementAPIClient', () => {
+  .stub(ExportToCsvCommand.prototype, '@contentstack/managementAPIClient', () => {
     const languages = {
       items: [{name: 'l1', code: 'l1'}, {name: 'l2', code: 'l2'}, {name: 'l3', code: 'l3'}]
     }
@@ -259,7 +259,7 @@ describe('test util functions', () => {
   })
   .stub(inquirer, 'prompt', () => new Promise(resolve => resolve({chosenLanguage: 'l1'})))
   .it('checks if chosen language is returned', async () => {
-    let data = await util.chooseLanguage(ExportToCsvCommand.prototype.managementAPIClient, 'someStackApiKey')
+    let data = await util.chooseLanguage(ExportToCsvCommand.prototype.@contentstack/managementAPIClient, 'someStackApiKey')
     expect(data.name).to.equal('l1')
     expect(data.code).to.equal('l1')
   })
@@ -289,7 +289,7 @@ describe('test util functions', () => {
   // test getOrgUsers
   test
   .stdout()
-  .stub(ExportToCsvCommand.prototype, 'managementAPIClient', () => {
+  .stub(ExportToCsvCommand.prototype, '@contentstack/managementAPIClient', () => {
     const users = {
       items: [{name: 'user1', user_uid: 'user1'}, {name: 'user2', user_uid: 'user2'}, {name: 'user3', user_uid: 'user3'}]
     }
@@ -307,14 +307,14 @@ describe('test util functions', () => {
     }
   })
   .it('check getOrgUsers response', async () => {
-    let data = await util.getOrgUsers(ExportToCsvCommand.prototype.managementAPIClient, 'orgUid1')
+    let data = await util.getOrgUsers(ExportToCsvCommand.prototype.@contentstack/managementAPIClient, 'orgUid1')
     expect(data.items).to.be.an('array')
   })
 
   // test getOrgUsers when user is not admin for the organization
   test
   .stdout()
-  .stub(ExportToCsvCommand.prototype, 'managementAPIClient', () => {
+  .stub(ExportToCsvCommand.prototype, '@contentstack/managementAPIClient', () => {
     return {
       getUser: function () {
         return new Promise(resolve => resolve({
@@ -328,7 +328,7 @@ describe('test util functions', () => {
   .it('check getOrgUsers response when user is not an admin of the organization', async () => {
     let expectedError = new Error(config.adminError)
     try {
-      await util.getOrgUsers(ExportToCsvCommand.prototype.managementAPIClient, 'orgUid1')
+      await util.getOrgUsers(ExportToCsvCommand.prototype.@contentstack/managementAPIClient, 'orgUid1')
     } catch(error) {
       expect(error.message).to.equal(expectedError.message)
     }
@@ -359,7 +359,7 @@ describe('test util functions', () => {
   // test getOrgRoles
   test
   .stdout()
-  .stub(ExportToCsvCommand.prototype, 'managementAPIClient', () => {
+  .stub(ExportToCsvCommand.prototype, '@contentstack/managementAPIClient', () => {
     const roles = {
       items: [{name: 'role1', uid: 'role1'}, {name: 'role2', uid: 'role2'}, {name: 'role3', uid: 'role3'}]
     }
@@ -377,14 +377,14 @@ describe('test util functions', () => {
     }
   })
   .it('check getOrgRoles response', async () => {
-    let data = await util.getOrgRoles(ExportToCsvCommand.prototype.managementAPIClient, 'orgUid1')
+    let data = await util.getOrgRoles(ExportToCsvCommand.prototype.@contentstack/managementAPIClient, 'orgUid1')
     expect(data.items).to.be.an('array')
   })
 
   // test getOrgRoles when user is not an admin of the organization
   test
   .stdout()
-  .stub(ExportToCsvCommand.prototype, 'managementAPIClient', () => {
+  .stub(ExportToCsvCommand.prototype, '@contentstack/managementAPIClient', () => {
     return {
       getUser: function () {
         return new Promise(resolve => resolve({
@@ -398,7 +398,7 @@ describe('test util functions', () => {
   .it('check getOrgRoles response when user is not an admin of the organization', async () => {
     let expectedError = new Error(config.adminError)
     try {
-      await util.getOrgRoles(ExportToCsvCommand.prototype.managementAPIClient, 'orgUid1')
+      await util.getOrgRoles(ExportToCsvCommand.prototype.@contentstack/managementAPIClient, 'orgUid1')
     } catch(error) {
       expect(error.message).to.equal(expectedError.message)
     }

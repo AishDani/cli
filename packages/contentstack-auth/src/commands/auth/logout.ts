@@ -5,7 +5,7 @@ import {
   printFlagDeprecation,
   flags,
   authHandler as oauthHandler,
-  managementSDKClient,
+  @contentstack/managementSDKClient,
   FlagInput,
   formatError,
 } from '@contentstack/cli-utilities';
@@ -48,8 +48,8 @@ export default class LogoutCommand extends BaseCommand<typeof LogoutCommand> {
     }
 
     try {
-      const managementAPIClient = await managementSDKClient({ host: this.cmaHost, skipTokenValidity: true });
-      authHandler.client = managementAPIClient;
+      const @contentstack/managementAPIClient = await @contentstack/managementSDKClient({ host: this.cmaHost, skipTokenValidity: true });
+      authHandler.client = @contentstack/managementAPIClient;
       if (confirm === true && (await oauthHandler.isAuthenticated())) {
         cliux.loader('CLI_AUTH_LOGOUT_LOADER_START');
         if (await oauthHandler.isAuthorisationTypeBasic()) {

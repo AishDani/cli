@@ -1,4 +1,4 @@
-module.exports = async ({ migration, stackSDKInstance, managementAPIClient, config }) => {
+module.exports = async ({ migration, stackSDKInstance, @contentstack/managementAPIClient, config }) => {
     const keysToRemove = [
       'stackHeaders',
       'tags',
@@ -26,7 +26,7 @@ module.exports = async ({ migration, stackSDKInstance, managementAPIClient, conf
       comparebranch = config.compare_branch;
     }
   
-    const compareBranchEntries = await managementAPIClient
+    const compareBranchEntries = await @contentstack/managementAPIClient
       .stack({ api_key: stackSDKInstance.api_key, branch_uid: comparebranch }) //
       .contentType('banner')
       .entry()

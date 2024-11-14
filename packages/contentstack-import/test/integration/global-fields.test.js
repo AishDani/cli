@@ -49,9 +49,9 @@ module.exports = (region) => {
           stackDetails[stack].EXPORT_ALIAS_NAME,
           '-k',
           stackDetails[stack].EXPORT_STACK_API_KEY,
-          '--management',
+          '--@contentstack/management',
           '--token',
-          stackDetails[stack].EXPORT_MANAGEMENT_TOKEN,
+          stackDetails[stack].EXPORT_@contentstack/management_TOKEN,
           '-y',
         ])
         .it(`Adding token for ${stack}`, (_, done) => {
@@ -64,9 +64,9 @@ module.exports = (region) => {
           stackDetails[stack].ALIAS_NAME,
           '-k',
           stackDetails[stack].STACK_API_KEY,
-          '--management',
+          '--@contentstack/management',
           '--token',
-          stackDetails[stack].MANAGEMENT_TOKEN,
+          stackDetails[stack].@contentstack/management_TOKEN,
           '-y',
         ])
         .it(`Adding token for ${stack}`, (_, done) => {
@@ -119,7 +119,7 @@ module.exports = (region) => {
       after(async () => {
         await cleanUp(path.join(__dirname, '..', '..', `${IMPORT_PATH}_${stack}`));
         // await deleteStack({ apiKey: stackDetails[stack].STACK_API_KEY, authToken: configHandler.get('authtoken') });
-        defaultConfig.management_token = null;
+        defaultConfig.@contentstack/management_token = null;
         defaultConfig.branch = null;
         defaultConfig.branches = [];
         defaultConfig.moduleName = null;

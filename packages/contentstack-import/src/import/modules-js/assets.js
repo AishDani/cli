@@ -385,7 +385,7 @@ module.exports = class ImportAssets {
             .catch(function (err) {
               let error = JSON.parse(err.message);
               if (error.errors.authorization || error.errors.api_key) {
-                log(self.config, 'Api_key or management_token is not valid', 'error');
+                log(self.config, 'Api_key or @contentstack/management_token is not valid', 'error');
                 return reject(error);
               }
 

@@ -21,7 +21,7 @@ But, if retry-failed flag is set, then only a logfile is required
 `;
 
 PublishOnlyUnpublished.flags = {
-  alias: flags.string({ char: 'a', description: 'Alias(name) for the management token' }),
+  alias: flags.string({ char: 'a', description: 'Alias(name) for the @contentstack/management token' }),
   'stack-api-key': flags.string({
     char: 'k',
     description: 'Stack api key to be used',
@@ -94,7 +94,7 @@ PublishOnlyUnpublished.flags = {
 
 PublishOnlyUnpublished.examples = [
   'General Usage',
-  'csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [MANAGEMENT TOKEN ALIAS] -source-env [SOURCE ENV]',
+  'csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [@contentstack/management TOKEN ALIAS] -source-env [SOURCE ENV]',
   '',
   'Using --config or -c flag',
   'Generate a config file at the current working directory using `csdx cm:bulk-publish:configure -a [ALIAS]`',
@@ -105,10 +105,10 @@ PublishOnlyUnpublished.examples = [
   'csdx cm:entries:publish-only-unpublished --retry-failed [LOG FILE NAME]',
   '',
   'Using --branch',
-  'csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME] -source-env [SOURCE ENV]',
+  'csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME] -source-env [SOURCE ENV]',
   '',
   'Using --stack-api-key',
-  'csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [MANAGEMENT TOKEN ALIAS] --stack-api-key [STACK API KEY] -source-env [SOURCE ENV]',
+  'csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [@contentstack/management TOKEN ALIAS] --stack-api-key [STACK API KEY] -source-env [SOURCE ENV]',
 ];
 
 PublishOnlyUnpublished.aliases = ['cm:bulk-publish:unpublished-entries'];

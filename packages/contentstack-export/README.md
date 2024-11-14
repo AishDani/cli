@@ -77,7 +77,7 @@ USAGE
 
 FLAGS
   -B, --branch=<value>            [optional] branch name
-  -a, --alias=<value>             alias of the management token
+  -a, --alias=<value>             alias of the @contentstack/management token
   -c, --config=<value>            [optional] path of the config
   -d, --data-dir=<value>          path or location to store the data
   -k, --stack-api-key=<value>     API key of the source stack
@@ -97,11 +97,11 @@ EXAMPLES
 
   $ csdx cm:stacks:export --config <path/to/config/dir>
 
-  $ csdx cm:stacks:export --alias <management_token_alias>
+  $ csdx cm:stacks:export --alias <@contentstack/management_token_alias>
 
-  $ csdx cm:stacks:export --alias <management_token_alias> --data-dir <path/to/export/destination/dir>
+  $ csdx cm:stacks:export --alias <@contentstack/management_token_alias> --data-dir <path/to/export/destination/dir>
 
-  $ csdx cm:stacks:export --alias <management_token_alias> --config <path/to/config/file>
+  $ csdx cm:stacks:export --alias <@contentstack/management_token_alias> --config <path/to/config/file>
 
   $ csdx cm:stacks:export --module <single module name>
 
@@ -119,7 +119,7 @@ USAGE
 
 FLAGS
   -B, --branch=<value>            [optional] branch name
-  -a, --alias=<value>             alias of the management token
+  -a, --alias=<value>             alias of the @contentstack/management token
   -c, --config=<value>            [optional] path of the config
   -d, --data-dir=<value>          path or location to store the data
   -k, --stack-api-key=<value>     API key of the source stack
@@ -139,11 +139,11 @@ EXAMPLES
 
   $ csdx cm:stacks:export --config <path/to/config/dir>
 
-  $ csdx cm:stacks:export --alias <management_token_alias>
+  $ csdx cm:stacks:export --alias <@contentstack/management_token_alias>
 
-  $ csdx cm:stacks:export --alias <management_token_alias> --data-dir <path/to/export/destination/dir>
+  $ csdx cm:stacks:export --alias <@contentstack/management_token_alias> --data-dir <path/to/export/destination/dir>
 
-  $ csdx cm:stacks:export --alias <management_token_alias> --config <path/to/config/file>
+  $ csdx cm:stacks:export --alias <@contentstack/management_token_alias> --config <path/to/config/file>
 
   $ csdx cm:stacks:export --module <single module name>
 

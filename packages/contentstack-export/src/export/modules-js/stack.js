@@ -8,7 +8,7 @@ const path = require('path');
 const mkdirp = require('mkdirp');
 const merge = require('lodash/merge');
 const { default: config } = require('../../config');
-const { managementSDKClient, isAuthenticated } = require('@contentstack/cli-utilities');
+const { @contentstack/managementSDKClient, isAuthenticated } = require('@contentstack/cli-utilities');
 const { log, fileHelper, formatError } = require('../../utils');
 
 class ExportStack {
@@ -27,7 +27,7 @@ class ExportStack {
   async start() {
     const self = this;
     if (isAuthenticated()) {
-      const tempAPIClient = await managementSDKClient({ host: config.host });
+      const tempAPIClient = await @contentstack/managementSDKClient({ host: config.host });
       const tempStackData = await tempAPIClient
         .stack({ api_key: self.config.source_stack })
         .fetch()

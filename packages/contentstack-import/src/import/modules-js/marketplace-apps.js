@@ -12,7 +12,7 @@ const {
   cliux,
   HttpClient,
   NodeCrypto,
-  managementSDKClient,
+  @contentstack/managementSDKClient,
   isAuthenticated,
   HttpClientDecorator,
   OauthDecorator,
@@ -64,8 +64,8 @@ module.exports = class ImportMarketplaceApps {
 
     this.developerHubBaseUrl = this.config.developerHubBaseUrl || (await getDeveloperHubUrl(this.config));
     this.config.developerHubBaseUrl = this.developerHubBaseUrl;
-    this.client = await managementSDKClient({ endpoint: this.developerHubBaseUrl });
-    this.appSdkAxiosInstance = await managementSDKClient({
+    this.client = await @contentstack/managementSDKClient({ endpoint: this.developerHubBaseUrl });
+    this.appSdkAxiosInstance = await @contentstack/managementSDKClient({
       host: this.developerHubBaseUrl.split('://').pop(),
     });
     await this.getOrgUid();
@@ -88,7 +88,7 @@ module.exports = class ImportMarketplaceApps {
   }
 
   async getOrgUid() {
-    const tempAPIClient = await managementSDKClient({ host: this.config.host });
+    const tempAPIClient = await @contentstack/managementSDKClient({ host: this.config.host });
     const tempStackData = await tempAPIClient
       .stack({ api_key: this.config.target_stack })
       .fetch()

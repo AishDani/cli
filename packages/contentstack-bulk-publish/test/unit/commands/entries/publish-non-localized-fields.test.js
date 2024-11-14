@@ -13,7 +13,7 @@ const contentTypes = process.env.CONTENT_TYPES.split(',');
 
 describe('EntriesPublishNonLocalizedFields', () => {
   it('Should run the command when all the flags are passed', async () => {
-    const args = ['--content-types', contentTypes[0], '--source-env', environments[0], '--environments', process.env.DESTINATION_ENV, '--alias', process.env.MANAGEMENT_ALIAS, '--yes'];
+    const args = ['--content-types', contentTypes[0], '--source-env', environments[0], '--environments', process.env.DESTINATION_ENV, '--alias', process.env.@contentstack/management_ALIAS, '--yes'];
     const entriesPublishNonLocalizedFieldsSpy = sinon.spy(EntriesPublishNonLocalizedFields.prototype, 'run');
     await EntriesPublishNonLocalizedFields.run(args);
     expect(entriesPublishNonLocalizedFieldsSpy.calledOnce).to.be.true;

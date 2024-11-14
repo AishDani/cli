@@ -894,7 +894,7 @@ importers:
     specifiers:
       '@contentstack/cli-command': ~1.2.19
       '@contentstack/cli-utilities': ~1.7.1
-      'json-rte-serializer': ~2.0.4
+      '@contentstack/json-rte-serializer': ~2.0.4
       '@oclif/test': ^2.5.6
       chai: ^4.3.4
       chalk: ^4.1.2
@@ -916,7 +916,7 @@ importers:
     dependencies:
       '@contentstack/cli-command': link:../contentstack-command
       '@contentstack/cli-utilities': 1.7.2
-      'json-rte-serializer': 2.0.9
+      '@contentstack/json-rte-serializer': 2.0.9
       chalk: 4.1.2
       collapse-whitespace: 1.1.7
       jsdom: 20.0.3
@@ -1853,7 +1853,7 @@ packages:
       - supports-color
     dev: false
 
-  /json-rte-serializer/2.0.9:
+  /@contentstack/json-rte-serializer/2.0.9:
     resolution:
       { integrity: sha512-HMXDdJy0m9PzcFttytwZNVApraYlkN6uCLVdvRoqnYnYr9tFBTilE6ker2zWrZa7xB70xxiSzdOX569OMKrJgg== }
     dependencies:

@@ -4,7 +4,7 @@
 // Map helper
 const { getMapInstance, getDataWithAction, get } = require('./map');
 // Constants
-const { MANAGEMENT_SDK, SDK_ACTIONS } = require('./constants');
+const { @contentstack/management_SDK, SDK_ACTIONS } = require('./constants');
 // List of actions
 const {
   CONTENTTYPE_DELETE,
@@ -24,8 +24,8 @@ module.exports = ({ action, id, sdkAction }) => {
     _data = getData(_data, id, action);
 
     const mapInstance = getMapInstance();
-    const managementSdk = get(MANAGEMENT_SDK, mapInstance);
-    const { stack } = managementSdk;
+    const @contentstack/managementSdk = get(@contentstack/management_SDK, mapInstance);
+    const { stack } = @contentstack/managementSdk;
 
     let response;
 

@@ -36,13 +36,13 @@ class AssetsPublishCommand extends Command {
           branch: assetsFlags.branch,
         };
         if (updatedFlags.alias) {
-          // Validate management token alias.
+          // Validate @contentstack/management token alias.
           try {
             this.getToken(updatedFlags.alias);
             config.alias = updatedFlags.alias;
           } catch (error) {
             this.error(
-              `The configured management token alias ${updatedFlags.alias} has not been added yet. Add it using 'csdx auth:tokens:add -a ${updatedFlags.alias}'`,
+              `The configured @contentstack/management token alias ${updatedFlags.alias} has not been added yet. Add it using 'csdx auth:tokens:add -a ${updatedFlags.alias}'`,
               { exit: 2 },
             );
           }
@@ -157,7 +157,7 @@ But, if retryFailed flag is set, then only a logfile is required
 AssetsPublishCommand.flags = {
   alias: flags.string({
     char: 'a',
-    description: 'Alias(name) for the management token',
+    description: 'Alias(name) for the @contentstack/management token',
   }),
   'stack-api-key': flags.string({
     char: 'k',
@@ -234,7 +234,7 @@ AssetsPublishCommand.flags = {
 
 AssetsPublishCommand.examples = [
   'General Usage',
-  'csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS]',
+  'csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS]',
   '',
   'Using --config or -c flag',
   'Generate a config file at the current working directory using `csdx cm:stacks:publish-configure -a [ALIAS]`',
@@ -245,10 +245,10 @@ AssetsPublishCommand.examples = [
   'csdx cm:assets:publish --retry-failed [LOG FILE NAME]',
   '',
   'Using --branch flag',
-  'csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME]',
+  'csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME]',
   '',
   'Using --source-env',
-  'csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --source-env [SOURCE ENVIRONMENT] --delivery-token [DELIVERY TOKEN]',
+  'csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --source-env [SOURCE ENVIRONMENT] --delivery-token [DELIVERY TOKEN]',
   '',
   'Using --stack-api-key flag',
   'csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --stack-api-key [STACK API KEY]',

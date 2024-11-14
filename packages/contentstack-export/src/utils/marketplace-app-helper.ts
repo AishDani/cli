@@ -1,4 +1,4 @@
-import { cliux, configHandler, NodeCrypto, managementSDKClient, createDeveloperHubUrl } from '@contentstack/cli-utilities';
+import { cliux, configHandler, NodeCrypto, @contentstack/managementSDKClient, createDeveloperHubUrl } from '@contentstack/cli-utilities';
 
 import { formatError, log } from '.';
 import { ExportConfig } from '../types';
@@ -8,7 +8,7 @@ export const getDeveloperHubUrl = async (exportConfig: ExportConfig) => {
 };
 
 export async function getOrgUid(config: ExportConfig): Promise<string> {
-  const tempAPIClient = await managementSDKClient({ host: config.host });
+  const tempAPIClient = await @contentstack/managementSDKClient({ host: config.host });
   const tempStackData = await tempAPIClient
     .stack({ api_key: config.source_stack })
     .fetch()

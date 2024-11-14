@@ -48,7 +48,7 @@ class PublishEntriesCommand extends Command {
             this.getToken(updatedFlags.alias);
           } catch (error) {
             this.error(
-              `The configured management token alias ${updatedFlags.alias} has not been added yet. Add it using 'csdx auth:tokens:add -a ${updatedFlags.alias}'`,
+              `The configured @contentstack/management token alias ${updatedFlags.alias} has not been added yet. Add it using 'csdx auth:tokens:add -a ${updatedFlags.alias}'`,
               { exit: 2 },
             );
           }
@@ -168,7 +168,7 @@ But, if retry-failed flag is set, then only a logfile is required
 `;
 
 PublishEntriesCommand.flags = {
-  alias: flags.string({ char: 'a', description: 'Alias(name) for the management token' }),
+  alias: flags.string({ char: 'a', description: 'Alias(name) for the @contentstack/management token' }),
   'stack-api-key': flags.string({
     char: 'k',
     description: 'Stack api key to be used',
@@ -248,7 +248,7 @@ PublishEntriesCommand.flags = {
 
 PublishEntriesCommand.examples = [
   'General Usage',
-  'csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS]',
+  'csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS]',
   '',
   'Using --config or -c flag',
   'Generate a config file at the current working directory using `csdx cm:stacks:publish-configure -a [ALIAS]`',
@@ -260,10 +260,10 @@ PublishEntriesCommand.examples = [
   'csdx cm:entries:publish -r [LOG FILE NAME]',
   '',
   'Using --branch',
-  'csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME]',
+  'csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME]',
   '',
   'Using --source-env',
-  'csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS] --source-env [SOURCE ENVIRONMENT] --delivery-token [DELIVERY TOKEN]',
+  'csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS] --source-env [SOURCE ENVIRONMENT] --delivery-token [DELIVERY TOKEN]',
   '',
   'Using --stack-api-key',
   'csdx cm:entries:publish -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] --stack-api-key [STACK API KEY] --source-env [SOURCE ENVIRONMENT] --delivery-token [DELIVERY TOKEN]',

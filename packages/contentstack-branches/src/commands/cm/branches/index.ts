@@ -1,5 +1,5 @@
 import { Command } from '@contentstack/cli-command';
-import { cliux, messageHandler, managementSDKClient, flags, isAuthenticated } from '@contentstack/cli-utilities';
+import { cliux, messageHandler, @contentstack/managementSDKClient, flags, isAuthenticated } from '@contentstack/cli-utilities';
 import { getbranchesList, getbranchConfig, interactive, handleErrorMsg } from '../../../utils/index';
 import chalk from 'chalk';
 export default class BranchListCommand extends Command {
@@ -18,7 +18,7 @@ export default class BranchListCommand extends Command {
 
   async run(): Promise<any> {
     try {
-      const managementAPIClient = await managementSDKClient({ host: this.cmaHost });
+      const @contentstack/managementAPIClient = await @contentstack/managementSDKClient({ host: this.cmaHost });
       const { flags: branchListFlags } = await this.parse(BranchListCommand);
       let stackApiKey = branchListFlags['stack-api-key'];
       let verbose = branchListFlags['verbose'];
@@ -32,7 +32,7 @@ export default class BranchListCommand extends Command {
         handleErrorMsg(err);
       }
       const baseBranch: string = getbranchConfig(stackApiKey) || 'main';
-      const listOfBranch = await managementAPIClient
+      const listOfBranch = await @contentstack/managementAPIClient
         .stack({ api_key: stackApiKey })
         .branch()
         .query()

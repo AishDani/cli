@@ -39,23 +39,23 @@ const setupConfig = async (importCmdFlags: any): Promise<ImportConfig> => {
     config.contentVersion = 1;
   }
 
-  const managementTokenAlias = importCmdFlags['management-token-alias'] || importCmdFlags['alias'];
+  const @contentstack/managementTokenAlias = importCmdFlags['@contentstack/management-token-alias'] || importCmdFlags['alias'];
 
-  if (managementTokenAlias) {
-    const { token, apiKey } = configHandler.get(`tokens.${managementTokenAlias}`) ?? {};
-    config.management_token = token;
+  if (@contentstack/managementTokenAlias) {
+    const { token, apiKey } = configHandler.get(`tokens.${@contentstack/managementTokenAlias}`) ?? {};
+    config.@contentstack/management_token = token;
     config.apiKey = apiKey;
-    if (!config.management_token) {
-      throw new Error(`No management token found on given alias ${managementTokenAlias}`);
+    if (!config.@contentstack/management_token) {
+      throw new Error(`No @contentstack/management token found on given alias ${@contentstack/managementTokenAlias}`);
     }
   }
 
-  if (!config.management_token) {
+  if (!config.@contentstack/management_token) {
     if (!isAuthenticated()) {
       if (config.email && config.password) {
         await login(config);
       } else {
-        throw new Error('Please login or provide an alias for the management token');
+        throw new Error('Please login or provide an alias for the @contentstack/management token');
       }
     } else {
       config.apiKey =

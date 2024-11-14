@@ -1,9 +1,9 @@
-import { cliux, managementSDKClient } from '@contentstack/cli-utilities';
+import { cliux, @contentstack/managementSDKClient } from '@contentstack/cli-utilities';
 import { refreshbranchConfig } from '.';
 
 export async function deleteBranch(host: string, apiKey: string, uid: string) {
-  const managementAPIClient = await managementSDKClient({ host });
-  return managementAPIClient
+  const @contentstack/managementAPIClient = await @contentstack/managementSDKClient({ host });
+  return @contentstack/managementAPIClient
     .stack({ api_key: apiKey })
     .branch(uid)
     .delete()

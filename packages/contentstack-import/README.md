@@ -76,7 +76,7 @@ USAGE
 
 FLAGS
   -B, --branch=<value>              [optional] branch name
-  -a, --alias=<value>               alias of the management token
+  -a, --alias=<value>               alias of the @contentstack/management token
   -b, --backup-dir=<value>          [optional] backup directory name when using specific module
   -c, --config=<value>              [optional] path of config file
   -d, --data-dir=<value>            path and location where data is stored
@@ -106,11 +106,11 @@ EXAMPLES
 
   $ csdx cm:stacks:import --module <single module name> --backup-dir <backup dir>
 
-  $ csdx cm:stacks:import --alias <management_token_alias>
+  $ csdx cm:stacks:import --alias <@contentstack/management_token_alias>
 
-  $ csdx cm:stacks:import --alias <management_token_alias> --data-dir <path/of/export/destination/dir>
+  $ csdx cm:stacks:import --alias <@contentstack/management_token_alias> --data-dir <path/of/export/destination/dir>
 
-  $ csdx cm:stacks:import --alias <management_token_alias> --config <path/of/config/file>
+  $ csdx cm:stacks:import --alias <@contentstack/management_token_alias> --config <path/of/config/file>
 
   $ csdx cm:stacks:import --branch <branch name>  --yes --skip-audit
 ```
@@ -126,7 +126,7 @@ USAGE
 
 FLAGS
   -B, --branch=<value>              [optional] branch name
-  -a, --alias=<value>               alias of the management token
+  -a, --alias=<value>               alias of the @contentstack/management token
   -b, --backup-dir=<value>          [optional] backup directory name when using specific module
   -c, --config=<value>              [optional] path of config file
   -d, --data-dir=<value>            path and location where data is stored
@@ -156,11 +156,11 @@ EXAMPLES
 
   $ csdx cm:stacks:import --module <single module name> --backup-dir <backup dir>
 
-  $ csdx cm:stacks:import --alias <management_token_alias>
+  $ csdx cm:stacks:import --alias <@contentstack/management_token_alias>
 
-  $ csdx cm:stacks:import --alias <management_token_alias> --data-dir <path/of/export/destination/dir>
+  $ csdx cm:stacks:import --alias <@contentstack/management_token_alias> --data-dir <path/of/export/destination/dir>
 
-  $ csdx cm:stacks:import --alias <management_token_alias> --config <path/of/config/file>
+  $ csdx cm:stacks:import --alias <@contentstack/management_token_alias> --config <path/of/config/file>
 
   $ csdx cm:stacks:import --branch <branch name>  --yes --skip-audit
 ```

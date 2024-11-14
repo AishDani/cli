@@ -1,5 +1,5 @@
 const { Command } = require('@contentstack/cli-command');
-const { configHandler, flags, isAuthenticated, managementSDKClient } = require('@contentstack/cli-utilities');
+const { configHandler, flags, isAuthenticated, @contentstack/managementSDKClient } = require('@contentstack/cli-utilities');
 const { CloneHandler } = require('../../../lib/util/clone-handler');
 const path = require('path');
 const { rimraf } = require('rimraf');
@@ -21,8 +21,8 @@ class StackCloneCommand extends Command {
         'target-branch': targetStackBranch,
         'source-stack-api-key': sourceStackApiKey,
         'destination-stack-api-key': destinationStackApiKey,
-        'source-management-token-alias': sourceManagementTokenAlias,
-        'destination-management-token-alias': destinationManagementTokenAlias,
+        'source-@contentstack/management-token-alias': source@contentstack/managementTokenAlias,
+        'destination-@contentstack/management-token-alias': destination@contentstack/managementTokenAlias,
         'import-webhook-status': importWebhookStatus,
         config: externalConfigPath,
       } = cloneCommandFlags;
@@ -56,18 +56,18 @@ class StackCloneCommand extends Command {
         if (destinationStackApiKey) {
           config.target_stack = destinationStackApiKey;
         }
-        if (sourceManagementTokenAlias && listOfTokens[sourceManagementTokenAlias]) {
-          config.source_alias = sourceManagementTokenAlias;
-          config.source_stack = listOfTokens[sourceManagementTokenAlias].apiKey;
-        } else if (sourceManagementTokenAlias) {
-          console.log(`Provided source token alias (${sourceManagementTokenAlias}) not found in your config.!`);
+        if (source@contentstack/managementTokenAlias && listOfTokens[source@contentstack/managementTokenAlias]) {
+          config.source_alias = source@contentstack/managementTokenAlias;
+          config.source_stack = listOfTokens[source@contentstack/managementTokenAlias].apiKey;
+        } else if (source@contentstack/managementTokenAlias) {
+          console.log(`Provided source token alias (${source@contentstack/managementTokenAlias}) not found in your config.!`);
         }
-        if (destinationManagementTokenAlias && listOfTokens[destinationManagementTokenAlias]) {
-          config.destination_alias = destinationManagementTokenAlias;
-          config.target_stack = listOfTokens[destinationManagementTokenAlias].apiKey;
-        } else if (destinationManagementTokenAlias) {
+        if (destination@contentstack/managementTokenAlias && listOfTokens[destination@contentstack/managementTokenAlias]) {
+          config.destination_alias = destination@contentstack/managementTokenAlias;
+          config.target_stack = listOfTokens[destination@contentstack/managementTokenAlias].apiKey;
+        } else if (destination@contentstack/managementTokenAlias) {
           console.log(
-            `Provided destination token alias (${destinationManagementTokenAlias}) not found in your config.!`,
+            `Provided destination token alias (${destination@contentstack/managementTokenAlias}) not found in your config.!`,
           );
         }
         if (importWebhookStatus) {
@@ -82,14 +82,14 @@ class StackCloneCommand extends Command {
         config.cdn = this.cdaHost;
         config.pathDir = pathdir;
         const cloneHandler = new CloneHandler(config);
-        const managementAPIClient = await managementSDKClient(config);
-        cloneHandler.setClient(managementAPIClient);
+        const @contentstack/managementAPIClient = await @contentstack/managementSDKClient(config);
+        cloneHandler.setClient(@contentstack/managementAPIClient);
         cloneHandler.execute().catch((error) => {
           console.log(error);
         });
       };
 
-      if (sourceManagementTokenAlias && destinationManagementTokenAlias) {
+      if (source@contentstack/managementTokenAlias && destination@contentstack/managementTokenAlias) {
         if (sourceStackBranch || targetStackBranch) {
           if (isAuthenticated()) {
             handleClone();
@@ -190,9 +190,9 @@ StackCloneCommand.examples = [
   'csdx cm:stacks:clone',
   'csdx cm:stacks:clone --source-branch <source-branch-name> --target-branch <target-branch-name> --yes',
   'csdx cm:stacks:clone --source-stack-api-key <apiKey> --destination-stack-api-key <apiKey>',
-  'csdx cm:stacks:clone --source-management-token-alias <management token alias> --destination-management-token-alias <management token alias>',
-  'csdx cm:stacks:clone --source-branch --target-branch --source-management-token-alias <management token alias> --destination-management-token-alias <management token alias>',
-  'csdx cm:stacks:clone --source-branch --target-branch --source-management-token-alias <management token alias> --destination-management-token-alias <management token alias> --type <value a or b>',
+  'csdx cm:stacks:clone --source-@contentstack/management-token-alias <@contentstack/management token alias> --destination-@contentstack/management-token-alias <@contentstack/management token alias>',
+  'csdx cm:stacks:clone --source-branch --target-branch --source-@contentstack/management-token-alias <@contentstack/management token alias> --destination-@contentstack/management-token-alias <@contentstack/management token alias>',
+  'csdx cm:stacks:clone --source-branch --target-branch --source-@contentstack/management-token-alias <@contentstack/management token alias> --destination-@contentstack/management-token-alias <@contentstack/management token alias> --type <value a or b>',
 ];
 
 StackCloneCommand.aliases = ['cm:stack-clone'];
@@ -208,12 +208,12 @@ StackCloneCommand.flags = {
     multiple: false,
     description: 'Branch of the target stack.',
   }),
-  'source-management-token-alias': flags.string({
+  'source-@contentstack/management-token-alias': flags.string({
     required: false,
     multiple: false,
     description: 'Source API key of the target stack token alias.',
   }),
-  'destination-management-token-alias': flags.string({
+  'destination-@contentstack/management-token-alias': flags.string({
     required: false,
     multiple: false,
     description: 'Source API key of the target stack token alias.',
@@ -261,6 +261,6 @@ b) Structure with content (all modules including entries & assets)
 };
 
 StackCloneCommand.usage =
-  'cm:stacks:clone [--source-branch <value>] [--target-branch <value>] [--source-management-token-alias <value>] [--destination-management-token-alias <value>] [-n <value>] [--type a|b] [--source-stack-api-key <value>] [--destination-stack-api-key <value>] [--import-webhook-status disable|current]';
+  'cm:stacks:clone [--source-branch <value>] [--target-branch <value>] [--source-@contentstack/management-token-alias <value>] [--destination-@contentstack/management-token-alias <value>] [-n <value>] [--type a|b] [--source-stack-api-key <value>] [--destination-stack-api-key <value>] [--import-webhook-status disable|current]';
 
 module.exports = StackCloneCommand;

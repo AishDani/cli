@@ -50,7 +50,7 @@ USAGE
 
 FLAGS
   -B, --branch=<value>         Use this flag to add the branch name where you want to perform the migration.
-  -a, --alias=<value>          Use this flag to add the management token alias.
+  -a, --alias=<value>          Use this flag to add the @contentstack/management token alias.
   -k, --stack-api-key=<value>  With this flag add the API key of your stack.
   --config=<value>...          [optional] inline configuration, <key1>:<value1>
   --config-file=<value>        [optional] Path of the JSON configuration file
@@ -89,7 +89,7 @@ USAGE
 
 FLAGS
   -B, --branch=<value>         Use this flag to add the branch name where you want to perform the migration.
-  -a, --alias=<value>          Use this flag to add the management token alias.
+  -a, --alias=<value>          Use this flag to add the @contentstack/management token alias.
   -k, --stack-api-key=<value>  With this flag add the API key of your stack.
   --config=<value>...          [optional] inline configuration, <key1>:<value1>
   --config-file=<value>        [optional] Path of the JSON configuration file

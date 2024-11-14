@@ -13,6 +13,6 @@ module.exports = {
     'X-User-Agent': `@contentstack-migration/v${version}`,
     authtoken: CONTENTSTACK_AUTHTOKEN,
     api_key: CONTENTSTACK_API_KEY,
-    // management_token: CONTENTSTACK_MANAGEMENT_TOKEN
+    // @contentstack/management_token: CONTENTSTACK_@contentstack/management_TOKEN
   },
 };

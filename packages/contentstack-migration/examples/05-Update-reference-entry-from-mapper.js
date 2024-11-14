@@ -3,7 +3,7 @@ const chalk = require('chalk');
 const path = require('path');
 const { validateRegex } = require('@contentstack/cli-utilities');
 
-module.exports = async ({ migration, stackSDKInstance, managementAPIClient, config }) => {
+module.exports = async ({ migration, stackSDKInstance, @contentstack/managementAPIClient, config }) => {
   const modules = ['entries', 'assets', 'extensions', 'marketplace_apps'];
 
   const readAllModulesUids = (filePath) => {

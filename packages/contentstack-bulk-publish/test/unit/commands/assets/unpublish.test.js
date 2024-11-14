@@ -21,7 +21,7 @@ describe('AssetsUnpublish', () => {
       '--locale',
       locales[0],
       '--alias',
-      process.env.MANAGEMENT_ALIAS,
+      process.env.@contentstack/management_ALIAS,
       '--delivery-token',
       process.env.DELIVERY_TOKEN,
       '--yes',
@@ -39,7 +39,7 @@ describe('AssetsUnpublish', () => {
       '--locale',
       locales[0],
       '--alias',
-      process.env.MANAGEMENT_ALIAS,
+      process.env.@contentstack/management_ALIAS,
       '--yes',
     ];
     const inquireStub = stub(cliux, 'prompt').resolves(process.env.DELIVERY_TOKEN);

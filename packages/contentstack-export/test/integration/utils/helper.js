@@ -2,7 +2,7 @@ const fs = require('fs');
 const _ = require('lodash');
 const { default: config } = require('../../../lib/config');
 const { Command } = require('@contentstack/cli-command');
-const { managementSDKClient, HttpClient } = require('@contentstack/cli-utilities');
+const { @contentstack/managementSDKClient, HttpClient } = require('@contentstack/cli-utilities');
 const { getDeveloperHubUrl } = require('../../../lib/utils/marketplace-app-helper');
 const pjson = require('../../../package.json');
 const { REGIONS } = require('../../config.json');
@@ -81,10 +81,10 @@ const getBranches = async (data) => {
 const getEnvData = () => envData;
 
 const getStack = async (data = {}) => {
-  const client = await managementSDKClient(config);
+  const client = await @contentstack/managementSDKClient(config);
   return client.stack({
     api_key: data.STACK_API_KEY || config.source_stack,
-    management_token: data.MANAGEMENT_TOKEN || config.management_token,
+    @contentstack/management_token: data.@contentstack/management_TOKEN || config.@contentstack/management_token,
   });
 };
 

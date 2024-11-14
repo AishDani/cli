@@ -21,9 +21,9 @@ describe('Migration Config validation', () => {
   getTokenCallback
     .withArgs('test1')
     .returns({
-      token: 'testManagementToken',
+      token: 'test@contentstack/managementToken',
       apiKey: 'testApiKey',
-      type: 'management',
+      type: '@contentstack/management',
     })
     .withArgs('invalidAlias')
     .throws("Token with alias 'invalidAlias' was not found");
@@ -106,7 +106,7 @@ describe('Migration Config validation', () => {
       '50',
     ])
     .catch((error) => {
-      expect(error.message).to.contain('Invalid alias provided for the management token.');
+      expect(error.message).to.contain('Invalid alias provided for the @contentstack/management token.');
     })
     .it('throw error on invalidAlias');
 
@@ -263,9 +263,9 @@ describe('Content Type with Single RTE Field of Single Type', function () {
   });
   const getTokenCallback = sinon.stub();
   getTokenCallback.withArgs('test1').returns({
-    token: 'testManagementToken',
+    token: 'test@contentstack/managementToken',
     apiKey: 'testApiKey',
-    type: 'management',
+    type: '@contentstack/management',
   });
 
   test
@@ -573,9 +573,9 @@ describe('Global Field Migration', () => {
 
   const getTokenCallback = sinon.stub();
   getTokenCallback.withArgs('test1').returns({
-    token: 'testManagementToken',
+    token: 'test@contentstack/managementToken',
     apiKey: 'testApiKey',
-    type: 'management',
+    type: '@contentstack/management',
   });
   test
     .stub(cliux, 'confirm', () => 'yes')
@@ -714,9 +714,9 @@ describe('Global Field Migration', () => {
 describe('Content Type with single rte of multiple type', () => {
   const getTokenCallback = sinon.stub();
   getTokenCallback.withArgs('test1').returns({
-    token: 'testManagementToken',
+    token: 'test@contentstack/managementToken',
     apiKey: 'testApiKey',
-    type: 'management',
+    type: '@contentstack/management',
   });
   test
     .stub(cliux, 'confirm', () => 'yes')
@@ -731,9 +731,9 @@ describe('Content Type with single rte of multiple type', () => {
 describe('Content Type with Single RTE inside modular block', () => {
   const getTokenCallback = sinon.stub();
   getTokenCallback.withArgs('test1').returns({
-    token: 'testManagementToken',
+    token: 'test@contentstack/managementToken',
     apiKey: 'testApiKey',
-    type: 'management',
+    type: '@contentstack/management',
   });
   test
     .stub(cliux, 'confirm', () => 'yes')
@@ -761,9 +761,9 @@ describe('Content Type with Single RTE inside modular block', () => {
 describe('Content Type with Single RTE of type multiple inside group', () => {
   const getTokenCallback = sinon.stub();
   getTokenCallback.withArgs('test1').returns({
-    token: 'testManagementToken',
+    token: 'test@contentstack/managementToken',
     apiKey: 'testApiKey',
-    type: 'management',
+    type: '@contentstack/management',
   });
   test
     .stub(cliux, 'confirm', () => 'yes')
@@ -791,9 +791,9 @@ describe('Content Type with Single RTE of type multiple inside group', () => {
 describe('Content Type with Single RTE inside group of type multiple', () => {
   const getTokenCallback = sinon.stub();
   getTokenCallback.withArgs('test1').returns({
-    token: 'testManagementToken',
+    token: 'test@contentstack/managementToken',
     apiKey: 'testApiKey',
-    type: 'management',
+    type: '@contentstack/management',
   });
   test
     .stub(cliux, 'confirm', () => 'yes')
@@ -821,9 +821,9 @@ describe('Content Type with Single RTE inside group of type multiple', () => {
 describe('Content Type with multiple file field', () => {
   const getTokenCallback = sinon.stub();
   getTokenCallback.withArgs('test1').returns({
-    token: 'testManagementToken',
+    token: 'test@contentstack/managementToken',
     apiKey: 'testApiKey',
-    type: 'management',
+    type: '@contentstack/management',
   });
   test
     .stub(cliux, 'confirm', () => 'yes')
@@ -851,9 +851,9 @@ describe('Content Type with multiple file field', () => {
 describe('Migration with old flags and command', () => {
   const getTokenCallback = sinon.stub();
   getTokenCallback.withArgs('test1').returns({
-    token: 'testManagementToken',
+    token: 'test@contentstack/managementToken',
     apiKey: 'testApiKey',
-    type: 'management',
+    type: '@contentstack/management',
   });
 
   test

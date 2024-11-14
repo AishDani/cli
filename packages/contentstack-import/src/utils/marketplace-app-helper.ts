@@ -7,7 +7,7 @@ import {
   cliux,
   HttpClient,
   configHandler,
-  managementSDKClient,
+  @contentstack/managementSDKClient,
   marketplaceSDKClient,
   createDeveloperHubUrl,
 } from '@contentstack/cli-utilities';
@@ -59,7 +59,7 @@ export const getDeveloperHubUrl = async (config: ImportConfig): Promise<string> 
 };
 
 export const getOrgUid = async (config: ImportConfig): Promise<string> => {
-  const tempAPIClient = await managementSDKClient({ host: config.host });
+  const tempAPIClient = await @contentstack/managementSDKClient({ host: config.host });
   const tempStackData = await tempAPIClient
     .stack({ api_key: config.target_stack })
     .fetch()

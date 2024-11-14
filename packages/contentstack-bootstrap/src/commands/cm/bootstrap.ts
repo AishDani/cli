@@ -9,7 +9,7 @@ import {
 } from '../../bootstrap/interactive';
 import {
   printFlagDeprecation,
-  managementSDKClient,
+  @contentstack/managementSDKClient,
   flags,
   isAuthenticated,
   FlagInput,
@@ -20,7 +20,7 @@ import messageHandler from '../../messages';
 
 export const DEFAULT_MASTER_LOCALE = 'en-us';
 export default class BootstrapCommand extends Command {
-  private bootstrapManagementAPIClient: any;
+  private bootstrap@contentstack/managementAPIClient: any;
 
   static description = 'Bootstrap contentstack apps';
 
@@ -105,22 +105,22 @@ export default class BootstrapCommand extends Command {
     }),
     alias: flags.string({
       char: 'a',
-      description: 'Alias of the management token',
+      description: 'Alias of the @contentstack/management token',
     }),
   };
 
   async run() {
     const { flags: bootstrapCommandFlags } = await this.parse(BootstrapCommand);
-    const managementTokenAlias = bootstrapCommandFlags.alias;
+    const @contentstack/managementTokenAlias = bootstrapCommandFlags.alias;
     try {
-      if (!isAuthenticated() && !managementTokenAlias) {
+      if (!isAuthenticated() && !@contentstack/managementTokenAlias) {
         this.error(messageHandler.parse('CLI_BOOTSTRAP_LOGIN_FAILED'), {
           exit: 2,
           suggestions: ['https://www.contentstack.com/docs/developers/cli/authentication/'],
         });
       }
 
-      this.bootstrapManagementAPIClient = await managementSDKClient({
+      this.bootstrap@contentstack/managementAPIClient = await @contentstack/managementSDKClient({
         host: this.cmaHost,
       });
 
@@ -174,11 +174,11 @@ export default class BootstrapCommand extends Command {
       if (org) seedParams.org = org;
       if (stackName) seedParams.stackName = stackName;
       if (yes) seedParams.yes = yes;
-      if (managementTokenAlias) {
-        seedParams.managementTokenAlias = managementTokenAlias;
+      if (@contentstack/managementTokenAlias) {
+        seedParams.@contentstack/managementTokenAlias = @contentstack/managementTokenAlias;
         const listOfTokens = configHandler.get('tokens');
-        const managementToken = listOfTokens[managementTokenAlias].token;
-        seedParams.managementToken = managementToken;
+        const @contentstack/managementToken = listOfTokens[@contentstack/managementTokenAlias].token;
+        seedParams.@contentstack/managementToken = @contentstack/managementToken;
       }
 
       // initiate bootstrsourceap
@@ -186,7 +186,7 @@ export default class BootstrapCommand extends Command {
         appConfig,
         seedParams,
         cloneDirectory,
-        managementAPIClient: this.bootstrapManagementAPIClient,
+        @contentstack/managementAPIClient: this.bootstrap@contentstack/managementAPIClient,
         region: this.region,
         appType,
         livePreviewEnabled,

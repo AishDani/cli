@@ -33,7 +33,7 @@ class CrossPublishCommand extends Command {
             config.alias = updatedFlags.alias;
           } catch (error) {
             this.error(
-              `The configured management token alias ${updatedFlags.alias} has not been added yet. Add it using 'csdx auth:tokens:add -a ${updatedFlags.alias}'`,
+              `The configured @contentstack/management token alias ${updatedFlags.alias} has not been added yet. Add it using 'csdx auth:tokens:add -a ${updatedFlags.alias}'`,
               { exit: 2 },
             );
           }
@@ -167,7 +167,7 @@ But, if retryFailed flag is set, then only a logfile is required
 `;
 
 CrossPublishCommand.flags = {
-  alias: flags.string({ char: 'a', description: 'Alias(name) for the management token' }),
+  alias: flags.string({ char: 'a', description: 'Alias(name) for the @contentstack/management token' }),
   'stack-api-key': flags.string({
     char: 'k',
     description: 'Stack api key to be used',
@@ -261,7 +261,7 @@ CrossPublishCommand.flags = {
 
 CrossPublishCommand.examples = [
   'General Usage',
-  'csdx cm:bulk-publish:cross-publish --content-type [CONTENT TYPE] --source-env [SOURCE ENV] --environments [DESTINATION ENVIRONMENT] --locales [LOCALE] -a [MANAGEMENT TOKEN ALIAS] --delivery-token [DELIVERY TOKEN]',
+  'csdx cm:bulk-publish:cross-publish --content-type [CONTENT TYPE] --source-env [SOURCE ENV] --environments [DESTINATION ENVIRONMENT] --locales [LOCALE] -a [@contentstack/management TOKEN ALIAS] --delivery-token [DELIVERY TOKEN]',
   '',
   'Using --config or -c flag',
   'Generate a config file at the current working directory using `csdx cm:bulk-publish:configure -a [ALIAS]`',
@@ -273,7 +273,7 @@ CrossPublishCommand.examples = [
   'csdx cm:bulk-publish:cross-publish -r [LOG FILE NAME]',
   '',
   'Using --branch flag',
-  'csdx cm:bulk-publish:cross-publish --content-type [CONTENT TYPE] --source-env [SOURCE ENV] --environments [DESTINATION ENVIRONMENT] --locales [LOCALE] -a [MANAGEMENT TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]',
+  'csdx cm:bulk-publish:cross-publish --content-type [CONTENT TYPE] --source-env [SOURCE ENV] --environments [DESTINATION ENVIRONMENT] --locales [LOCALE] -a [@contentstack/management TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]',
   '',
   'Using --stack-api-key flag',
   'csdx cm:bulk-publish:cross-publish --content-type [CONTENT TYPE] --source-env [SOURCE ENV] --environments [DESTINATION ENVIRONMENT] --locales [LOCALE] --stack-api-key [STACK API KEY] --delivery-token [DELIVERY TOKEN]',

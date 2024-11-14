@@ -70,7 +70,7 @@ const createContentType = {
       DEFAULT_ACL: {
         others: { read: false, create: false },
         users: [{ read: true, sub_acl: { read: true }, uid: 'blt9228a34ebcbe7a3f' }],
-        management_token: { read: true },
+        @contentstack/management_token: { read: true },
       },
       SYS_ACL: {
         roles: [],

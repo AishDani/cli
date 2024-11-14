@@ -19,7 +19,7 @@ type AdapterConstructorInputs = {
   analyticsInfo: string;
   apolloClient: ApolloClient<any>;
   apolloLogsClient?: ApolloClient<any>;
-  managementSdk?: ContentstackClient;
+  @contentstack/managementSdk?: ContentstackClient;
 };
 
 type Partial<T> = {

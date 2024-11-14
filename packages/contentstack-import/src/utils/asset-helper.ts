@@ -1,7 +1,7 @@
 import Bluebird from 'bluebird';
 import * as url from 'url';
 import * as path from 'path';
-import { ContentstackClient, managementSDKClient, validateRegex } from '@contentstack/cli-utilities';
+import { ContentstackClient, @contentstack/managementSDKClient, validateRegex } from '@contentstack/cli-utilities';
 import { ImportConfig } from '../types';
 const debug = require('debug')('util:requests');
 let _ = require('lodash');
@@ -21,7 +21,7 @@ function validate(req: any) {
 export const uploadAssetHelper = function (config: ImportConfig, req: any, fsPath: string, RETRY?: number) {
   return new Bluebird(function (resolve, reject) {
     try {
-      managementSDKClient(config)
+      @contentstack/managementSDKClient(config)
         .then((APIClient: ContentstackClient) => {
           validate(req);
           if (typeof RETRY !== 'number') {
@@ -33,7 +33,7 @@ export const uploadAssetHelper = function (config: ImportConfig, req: any, fsPat
           req.upload = fsPath;
           const stackAPIClient = APIClient.stack({
             api_key: config.target_stack,
-            management_token: config.management_token,
+            @contentstack/management_token: config.@contentstack/management_token,
           });
           stackAPIClient
             .asset()
