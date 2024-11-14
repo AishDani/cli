@@ -11,8 +11,8 @@ export const doesBranchExist = async (stack, branchName) => {
     });
 };
 
-export const is@contentstack/managementTokenValid = async (stackAPIKey, @contentstack/managementToken) => {
-  const httpClient = new HttpClient({ headers: { api_key: stackAPIKey, authorization: @contentstack/managementToken } });
+export const isManagementTokenValid = async (stackAPIKey, managementToken) => {
+  const httpClient = new HttpClient({ headers: { api_key: stackAPIKey, authorization: managementToken } });
   try {
     const response = (await httpClient.get(`${configHandler.get('region').cma}/v3/environments?limit=1`))?.data;
     if (response?.environments) {
@@ -23,7 +23,7 @@ export const is@contentstack/managementTokenValid = async (stackAPIKey, @content
       throw typeof response === 'string' ? response : '';
     }
   } catch (error) {
-    return { valid: 'failedToCheck', message: `Failed to check the validity of the @contentstack/management token. ${error}` };
+    return { valid: 'failedToCheck', message: `Failed to check the validity of the Management token. ${error}` };
   }
 };
 

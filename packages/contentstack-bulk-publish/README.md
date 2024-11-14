@@ -2,62 +2,58 @@
 
 It is Contentstack’s CLI plugin to perform bulk publish/unpublish operations on entries and assets in Contentstack. Refer to the [Bulk Publish and Unpublish documentation](https://www.contentstack.com/docs/developers/cli/bulk-publish-and-unpublish) to learn more about its commands.
 
-[![License](https://img.shields.io/npm/l/cli)](https://github.com/contentstack/cli/blob/main/LICENSE)
+[![License](https://img.shields.io/npm/l/@contentstack/cli)](https://github.com/contentstack/cli/blob/main/LICENSE)
 
 <!-- toc -->
-
-- [@contentstack/cli-cm-bulk-publish](#contentstack@contentstack/cli-cm-bulk-publish)
-- [Usage](#usage)
-- [Commands](#commands)
+* [@contentstack/cli-cm-bulk-publish](#contentstackcli-cm-bulk-publish)
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g @contentstack/cli-cm-bulk-publish
 $ csdx COMMAND
 running command...
 $ csdx (--version)
-@contentstack/cli-cm-bulk-publish/1.4.8 darwin-arm64 node-v21.6.1
+@contentstack/cli-cm-bulk-publish/1.4.8 darwin-arm64 node-v18.17.1
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-
-- [`csdx cm:assets:publish [-a <value>] [--retry-failed <value>] [-e <value>] [--folder-uid <value>] [--bulk-publish <value>] [-c <value>] [-y] [--locales <value>] [--branch <value>] [--delivery-token <value>] [--source-env <value>]`](#csdx-cmassetspublish--a-value---retry-failed-value--e-value---folder-uid-value---bulk-publish-value--c-value--y---locales-value---branch-value---delivery-token-value---source-env-value)
-- [`csdx cm:assets:unpublish`](#csdx-cmassetsunpublish)
-- [`csdx cm:bulk-publish`](#csdx-cmbulk-publish)
-- [`csdx cm:entries:update-and-publish [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--content-types <value>] [-t <value>] [-e <value>] [-c <value>] [-y] [--locales <value>] [--branch <value>]`](#csdx-cmentriesupdate-and-publish--a-value---retry-failed-value---bulk-publish-value---content-types-value--t-value--e-value--c-value--y---locales-value---branch-value)
-- [`csdx cm:assets:publish [-a <value>] [--retry-failed <value>] [-e <value>] [--folder-uid <value>] [--bulk-publish <value>] [-c <value>] [-y] [--locales <value>] [--branch <value>] [--delivery-token <value>] [--source-env <value>]`](#csdx-cmassetspublish--a-value---retry-failed-value--e-value---folder-uid-value---bulk-publish-value--c-value--y---locales-value---branch-value---delivery-token-value---source-env-value-1)
-- [`csdx cm:bulk-publish:clear`](#csdx-cmbulk-publishclear)
-- [`csdx cm:bulk-publish:configure`](#csdx-cmbulk-publishconfigure)
-- [`csdx cm:bulk-publish:cross-publish [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--content-type <value>] [--locales <value>] [--source-env <value>] [--environments <value>] [--delivery-token <value>] [-c <value>] [-y] [--branch <value>] [--onlyAssets] [--onlyEntries]`](#csdx-cmbulk-publishcross-publish--a-value---retry-failed-value---bulk-publish-value---content-type-value---locales-value---source-env-value---environments-value---delivery-token-value--c-value--y---branch-value---onlyassets---onlyentries)
-- [`csdx cm:entries:publish [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--publish-all-content-types] [--content-types <value>] [--locales <value>] [-e <value>] [-c <value>] [-y] [--branch <value>] [--delivery-token <value>] [--source-env <value>]`](#csdx-cmentriespublish--a-value---retry-failed-value---bulk-publish-value---publish-all-content-types---content-types-value---locales-value--e-value--c-value--y---branch-value---delivery-token-value---source-env-value)
-- [`csdx cm:entries:publish-modified [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--source-env <value>] [--content-types <value>] [--locales <value>] [-e <value>] [-c <value>] [-y] [--branch <value>]`](#csdx-cmentriespublish-modified--a-value---retry-failed-value---bulk-publish-value---source-env-value---content-types-value---locales-value--e-value--c-value--y---branch-value)
-- [`csdx cm:entries:publish-non-localized-fields [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--source-env <value>] [--content-types <value>] [-e <value>] [-c <value>] [-y] [--branch <value>]`](#csdx-cmentriespublish-non-localized-fields--a-value---retry-failed-value---bulk-publish-value---source-env-value---content-types-value--e-value--c-value--y---branch-value)
-- [`csdx cm:bulk-publish:revert`](#csdx-cmbulk-publishrevert)
-- [`csdx csdx cm:stacks:unpublish [-a <value>] [-e <value>] [-c <value>] [-y] [--locale <value>] [--branch <value>] [--retry-failed <value>] [--bulk-unpublish <value>] [--content-type <value>] [--delivery-token <value>] [--only-assets] [--only-entries]`](#csdx-csdx-cmstacksunpublish--a-value--e-value--c-value--y---locale-value---branch-value---retry-failed-value---bulk-unpublish-value---content-type-value---delivery-token-value---only-assets---only-entries)
-- [`csdx cm:entries:publish-only-unpublished [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--source-env <value>] [--content-types <value>] [--locales <value>] [-e <value>] [-c <value>] [-y] [--branch <value>]`](#csdx-cmentriespublish-only-unpublished--a-value---retry-failed-value---bulk-publish-value---source-env-value---content-types-value---locales-value--e-value--c-value--y---branch-value)
-- [`csdx cm:entries:publish [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--publish-all-content-types] [--content-types <value>] [--locales <value>] [-e <value>] [-c <value>] [-y] [--branch <value>] [--delivery-token <value>] [--source-env <value>]`](#csdx-cmentriespublish--a-value---retry-failed-value---bulk-publish-value---publish-all-content-types---content-types-value---locales-value--e-value--c-value--y---branch-value---delivery-token-value---source-env-value-1)
-- [`csdx cm:entries:publish-modified [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--source-env <value>] [--content-types <value>] [--locales <value>] [-e <value>] [-c <value>] [-y] [--branch <value>]`](#csdx-cmentriespublish-modified--a-value---retry-failed-value---bulk-publish-value---source-env-value---content-types-value---locales-value--e-value--c-value--y---branch-value-1)
-- [`csdx cm:entries:publish-non-localized-fields [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--source-env <value>] [--content-types <value>] [-e <value>] [-c <value>] [-y] [--branch <value>]`](#csdx-cmentriespublish-non-localized-fields--a-value---retry-failed-value---bulk-publish-value---source-env-value---content-types-value--e-value--c-value--y---branch-value-1)
-- [`csdx cm:entries:publish-only-unpublished [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--source-env <value>] [--content-types <value>] [--locales <value>] [-e <value>] [-c <value>] [-y] [--branch <value>]`](#csdx-cmentriespublish-only-unpublished--a-value---retry-failed-value---bulk-publish-value---source-env-value---content-types-value---locales-value--e-value--c-value--y---branch-value-1)
-- [`csdx cm:entries:unpublish`](#csdx-cmentriesunpublish)
-- [`csdx cm:entries:update-and-publish [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--content-types <value>] [-t <value>] [-e <value>] [-c <value>] [-y] [--locales <value>] [--branch <value>]`](#csdx-cmentriesupdate-and-publish--a-value---retry-failed-value---bulk-publish-value---content-types-value--t-value--e-value--c-value--y---locales-value---branch-value-1)
-- [`csdx cm:stacks:publish`](#csdx-cmstackspublish)
-- [`csdx cm:stacks:publish-clear-logs`](#csdx-cmstackspublish-clear-logs)
-- [`csdx cm:stacks:publish-configure`](#csdx-cmstackspublish-configure)
-- [`csdx cm:stacks:publish-revert`](#csdx-cmstackspublish-revert)
-- [`csdx csdx cm:stacks:unpublish [-a <value>] [-e <value>] [-c <value>] [-y] [--locale <value>] [--branch <value>] [--retry-failed <value>] [--bulk-unpublish <value>] [--content-type <value>] [--delivery-token <value>] [--only-assets] [--only-entries]`](#csdx-csdx-cmstacksunpublish--a-value--e-value--c-value--y---locale-value---branch-value---retry-failed-value---bulk-unpublish-value---content-type-value---delivery-token-value---only-assets---only-entries-1)
+* [`csdx cm:assets:publish [-a <value>] [--retry-failed <value>] [-e <value>] [--folder-uid <value>] [--bulk-publish <value>] [-c <value>] [-y] [--locales <value>] [--branch <value>] [--delivery-token <value>] [--source-env <value>]`](#csdx-cmassetspublish--a-value---retry-failed-value--e-value---folder-uid-value---bulk-publish-value--c-value--y---locales-value---branch-value---delivery-token-value---source-env-value)
+* [`csdx cm:assets:unpublish`](#csdx-cmassetsunpublish)
+* [`csdx cm:bulk-publish`](#csdx-cmbulk-publish)
+* [`csdx cm:entries:update-and-publish [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--content-types <value>] [-t <value>] [-e <value>] [-c <value>] [-y] [--locales <value>] [--branch <value>]`](#csdx-cmentriesupdate-and-publish--a-value---retry-failed-value---bulk-publish-value---content-types-value--t-value--e-value--c-value--y---locales-value---branch-value)
+* [`csdx cm:assets:publish [-a <value>] [--retry-failed <value>] [-e <value>] [--folder-uid <value>] [--bulk-publish <value>] [-c <value>] [-y] [--locales <value>] [--branch <value>] [--delivery-token <value>] [--source-env <value>]`](#csdx-cmassetspublish--a-value---retry-failed-value--e-value---folder-uid-value---bulk-publish-value--c-value--y---locales-value---branch-value---delivery-token-value---source-env-value-1)
+* [`csdx cm:bulk-publish:clear`](#csdx-cmbulk-publishclear)
+* [`csdx cm:bulk-publish:configure`](#csdx-cmbulk-publishconfigure)
+* [`csdx cm:bulk-publish:cross-publish [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--content-type <value>] [--locales <value>] [--source-env <value>] [--environments <value>] [--delivery-token <value>] [-c <value>] [-y] [--branch <value>] [--onlyAssets] [--onlyEntries]`](#csdx-cmbulk-publishcross-publish--a-value---retry-failed-value---bulk-publish-value---content-type-value---locales-value---source-env-value---environments-value---delivery-token-value--c-value--y---branch-value---onlyassets---onlyentries)
+* [`csdx cm:entries:publish [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--publish-all-content-types] [--content-types <value>] [--locales <value>] [-e <value>] [-c <value>] [-y] [--branch <value>] [--delivery-token <value>] [--source-env <value>]`](#csdx-cmentriespublish--a-value---retry-failed-value---bulk-publish-value---publish-all-content-types---content-types-value---locales-value--e-value--c-value--y---branch-value---delivery-token-value---source-env-value)
+* [`csdx cm:entries:publish-modified [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--source-env <value>] [--content-types <value>] [--locales <value>] [-e <value>] [-c <value>] [-y] [--branch <value>]`](#csdx-cmentriespublish-modified--a-value---retry-failed-value---bulk-publish-value---source-env-value---content-types-value---locales-value--e-value--c-value--y---branch-value)
+* [`csdx cm:entries:publish-non-localized-fields [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--source-env <value>] [--content-types <value>] [-e <value>] [-c <value>] [-y] [--branch <value>]`](#csdx-cmentriespublish-non-localized-fields--a-value---retry-failed-value---bulk-publish-value---source-env-value---content-types-value--e-value--c-value--y---branch-value)
+* [`csdx cm:bulk-publish:revert`](#csdx-cmbulk-publishrevert)
+* [`csdx csdx cm:stacks:unpublish [-a <value>] [-e <value>] [-c <value>] [-y] [--locale <value>] [--branch <value>] [--retry-failed <value>] [--bulk-unpublish <value>] [--content-type <value>] [--delivery-token <value>] [--only-assets] [--only-entries]`](#csdx-csdx-cmstacksunpublish--a-value--e-value--c-value--y---locale-value---branch-value---retry-failed-value---bulk-unpublish-value---content-type-value---delivery-token-value---only-assets---only-entries)
+* [`csdx cm:entries:publish-only-unpublished [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--source-env <value>] [--content-types <value>] [--locales <value>] [-e <value>] [-c <value>] [-y] [--branch <value>]`](#csdx-cmentriespublish-only-unpublished--a-value---retry-failed-value---bulk-publish-value---source-env-value---content-types-value---locales-value--e-value--c-value--y---branch-value)
+* [`csdx cm:entries:publish [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--publish-all-content-types] [--content-types <value>] [--locales <value>] [-e <value>] [-c <value>] [-y] [--branch <value>] [--delivery-token <value>] [--source-env <value>]`](#csdx-cmentriespublish--a-value---retry-failed-value---bulk-publish-value---publish-all-content-types---content-types-value---locales-value--e-value--c-value--y---branch-value---delivery-token-value---source-env-value-1)
+* [`csdx cm:entries:publish-modified [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--source-env <value>] [--content-types <value>] [--locales <value>] [-e <value>] [-c <value>] [-y] [--branch <value>]`](#csdx-cmentriespublish-modified--a-value---retry-failed-value---bulk-publish-value---source-env-value---content-types-value---locales-value--e-value--c-value--y---branch-value-1)
+* [`csdx cm:entries:publish-non-localized-fields [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--source-env <value>] [--content-types <value>] [-e <value>] [-c <value>] [-y] [--branch <value>]`](#csdx-cmentriespublish-non-localized-fields--a-value---retry-failed-value---bulk-publish-value---source-env-value---content-types-value--e-value--c-value--y---branch-value-1)
+* [`csdx cm:entries:publish-only-unpublished [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--source-env <value>] [--content-types <value>] [--locales <value>] [-e <value>] [-c <value>] [-y] [--branch <value>]`](#csdx-cmentriespublish-only-unpublished--a-value---retry-failed-value---bulk-publish-value---source-env-value---content-types-value---locales-value--e-value--c-value--y---branch-value-1)
+* [`csdx cm:entries:unpublish`](#csdx-cmentriesunpublish)
+* [`csdx cm:entries:update-and-publish [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--content-types <value>] [-t <value>] [-e <value>] [-c <value>] [-y] [--locales <value>] [--branch <value>]`](#csdx-cmentriesupdate-and-publish--a-value---retry-failed-value---bulk-publish-value---content-types-value--t-value--e-value--c-value--y---locales-value---branch-value-1)
+* [`csdx cm:stacks:publish`](#csdx-cmstackspublish)
+* [`csdx cm:stacks:publish-clear-logs`](#csdx-cmstackspublish-clear-logs)
+* [`csdx cm:stacks:publish-configure`](#csdx-cmstackspublish-configure)
+* [`csdx cm:stacks:publish-revert`](#csdx-cmstackspublish-revert)
+* [`csdx csdx cm:stacks:unpublish [-a <value>] [-e <value>] [-c <value>] [-y] [--locale <value>] [--branch <value>] [--retry-failed <value>] [--bulk-unpublish <value>] [--content-type <value>] [--delivery-token <value>] [--only-assets] [--only-entries]`](#csdx-csdx-cmstacksunpublish--a-value--e-value--c-value--y---locale-value---branch-value---retry-failed-value---bulk-unpublish-value---content-type-value---delivery-token-value---only-assets---only-entries-1)
 
 ## `csdx cm:assets:publish [-a <value>] [--retry-failed <value>] [-e <value>] [--folder-uid <value>] [--bulk-publish <value>] [-c <value>] [-y] [--locales <value>] [--branch <value>] [--delivery-token <value>] [--source-env <value>]`
 
@@ -71,7 +67,7 @@ USAGE
 FLAGS
   -B, --branch=<value>           [default: main] Specify the branch to fetch the content (by default the main branch is
                                  selected)
-  -a, --alias=<value>            Alias(name) for the @contentstack/management token
+  -a, --alias=<value>            Alias(name) for the management token
   -c, --config=<value>           Path to the config file
   -e, --environments=<value>...  Environments where assets will be published
   -k, --stack-api-key=<value>    Stack api key to be used
@@ -100,7 +96,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS]
+  $ csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS]
 
 
 
@@ -122,13 +118,13 @@ EXAMPLES
 
   Using --branch flag
 
-  $ csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME]
+  $ csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME]
 
 
 
   Using --source-env
 
-  $ csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --source-env [SOURCE ENVIRONMENT] --delivery-token [DELIVERY TOKEN]
+  $ csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --source-env [SOURCE ENVIRONMENT] --delivery-token [DELIVERY TOKEN]
 
 
 
@@ -149,7 +145,7 @@ USAGE
     <value>] [--retry-failed <value>] [--bulk-unpublish <value>] [--api-version <value>] [--delivery-token <value>]
 
 FLAGS
-  -a, --alias=<value>          Alias(name) for the @contentstack/management token
+  -a, --alias=<value>          Alias(name) for the management token
   -c, --config=<value>         Path to the config file
   -e, --environment=<value>    Source Environment
   -k, --stack-api-key=<value>  Stack api key to be used
@@ -173,7 +169,7 @@ DESCRIPTION
 EXAMPLES
   General Usage
 
-  $ csdx cm:assets:unpublish --bulk-unpublish --environment [SOURCE ENV] --locale [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --delivery-token [DELIVERY TOKEN]
+  $ csdx cm:assets:unpublish --bulk-unpublish --environment [SOURCE ENV] --locale [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --delivery-token [DELIVERY TOKEN]
 
 
 
@@ -195,7 +191,7 @@ EXAMPLES
 
   Using --branch flag
 
-  $ csdx cm:assets:unpublish --bulk-unpublish --environment [SOURCE ENV] --locale [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]
+  $ csdx cm:assets:unpublish --bulk-unpublish --environment [SOURCE ENV] --locale [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]
 
 
 
@@ -232,7 +228,7 @@ USAGE
 FLAGS
   -B, --branch=<value>           [default: main] Specify the branch to fetch the content (by default the main branch is
                                  selected)
-  -a, --alias=<value>            Alias(name) for the @contentstack/management token
+  -a, --alias=<value>            Alias(name) for the management token
   -c, --config=<value>           Path to the config file
   -e, --environments=<value>...  Environments where entries will be published
   -k, --stack-api-key=<value>    Stack api key to be used
@@ -261,7 +257,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:entries:update-and-publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS]
+  $ csdx cm:entries:update-and-publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS]
 
 
 
@@ -283,7 +279,7 @@ EXAMPLES
 
   Using --branch
 
-  $ csdx cm:entries:update-and-publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME]
+  $ csdx cm:entries:update-and-publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME]
 
 
 
@@ -304,7 +300,7 @@ USAGE
 FLAGS
   -B, --branch=<value>           [default: main] Specify the branch to fetch the content (by default the main branch is
                                  selected)
-  -a, --alias=<value>            Alias(name) for the @contentstack/management token
+  -a, --alias=<value>            Alias(name) for the management token
   -c, --config=<value>           Path to the config file
   -e, --environments=<value>...  Environments where assets will be published
   -k, --stack-api-key=<value>    Stack api key to be used
@@ -333,7 +329,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS]
+  $ csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS]
 
 
 
@@ -355,13 +351,13 @@ EXAMPLES
 
   Using --branch flag
 
-  $ csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME]
+  $ csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME]
 
 
 
   Using --source-env
 
-  $ csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --source-env [SOURCE ENVIRONMENT] --delivery-token [DELIVERY TOKEN]
+  $ csdx cm:assets:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --source-env [SOURCE ENVIRONMENT] --delivery-token [DELIVERY TOKEN]
 
 
 
@@ -407,7 +403,7 @@ USAGE
   $ csdx cm:bulk-publish:configure [-a <value>] [-k <value>]
 
 FLAGS
-  -a, --alias=<value>          Alias(name) for the @contentstack/management token
+  -a, --alias=<value>          Alias(name) for the management token
   -k, --stack-api-key=<value>  Stack api key to be used
 
 DESCRIPTION
@@ -419,9 +415,9 @@ ALIASES
 EXAMPLES
   $ csdx cm:stacks:publish-configure
 
-  $ csdx cm:stacks:publish-configure -a <@contentstack/management_token_alias>
+  $ csdx cm:stacks:publish-configure -a <management_token_alias>
 
-  $ csdx cm:stacks:publish-configure --alias <@contentstack/management_token_alias>
+  $ csdx cm:stacks:publish-configure --alias <management_token_alias>
 
   $ csdx cm:stacks:publish-configure --stack-api-key <stack_api_key>
 ```
@@ -439,7 +435,7 @@ USAGE
 FLAGS
   -B, --branch=<value>         [default: main] Specify the branch to fetch the content (by default the main branch is
                                selected)
-  -a, --alias=<value>          Alias(name) for the @contentstack/management token
+  -a, --alias=<value>          Alias(name) for the management token
   -c, --config=<value>         Path to the config file
   -k, --stack-api-key=<value>  Stack api key to be used
   -y, --yes                    Agree to process the command with the current configuration
@@ -468,7 +464,7 @@ DESCRIPTION
 EXAMPLES
   General Usage
 
-  $ csdx cm:bulk-publish:cross-publish --content-type [CONTENT TYPE] --source-env [SOURCE ENV] --environments [DESTINATION ENVIRONMENT] --locales [LOCALE] -a [@contentstack/management TOKEN ALIAS] --delivery-token [DELIVERY TOKEN]
+  $ csdx cm:bulk-publish:cross-publish --content-type [CONTENT TYPE] --source-env [SOURCE ENV] --environments [DESTINATION ENVIRONMENT] --locales [LOCALE] -a [MANAGEMENT TOKEN ALIAS] --delivery-token [DELIVERY TOKEN]
 
 
 
@@ -492,7 +488,7 @@ EXAMPLES
 
   Using --branch flag
 
-  $ csdx cm:bulk-publish:cross-publish --content-type [CONTENT TYPE] --source-env [SOURCE ENV] --environments [DESTINATION ENVIRONMENT] --locales [LOCALE] -a [@contentstack/management TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]
+  $ csdx cm:bulk-publish:cross-publish --content-type [CONTENT TYPE] --source-env [SOURCE ENV] --environments [DESTINATION ENVIRONMENT] --locales [LOCALE] -a [MANAGEMENT TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]
 
 
 
@@ -516,7 +512,7 @@ USAGE
 FLAGS
   -B, --branch=<value>           [default: main] Specify the branch to fetch the content (by default the main branch is
                                  selected)
-  -a, --alias=<value>            Alias(name) for the @contentstack/management token
+  -a, --alias=<value>            Alias(name) for the management token
   -c, --config=<value>           Path for the external config file (A new config file can be generated at the current
                                  working directory using `csdx cm:bulk-publish:configure -a [ALIAS]`)
   -e, --environments=<value>...  Environments where entries will be published
@@ -549,7 +545,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS]
+  $ csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS]
 
 
 
@@ -573,13 +569,13 @@ EXAMPLES
 
   Using --branch
 
-  $ csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME]
+  $ csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME]
 
 
 
   Using --source-env
 
-  $ csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS] --source-env [SOURCE ENVIRONMENT] --delivery-token [DELIVERY TOKEN]
+  $ csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS] --source-env [SOURCE ENVIRONMENT] --delivery-token [DELIVERY TOKEN]
 
 
 
@@ -600,7 +596,7 @@ USAGE
 FLAGS
   -B, --branch=<value>           [default: main] Specify the branch to fetch the content (by default the main branch is
                                  selected)
-  -a, --alias=<value>            Alias(name) for the @contentstack/management token
+  -a, --alias=<value>            Alias(name) for the management token
   -c, --config=<value>           Path to the config file
   -e, --environments=<value>...  Destination environments
   -k, --stack-api-key=<value>    Stack api key to be used
@@ -629,7 +625,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:entries:publish-modified --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --source-env [SOURCE_ENV] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS]
+  $ csdx cm:entries:publish-modified --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --source-env [SOURCE_ENV] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS]
 
 
 
@@ -653,7 +649,7 @@ EXAMPLES
 
   Using --branch
 
-  $ csdx cm:entries:publish-modified --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --source-env [SOURCE_ENV] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME]
+  $ csdx cm:entries:publish-modified --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --source-env [SOURCE_ENV] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME]
 
 
 
@@ -674,7 +670,7 @@ USAGE
 FLAGS
   -B, --branch=<value>           [default: main] Specify the branch to fetch the content (by default the main branch is
                                  selected)
-  -a, --alias=<value>            Alias(name) for the @contentstack/management token
+  -a, --alias=<value>            Alias(name) for the management token
   -c, --config=<value>           Path to the config file
   -e, --environments=<value>...  Destination environments
   -k, --stack-api-key=<value>    Stack api key to be used
@@ -701,7 +697,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:entries:publish-non-localized-fields --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --alias [@contentstack/management TOKEN ALIAS] --source-env [SOURCE ENV]
+  $ csdx cm:entries:publish-non-localized-fields --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --alias [MANAGEMENT TOKEN ALIAS] --source-env [SOURCE ENV]
 
 
 
@@ -723,7 +719,7 @@ EXAMPLES
 
   Using --branch flag
 
-  $ csdx cm:entries:publish-non-localized-fields --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --alias [@contentstack/management TOKEN ALIAS] --source-env [SOURCE ENV] --branch [BRANCH NAME]
+  $ csdx cm:entries:publish-non-localized-fields --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --alias [MANAGEMENT TOKEN ALIAS] --source-env [SOURCE ENV] --branch [BRANCH NAME]
 
 
 
@@ -777,7 +773,7 @@ USAGE
 
 FLAGS
   -B, --branch=<value>         [default: main] Specify the branch to fetch the content from (default is main branch)
-  -a, --alias=<value>          Alias(name) for the @contentstack/management token
+  -a, --alias=<value>          Alias(name) for the management token
   -c, --config=<value>         Path to the config file
   -e, --environment=<value>    Source Environment
   -k, --stack-api-key=<value>  Stack api key to be used
@@ -811,7 +807,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [@contentstack/management TOKEN ALIAS] ----delivery-token [DELIVERY TOKEN]
+  $ csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] ----delivery-token [DELIVERY TOKEN]
 
 
 
@@ -853,7 +849,7 @@ EXAMPLES
 
   Using --branch flag
 
-  $ csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]
+  $ csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]
 
 
 
@@ -875,7 +871,7 @@ USAGE
 FLAGS
   -B, --branch=<value>           [default: main] Specify the branch to fetch the content (by default the main branch is
                                  selected)
-  -a, --alias=<value>            Alias(name) for the @contentstack/management token
+  -a, --alias=<value>            Alias(name) for the management token
   -b, --bulk-publish=<value>     [default: true] This flag is set to true by default. It indicates that contentstack's
                                  bulkpublish API will be used to publish the entries
   -c, --config=<value>           Path to the config file
@@ -904,7 +900,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [@contentstack/management TOKEN ALIAS] -source-env [SOURCE ENV]
+  $ csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [MANAGEMENT TOKEN ALIAS] -source-env [SOURCE ENV]
 
 
 
@@ -926,13 +922,13 @@ EXAMPLES
 
   Using --branch
 
-  $ csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME] -source-env [SOURCE ENV]
+  $ csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME] -source-env [SOURCE ENV]
 
 
 
   Using --stack-api-key
 
-  $ csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [@contentstack/management TOKEN ALIAS] --stack-api-key [STACK API KEY] -source-env [SOURCE ENV]
+  $ csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [MANAGEMENT TOKEN ALIAS] --stack-api-key [STACK API KEY] -source-env [SOURCE ENV]
 ```
 
 ## `csdx cm:entries:publish [-a <value>] [--retry-failed <value>] [--bulk-publish <value>] [--publish-all-content-types] [--content-types <value>] [--locales <value>] [-e <value>] [-c <value>] [-y] [--branch <value>] [--delivery-token <value>] [--source-env <value>]`
@@ -948,7 +944,7 @@ USAGE
 FLAGS
   -B, --branch=<value>           [default: main] Specify the branch to fetch the content (by default the main branch is
                                  selected)
-  -a, --alias=<value>            Alias(name) for the @contentstack/management token
+  -a, --alias=<value>            Alias(name) for the management token
   -c, --config=<value>           Path for the external config file (A new config file can be generated at the current
                                  working directory using `csdx cm:bulk-publish:configure -a [ALIAS]`)
   -e, --environments=<value>...  Environments where entries will be published
@@ -981,7 +977,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS]
+  $ csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS]
 
 
 
@@ -1005,13 +1001,13 @@ EXAMPLES
 
   Using --branch
 
-  $ csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME]
+  $ csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME]
 
 
 
   Using --source-env
 
-  $ csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS] --source-env [SOURCE ENVIRONMENT] --delivery-token [DELIVERY TOKEN]
+  $ csdx cm:entries:publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS] --source-env [SOURCE ENVIRONMENT] --delivery-token [DELIVERY TOKEN]
 
 
 
@@ -1034,7 +1030,7 @@ USAGE
 FLAGS
   -B, --branch=<value>           [default: main] Specify the branch to fetch the content (by default the main branch is
                                  selected)
-  -a, --alias=<value>            Alias(name) for the @contentstack/management token
+  -a, --alias=<value>            Alias(name) for the management token
   -c, --config=<value>           Path to the config file
   -e, --environments=<value>...  Destination environments
   -k, --stack-api-key=<value>    Stack api key to be used
@@ -1063,7 +1059,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:entries:publish-modified --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --source-env [SOURCE_ENV] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS]
+  $ csdx cm:entries:publish-modified --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --source-env [SOURCE_ENV] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS]
 
 
 
@@ -1087,7 +1083,7 @@ EXAMPLES
 
   Using --branch
 
-  $ csdx cm:entries:publish-modified --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --source-env [SOURCE_ENV] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME]
+  $ csdx cm:entries:publish-modified --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --source-env [SOURCE_ENV] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME]
 
 
 
@@ -1110,7 +1106,7 @@ USAGE
 FLAGS
   -B, --branch=<value>           [default: main] Specify the branch to fetch the content (by default the main branch is
                                  selected)
-  -a, --alias=<value>            Alias(name) for the @contentstack/management token
+  -a, --alias=<value>            Alias(name) for the management token
   -c, --config=<value>           Path to the config file
   -e, --environments=<value>...  Destination environments
   -k, --stack-api-key=<value>    Stack api key to be used
@@ -1137,7 +1133,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:entries:publish-non-localized-fields --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --alias [@contentstack/management TOKEN ALIAS] --source-env [SOURCE ENV]
+  $ csdx cm:entries:publish-non-localized-fields --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --alias [MANAGEMENT TOKEN ALIAS] --source-env [SOURCE ENV]
 
 
 
@@ -1159,7 +1155,7 @@ EXAMPLES
 
   Using --branch flag
 
-  $ csdx cm:entries:publish-non-localized-fields --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --alias [@contentstack/management TOKEN ALIAS] --source-env [SOURCE ENV] --branch [BRANCH NAME]
+  $ csdx cm:entries:publish-non-localized-fields --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --alias [MANAGEMENT TOKEN ALIAS] --source-env [SOURCE ENV] --branch [BRANCH NAME]
 
 
 
@@ -1183,7 +1179,7 @@ USAGE
 FLAGS
   -B, --branch=<value>           [default: main] Specify the branch to fetch the content (by default the main branch is
                                  selected)
-  -a, --alias=<value>            Alias(name) for the @contentstack/management token
+  -a, --alias=<value>            Alias(name) for the management token
   -b, --bulk-publish=<value>     [default: true] This flag is set to true by default. It indicates that contentstack's
                                  bulkpublish API will be used to publish the entries
   -c, --config=<value>           Path to the config file
@@ -1212,7 +1208,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [@contentstack/management TOKEN ALIAS] -source-env [SOURCE ENV]
+  $ csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [MANAGEMENT TOKEN ALIAS] -source-env [SOURCE ENV]
 
 
 
@@ -1234,13 +1230,13 @@ EXAMPLES
 
   Using --branch
 
-  $ csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME] -source-env [SOURCE ENV]
+  $ csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME] -source-env [SOURCE ENV]
 
 
 
   Using --stack-api-key
 
-  $ csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [@contentstack/management TOKEN ALIAS] --stack-api-key [STACK API KEY] -source-env [SOURCE ENV]
+  $ csdx cm:entries:publish-only-unpublished -b --content-types [CONTENT TYPES] -e [ENVIRONMENTS] --locales LOCALE -a [MANAGEMENT TOKEN ALIAS] --stack-api-key [STACK API KEY] -source-env [SOURCE ENV]
 ```
 
 _See code: [src/commands/cm/entries/publish-only-unpublished.js](https://github.com/contentstack/cli/blob/main/packages/contentstack-bulk-publish/src/commands/cm/entries/publish-only-unpublished.js)_
@@ -1256,7 +1252,7 @@ USAGE
     [--delivery-token <value>]
 
 FLAGS
-  -a, --alias=<value>          Alias(name) for the @contentstack/management token
+  -a, --alias=<value>          Alias(name) for the management token
   -c, --config=<value>         Path to the config file
   -e, --environment=<value>    Source Environment
   -k, --stack-api-key=<value>  Stack api key to be used
@@ -1281,7 +1277,7 @@ DESCRIPTION
 EXAMPLES
   General Usage
 
-  $ csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --delivery-token [DELIVERY TOKEN]
+  $ csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --delivery-token [DELIVERY TOKEN]
 
 
 
@@ -1303,7 +1299,7 @@ EXAMPLES
 
   Using --branch flag
 
-  $ csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]
+  $ csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]
 
 
 
@@ -1326,7 +1322,7 @@ USAGE
 FLAGS
   -B, --branch=<value>           [default: main] Specify the branch to fetch the content (by default the main branch is
                                  selected)
-  -a, --alias=<value>            Alias(name) for the @contentstack/management token
+  -a, --alias=<value>            Alias(name) for the management token
   -c, --config=<value>           Path to the config file
   -e, --environments=<value>...  Environments where entries will be published
   -k, --stack-api-key=<value>    Stack api key to be used
@@ -1355,7 +1351,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:entries:update-and-publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS]
+  $ csdx cm:entries:update-and-publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS]
 
 
 
@@ -1377,7 +1373,7 @@ EXAMPLES
 
   Using --branch
 
-  $ csdx cm:entries:update-and-publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME]
+  $ csdx cm:entries:update-and-publish --content-types [CONTENT TYPE 1] [CONTENT TYPE 2] -e [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE 1] [LOCALE 2] -a [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME]
 
 
 
@@ -1407,7 +1403,7 @@ DESCRIPTION
 EXAMPLES
   General Usage
 
-  $ csdx cm:stacks:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS]
+  $ csdx cm:stacks:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS]
 
 
 
@@ -1429,13 +1425,13 @@ EXAMPLES
 
   Using --branch flag
 
-  $ csdx cm:stacks:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME]
+  $ csdx cm:stacks:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME]
 
 
 
   Using --api-version flag
 
-  $ csdx cm:stacks:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --api-version [API VERSION]
+  $ csdx cm:stacks:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --api-version [API VERSION]
 ```
 
 _See code: [src/commands/cm/stacks/publish.js](https://github.com/contentstack/cli/blob/main/packages/contentstack-bulk-publish/src/commands/cm/stacks/publish.js)_
@@ -1479,7 +1475,7 @@ USAGE
   $ csdx cm:stacks:publish-configure [-a <value>] [-k <value>]
 
 FLAGS
-  -a, --alias=<value>          Alias(name) for the @contentstack/management token
+  -a, --alias=<value>          Alias(name) for the management token
   -k, --stack-api-key=<value>  Stack api key to be used
 
 DESCRIPTION
@@ -1491,9 +1487,9 @@ ALIASES
 EXAMPLES
   $ csdx cm:stacks:publish-configure
 
-  $ csdx cm:stacks:publish-configure -a <@contentstack/management_token_alias>
+  $ csdx cm:stacks:publish-configure -a <management_token_alias>
 
-  $ csdx cm:stacks:publish-configure --alias <@contentstack/management_token_alias>
+  $ csdx cm:stacks:publish-configure --alias <management_token_alias>
 
   $ csdx cm:stacks:publish-configure --stack-api-key <stack_api_key>
 ```
@@ -1547,7 +1543,7 @@ USAGE
 
 FLAGS
   -B, --branch=<value>         [default: main] Specify the branch to fetch the content from (default is main branch)
-  -a, --alias=<value>          Alias(name) for the @contentstack/management token
+  -a, --alias=<value>          Alias(name) for the management token
   -c, --config=<value>         Path to the config file
   -e, --environment=<value>    Source Environment
   -k, --stack-api-key=<value>  Stack api key to be used
@@ -1581,7 +1577,7 @@ ALIASES
 EXAMPLES
   General Usage
 
-  $ csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [@contentstack/management TOKEN ALIAS] ----delivery-token [DELIVERY TOKEN]
+  $ csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] ----delivery-token [DELIVERY TOKEN]
 
 
 
@@ -1623,7 +1619,7 @@ EXAMPLES
 
   Using --branch flag
 
-  $ csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]
+  $ csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]
 
 
 
@@ -1633,5 +1629,4 @@ EXAMPLES
 ```
 
 _See code: [src/commands/cm/stacks/unpublish.js](https://github.com/contentstack/cli/blob/main/packages/contentstack-bulk-publish/src/commands/cm/stacks/unpublish.js)_
-
 <!-- commandsstop -->

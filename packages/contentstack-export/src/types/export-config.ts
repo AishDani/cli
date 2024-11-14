@@ -5,7 +5,7 @@ export default interface ExportConfig extends DefaultConfig {
   cliLogsPath: string;
   exportDir: string;
   data: string;
-  @contentstack/management_token?: string;
+  management_token?: string;
   apiKey: string;
   forceStopMarketplaceAppsPrompt: boolean;
   auth_token?: string;

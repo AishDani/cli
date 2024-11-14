@@ -1,6 +1,6 @@
 import ContentstackError from './error';
-import { @contentstack/managementSDKClient, configHandler } from '@contentstack/cli-utilities';
-import * as Contentstack@contentstack/managementSDK from '@contentstack/management';
+import { managementSDKClient, configHandler } from '@contentstack/cli-utilities';
+import * as ContentstackManagementSDK from '@contentstack/management';
 
 export interface Organization {
   uid: string;
@@ -16,7 +16,7 @@ export interface Stack {
   org_uid: string;
 }
 
-export interface @contentstack/managementToken {
+export interface ManagementToken {
   response_code: string;
   response_message: string;
 }
@@ -29,7 +29,7 @@ export interface CreateStackOptions {
   org_uid: string;
 }
 
-export interface create@contentstack/managementTokenOptions{
+export interface createManagementTokenOptions{
   name: string;
   description: string;
   expires_on: string;
@@ -44,12 +44,12 @@ export interface create@contentstack/managementTokenOptions{
 }
 
 export default class ContentstackClient {
-  instance: Promise<Contentstack@contentstack/managementSDK.ContentstackClient>;
+  instance: Promise<ContentstackManagementSDK.ContentstackClient>;
 
   limit: number;
 
   constructor(cmaHost: string, limit: number) {
-    this.instance = @contentstack/managementSDKClient({ host: cmaHost });
+    this.instance = managementSDKClient({ host: cmaHost });
     this.limit = limit || 100;
   }
 
@@ -149,11 +149,11 @@ export default class ContentstackClient {
     }
   }
 
-  async getContentTypeCount(api_key: string, @contentstack/managementToken?: string): Promise<number> {
+  async getContentTypeCount(api_key: string, managementToken?: string): Promise<number> {
     try {
       const client = await this.instance;
       const response = await client
-        .stack({ api_key: api_key, @contentstack/management_token: @contentstack/managementToken })
+        .stack({ api_key: api_key, management_token: managementToken })
         .contentType()
         .query({ include_count: true })
         .find();
@@ -187,7 +187,7 @@ export default class ContentstackClient {
     }
   }
 
-  async create@contentstack/managementToken(api_key: string, @contentstack/managementToken: any, options: create@contentstack/managementTokenOptions): Promise<@contentstack/managementToken> {
+  async createManagementToken(api_key: string, managementToken: any, options: createManagementTokenOptions): Promise<ManagementToken> {
     try {
       const client = await this.instance;
       const body = {
@@ -199,7 +199,7 @@ export default class ContentstackClient {
         },
       };
 
-      const response = await client.stack({ api_key: api_key, @contentstack/management_token: @contentstack/managementToken }).@contentstack/managementToken().create(body);
+      const response = await client.stack({ api_key: api_key, management_token: managementToken }).managementToken().create(body);
       return {
         response_code: response.errorCode,
         response_message: response.errorMessage
@@ -210,7 +210,7 @@ export default class ContentstackClient {
       if (typedError.errorCode === '401') {
           return {
             response_code: '401',
-            response_message: 'You do not have access to create @contentstack/management tokens. Please try again or ask an Administrator for assistance.'
+            response_message: 'You do not have access to create management tokens. Please try again or ask an Administrator for assistance.'
           }
       }
       throw this.buildError(typedError);

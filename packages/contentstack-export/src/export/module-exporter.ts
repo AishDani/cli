@@ -6,15 +6,15 @@ import startJSModuleExport from './modules-js';
 import { ExportConfig, Modules } from '../types';
 
 class ModuleExporter {
-  private @contentstack/managementAPIClient: ContentstackClient;
+  private managementAPIClient: ContentstackClient;
   private exportConfig: ExportConfig;
   private stackAPIClient: ReturnType<ContentstackClient['stack']>;
 
-  constructor(@contentstack/managementAPIClient: ContentstackClient, exportConfig: ExportConfig) {
-    this.@contentstack/managementAPIClient = @contentstack/managementAPIClient;
-    this.stackAPIClient = this.@contentstack/managementAPIClient.stack({
+  constructor(managementAPIClient: ContentstackClient, exportConfig: ExportConfig) {
+    this.managementAPIClient = managementAPIClient;
+    this.stackAPIClient = this.managementAPIClient.stack({
       api_key: exportConfig.apiKey,
-      @contentstack/management_token: exportConfig.@contentstack/management_token,
+      management_token: exportConfig.management_token,
     });
     this.exportConfig = exportConfig;
   }

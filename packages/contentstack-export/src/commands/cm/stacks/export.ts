@@ -4,7 +4,7 @@ import {
   cliux,
   messageHandler,
   printFlagDeprecation,
-  @contentstack/managementSDKClient,
+  managementSDKClient,
   flags,
   ContentstackClient,
   FlagInput,
@@ -20,9 +20,9 @@ export default class ExportCommand extends Command {
   static examples: string[] = [
     'csdx cm:stacks:export --stack-api-key <stack_api_key> --data-dir <path/of/export/destination/dir>',
     'csdx cm:stacks:export --config <path/to/config/dir>',
-    'csdx cm:stacks:export --alias <@contentstack/management_token_alias>',
-    'csdx cm:stacks:export --alias <@contentstack/management_token_alias> --data-dir <path/to/export/destination/dir>',
-    'csdx cm:stacks:export --alias <@contentstack/management_token_alias> --config <path/to/config/file>',
+    'csdx cm:stacks:export --alias <management_token_alias>',
+    'csdx cm:stacks:export --alias <management_token_alias> --data-dir <path/to/export/destination/dir>',
+    'csdx cm:stacks:export --alias <management_token_alias> --config <path/to/config/file>',
     'csdx cm:stacks:export --module <single module name>',
     'csdx cm:stacks:export --branch [optional] branch name',
   ];
@@ -56,12 +56,12 @@ export default class ExportCommand extends Command {
     }),
     alias: flags.string({
       char: 'a',
-      description: 'alias of the @contentstack/management token',
+      description: 'alias of the management token',
     }),
-    '@contentstack/management-token-alias': flags.string({
-      description: 'alias of the @contentstack/management token',
+    'management-token-alias': flags.string({
+      description: 'alias of the management token',
       hidden: true,
-      parse: printFlagDeprecation(['--@contentstack/management-token-alias'], ['-a', '--alias']),
+      parse: printFlagDeprecation(['--management-token-alias'], ['-a', '--alias']),
     }),
     'auth-token': flags.boolean({
       char: 'A',
@@ -106,8 +106,8 @@ export default class ExportCommand extends Command {
       // Note setting host to create cma client
       exportConfig.host = this.cmaHost;
       exportDir = exportConfig.cliLogsPath || exportConfig.data || exportConfig.exportDir;
-      const @contentstack/managementAPIClient: ContentstackClient = await @contentstack/managementSDKClient(exportConfig);
-      const moduleExporter = new ModuleExporter(@contentstack/managementAPIClient, exportConfig);
+      const managementAPIClient: ContentstackClient = await managementSDKClient(exportConfig);
+      const moduleExporter = new ModuleExporter(managementAPIClient, exportConfig);
       await moduleExporter.start();
       if (!exportConfig.branches?.length) {
         writeExportMetaFile(exportConfig);

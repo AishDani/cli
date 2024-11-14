@@ -45,7 +45,7 @@ export const askTokenType = async (): Promise<string> => {
     name: 'tokenType',
     message: 'CLI_SELECT_TOKEN_TYPE',
     choices: [
-      { name: '@contentstack/management Token', value: '@contentstack/management'},
+      { name: 'Management Token', value: 'management'},
       { name: 'Delivery Token', value: 'delivery'},
     ]
   });

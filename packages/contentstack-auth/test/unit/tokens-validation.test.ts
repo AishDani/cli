@@ -7,8 +7,8 @@ describe('Tokens Validation', () => {
   const invalidAPIkey = 'invalid';
   const validDeliveryToken = '';
   const invalidDeliveryToken = '';
-  const valid@contentstack/managementToken = '';
-  const invalid@contentstack/managementToken = '';
+  const validManagementToken = '';
+  const invalidManagementToken = '';
   const validEnvironemnt = '';
   const invalidEnvironemnt = 'invalid';
   const validRegion = 'NA';
@@ -59,7 +59,7 @@ describe('Tokens Validation', () => {
       }),
       axiosInstance: {
         get: sinon.stub().callsFake((param1, param2) => {
-          if (param2.headers.authorization === valid@contentstack/managementToken) {
+          if (param2.headers.authorization === validManagementToken) {
             return Promise.resolve({ content_types: {} });
           } else {
             return Promise.resolve({});
@@ -113,33 +113,33 @@ describe('Tokens Validation', () => {
       expect(result.valid).to.be.false;
     });
   });
-  describe('#@contentstack/management Token', function () {
-    it('Valid @contentstack/management token, should return true', async function () {
+  describe('#Management Token', function () {
+    it('Valid Management token, should return true', async function () {
       const contentStackClient = {
         axiosInstance: {
           get: sinon.stub().resolves({ status: 200 }),
         },
       };
 
-      const result = await tokenValidation.validate@contentstack/managementToken(
+      const result = await tokenValidation.validateManagementToken(
         contentStackClient,
         validAPIkey,
-        valid@contentstack/managementToken,
+        validManagementToken,
       );
 
       expect(result.valid).to.be.true;
       expect(result.message).to.be.an('object');
     });
-    it('invalid @contentstack/management token, should return false', async function () {
+    it('invalid Management token, should return false', async function () {
       const contentStackClient = {
         axiosInstance: {
           get: sinon.stub().resolves({ status: 401 }),
         },
       };
-      const result = await tokenValidation.validate@contentstack/managementToken(
+      const result = await tokenValidation.validateManagementToken(
         contentStackClient,
         validAPIkey,
-        invalid@contentstack/managementToken,
+        invalidManagementToken,
       );
       expect(result.valid).to.be.false;
     });

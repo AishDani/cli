@@ -10,7 +10,7 @@
 import { ExportConfig, ExternalConfig } from '../types';
 import { log } from './logger';
 const {
-  @contentstack/managementSDKClient,
+  managementSDKClient,
   isAuthenticated,
   cliux,
   configHandler,
@@ -18,7 +18,7 @@ const {
 } = require('@contentstack/cli-utilities');
 
 const login = async (config: ExternalConfig): Promise<any> => {
-  const client = await @contentstack/managementSDKClient(config);
+  const client = await managementSDKClient(config);
   if (config.email && config.password) {
     const response = await client.login({ email: config.email, password: config.password }).catch(Promise.reject);
     if (response?.user?.authtoken) {
@@ -43,7 +43,7 @@ const login = async (config: ExternalConfig): Promise<any> => {
     );
     log(
       config,
-      'Email, password, or @contentstack/management token is not set in the config, cannot export Webhook and label modules',
+      'Email, password, or management token is not set in the config, cannot export Webhook and label modules',
       'success',
     );
     config.headers = {

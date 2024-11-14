@@ -48,7 +48,7 @@ describe('Utils', () => {
         cma: 'https://api.contentstack.com',
         uiHost: 'https://app.contentstack.com'
       };
-      const @contentstack/managementAPIClient = {
+      const managementAPIClient = {
         stack: () => {
           return {
             environment: () => {
@@ -68,7 +68,7 @@ describe('Utils', () => {
           };
         },
       };
-      await setupEnvironments(@contentstack/managementAPIClient, api_key, appConfig,clonedDirectory, region,livePreviewEnabled);
+      await setupEnvironments(managementAPIClient, api_key, appConfig,clonedDirectory, region,livePreviewEnabled);
       const files = await getDirFiles(clonedDirectory);
       expect(files).to.have.length(2);
       let devEnvFile = await getFileContent(path.join(clonedDirectory, '.env.development.local'));
@@ -97,7 +97,7 @@ describe('Utils', () => {
         cma: 'https://app.contentstack.com',
         uiHost: 'https://app.contentstack.com'
       };
-      const @contentstack/managementAPIClient = {
+      const managementAPIClient = {
         stack: () => {
           return {
             environment: () => {
@@ -117,7 +117,7 @@ describe('Utils', () => {
           };
         },
       };
-      await setupEnvironments(@contentstack/managementAPIClient, api_key, appConfig,clonedDirectory, region,livePreviewEnabled);
+      await setupEnvironments(managementAPIClient, api_key, appConfig,clonedDirectory, region,livePreviewEnabled);
       const files = await getDirFiles(clonedDirectory);
       expect(files).to.have.length(2);
       let devEnvFile = await getFileContent(path.join(clonedDirectory, '.env.development.local'));
@@ -144,7 +144,7 @@ describe('Utils', () => {
         cda: 'https://app.contentstack.com',
         cma: 'https://api.contentstack.com',
       };
-      const @contentstack/managementAPIClient = {
+      const managementAPIClient = {
         stack: () => ({
           environment: () => {
             return {
@@ -164,7 +164,7 @@ describe('Utils', () => {
       };
 
       try {
-        await setupEnvironments(@contentstack/managementAPIClient, api_key, appConfig, clonedDirectory, region);
+        await setupEnvironments(managementAPIClient, api_key, appConfig, clonedDirectory, region);
       } catch (error) {
         expect(error).to.be.instanceOf(Error);
       }
@@ -182,7 +182,7 @@ describe('Utils', () => {
         cda: 'https://app.contentstack.com',
         cma: 'https://app.contentstack.com',
       };
-      const @contentstack/managementAPIClient = {
+      const managementAPIClient = {
         stack: () => ({
           environment: () => ({
             query: () => ({
@@ -196,7 +196,7 @@ describe('Utils', () => {
       };
 
       try {
-        await setupEnvironments(@contentstack/managementAPIClient, api_key, appConfig, clonedDirectory, region);
+        await setupEnvironments(managementAPIClient, api_key, appConfig, clonedDirectory, region);
       } catch (error) {
         expect(error).to.be.instanceOf(Error);
       }
@@ -214,7 +214,7 @@ describe('Utils', () => {
         cda: 'https://app.contentstack.com',
         cma: 'https://app.contentstack.com',
       };
-      const @contentstack/managementAPIClient = {
+      const managementAPIClient = {
         stack: () => ({
           environment: () => ({
             query: () => ({
@@ -227,7 +227,7 @@ describe('Utils', () => {
         }),
       };
 
-      await setupEnvironments(@contentstack/managementAPIClient, api_key, appConfig, clonedDirectory, region);
+      await setupEnvironments(managementAPIClient, api_key, appConfig, clonedDirectory, region);
       const files = await getDirFiles(clonedDirectory);
       expect(files).to.have.length(1);
     });

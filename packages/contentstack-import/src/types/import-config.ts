@@ -15,7 +15,7 @@ export default interface ImportConfig extends DefaultConfig, ExternalConfig {
   canCreatePrivateApp: boolean;
   contentDir: string;
   data: string;
-  @contentstack/management_token?: string;
+  management_token?: string;
   apiKey: string;
   forceStopMarketplaceAppsPrompt: boolean;
   skipPrivateAppRecreationIfExist: boolean;

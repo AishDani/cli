@@ -29,7 +29,7 @@ export interface ContentModelSeederOptions {
   fetchLimit: string | undefined;
   skipStackConfirmation: string | undefined;
   isAuthenticated: boolean | false;
-  @contentstack/managementToken?: string | undefined;
+  managementToken?: string | undefined;
   alias?: string | undefined;
   master_locale?: string | undefined;
 }
@@ -45,7 +45,7 @@ export default class ContentModelSeeder {
   private ghUsername: string = DEFAULT_OWNER;
 
   private ghRepo: string | undefined;
-  @contentstack/managementToken?: string | undefined;
+  managementToken?: string | undefined;
 
   get ghPath(): string {
     return `${this.ghUsername}/${this.ghRepo}`;
@@ -58,7 +58,7 @@ export default class ContentModelSeeder {
     this.ghUsername = gh.username || DEFAULT_OWNER;
     this.ghRepo = gh.repo;
     const limit = Number(this.options.fetchLimit);
-    this.@contentstack/managementToken = options.@contentstack/managementToken;
+    this.managementToken = options.managementToken;
 
     this.csClient = new ContentstackClient(options.cmaHost, limit);
     this.ghClient = new GitHubClient(this.ghUsername, DEFAULT_STACK_PATTERN);
@@ -83,7 +83,7 @@ export default class ContentModelSeeder {
 
     const tmpPath = await this.downloadRelease();
 
-    cliux.print(`Importing into ${this.@contentstack/managementToken ? 'your stack' : `'${stackResponse.name}'`}.`);
+    cliux.print(`Importing into ${this.managementToken ? 'your stack' : `'${stackResponse.name}'`}.`);
     
 
     await importer.run({
@@ -130,7 +130,7 @@ export default class ContentModelSeeder {
       let organizationResponse: Organization | undefined;
       let stackResponse: InquireStackResponse;
       let stack: Stack;
-      if (this.options.stackUid && this.options.@contentstack/managementToken) {
+      if (this.options.stackUid && this.options.managementToken) {
         stackResponse = {
           isNew: false,
           name: 'your stack',
@@ -190,9 +190,9 @@ export default class ContentModelSeeder {
         });
         return false;
     }
-    const @contentstack/managementBody = {
-          "name":"Checking roles for creating @contentstack/management token",
-          "description":"This is a compass app @contentstack/management token.",
+    const managementBody = {
+          "name":"Checking roles for creating management token",
+          "description":"This is a compass app management token.",
           "scope":[
               {
                   "module":"content_type",
@@ -214,17 +214,17 @@ export default class ContentModelSeeder {
           "expires_on": "3000-01-01",
           "is_email_notification_enabled":false
       }
-    let @contentstack/managementTokenResult = await this.csClient.create@contentstack/managementToken(api_key, this.@contentstack/managementToken, @contentstack/managementBody);
-    if(@contentstack/managementTokenResult?.response_code == "161" || @contentstack/managementTokenResult?.response_code == "401"){
+    let managementTokenResult = await this.csClient.createManagementToken(api_key, this.managementToken, managementBody);
+    if(managementTokenResult?.response_code == "161" || managementTokenResult?.response_code == "401"){
       cliux.print(
-        `Info: Failed to generate a @contentstack/management token.\nNote: @contentstack/management token is not available in your plan. Please contact the admin for support.`,
+        `Info: Failed to generate a management token.\nNote: Management token is not available in your plan. Please contact the admin for support.`,
         {
           color: 'red',
         },
       );
       return false;
     }    
-    count = await this.csClient.getContentTypeCount(api_key, this.@contentstack/managementToken);
+    count = await this.csClient.getContentTypeCount(api_key, this.managementToken);
 
     if (count > 0 && this._options.skipStackConfirmation !== 'yes') {
       const proceed = await inquireProceed();

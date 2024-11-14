@@ -50,7 +50,7 @@ export default class Deployments extends BaseCommand<typeof Deployments> {
         log: this.log,
         flags: this.flags,
         config: this.sharedConfig,
-        @contentstack/managementSdk: this.@contentstack/managementSdk,
+        managementSdk: this.managementSdk,
       });
       await this.prepareApiClients(); // NOTE update org-id in header
       await selectProject({

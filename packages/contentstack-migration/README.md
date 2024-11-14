@@ -5,39 +5,35 @@ The Contentstack CLI’s “Migration” plugin allows developers to automate th
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/@contentstack/cli-migration.svg)](https://npmjs.org/package/@contentstack/cli-migration)
 [![Downloads/week](https://img.shields.io/npm/dw/@contentstack/cli-migration.svg)](https://npmjs.org/package/@contentstack/cli-migration)
-[![License](https://img.shields.io/npm/l/@contentstack/cli-migration.svg)](https://github.com/***REMOVED***/@contentstack/cli-migration/blob/master/package.json)
+[![License](https://img.shields.io/npm/l/@contentstack/cli-migration.svg)](https://github.com/***REMOVED***/cli-migration/blob/master/package.json)
 
 <!-- toc -->
-
-- [@contentstack/cli-migration](#contentstack@contentstack/cli-migration)
-- [Usage](#usage)
-- [Commands](#commands)
+* [@contentstack/cli-migration](#contentstackcli-migration)
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g @contentstack/cli-migration
 $ csdx COMMAND
 running command...
 $ csdx (--version)
-@contentstack/cli-migration/1.6.1 darwin-arm64 node-v21.6.1
+@contentstack/cli-migration/1.6.1 darwin-arm64 node-v18.17.1
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-
-- [`csdx cm:stacks:migration [-k <value>] [-a <value>] [--file-path <value>] [--branch <value>] [--config-file <value>] [--config <value>] [--multiple]`](#csdx-cmstacksmigration--k-value--a-value---file-path-value---branch-value---config-file-value---config-value---multiple)
-- [`csdx cm:stacks:migration [-k <value>] [-a <value>] [--file-path <value>] [--branch <value>] [--config-file <value>] [--config <value>] [--multiple]`](#csdx-cmstacksmigration--k-value--a-value---file-path-value---branch-value---config-file-value---config-value---multiple-1)
+* [`csdx cm:stacks:migration [-k <value>] [-a <value>] [--file-path <value>] [--branch <value>] [--config-file <value>] [--config <value>] [--multiple]`](#csdx-cmstacksmigration--k-value--a-value---file-path-value---branch-value---config-file-value---config-value---multiple)
+* [`csdx cm:stacks:migration [-k <value>] [-a <value>] [--file-path <value>] [--branch <value>] [--config-file <value>] [--config <value>] [--multiple]`](#csdx-cmstacksmigration--k-value--a-value---file-path-value---branch-value---config-file-value---config-value---multiple-1)
 
 ## `csdx cm:stacks:migration [-k <value>] [-a <value>] [--file-path <value>] [--branch <value>] [--config-file <value>] [--config <value>] [--multiple]`
 
@@ -50,7 +46,7 @@ USAGE
 
 FLAGS
   -B, --branch=<value>         Use this flag to add the branch name where you want to perform the migration.
-  -a, --alias=<value>          Use this flag to add the @contentstack/management token alias.
+  -a, --alias=<value>          Use this flag to add the management token alias.
   -k, --stack-api-key=<value>  With this flag add the API key of your stack.
   --config=<value>...          [optional] inline configuration, <key1>:<value1>
   --config-file=<value>        [optional] Path of the JSON configuration file
@@ -73,7 +69,7 @@ EXAMPLES
 
   $ csdx cm:migration --config-file <path/to/json/config/file> --file-path <migration/script/file/path>
 
-  $ csdx cm:migration --multiple --file-path <migration/scripts/dir/path>
+  $ csdx cm:migration --multiple --file-path <migration/scripts/dir/path> 
 
   $ csdx cm:migration --alias --file-path <migration/script/file/path> -k <api-key>
 ```
@@ -89,7 +85,7 @@ USAGE
 
 FLAGS
   -B, --branch=<value>         Use this flag to add the branch name where you want to perform the migration.
-  -a, --alias=<value>          Use this flag to add the @contentstack/management token alias.
+  -a, --alias=<value>          Use this flag to add the management token alias.
   -k, --stack-api-key=<value>  With this flag add the API key of your stack.
   --config=<value>...          [optional] inline configuration, <key1>:<value1>
   --config-file=<value>        [optional] Path of the JSON configuration file
@@ -112,13 +108,12 @@ EXAMPLES
 
   $ csdx cm:migration --config-file <path/to/json/config/file> --file-path <migration/script/file/path>
 
-  $ csdx cm:migration --multiple --file-path <migration/scripts/dir/path>
+  $ csdx cm:migration --multiple --file-path <migration/scripts/dir/path> 
 
   $ csdx cm:migration --alias --file-path <migration/script/file/path> -k <api-key>
 ```
 
 _See code: [src/commands/cm/stacks/migration.js](https://github.com/contentstack/cli/blob/main/packages/contentstack-migration/src/commands/cm/stacks/migration.js)_
-
 <!-- commandsstop -->
 
 ### Points to remember

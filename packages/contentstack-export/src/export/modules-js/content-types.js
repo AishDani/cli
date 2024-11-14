@@ -77,10 +77,7 @@ class ContentTypesExport {
   async writeContentTypes(contentTypes) {
     function write(contentType) {
       return fileHelper.writeFile(
-        path.join(
-          sanitizePath(this.contentTypesPath),
-          `${sanitizePath(contentType.uid === 'schema' ? 'schema|1' : contentType.uid)}.json`,
-        ),
+        path.join(sanitizePath(this.contentTypesPath), `${sanitizePath  (contentType.uid === 'schema' ? 'schema|1' : contentType.uid)}.json`),
         contentType,
       );
     }

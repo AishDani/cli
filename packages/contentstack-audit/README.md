@@ -1,53 +1,50 @@
 <!-- Insert Nodejs CI here -->
 <!-- Insert Audit version here -->
 
-# @contenstack/cli-audit
+# @contentstack/cli-audit
 
 Audit plugin
 
 ## How to install this plugin
 
 ```shell
-$ csdx plugins:install @contenstack/cli-audit
+$ csdx plugins:install @contentstack/cli-audit
 ```
 
 ## How to use this plugin
 
 <!-- usage -->
-
 ```sh-session
-$ npm install -g @contenstack/cli-audit
+$ npm install -g @contentstack/cli-audit
 $ csdx COMMAND
 running command...
 $ csdx (--version|-v)
-@contenstack/cli-audit/1.6.5 darwin-arm64 node-v21.6.1
+@contentstack/cli-audit/1.6.5 darwin-arm64 node-v18.17.1
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-
-- [`csdx audit`](#csdx-audit)
-- [`csdx audit:fix`](#csdx-auditfix)
-- [`csdx cm:stacks:audit`](#csdx-cmstacksaudit)
-- [`csdx cm:stacks:audit:fix`](#csdx-cmstacksauditfix)
-- [`csdx help [COMMANDS]`](#csdx-help-commands)
-- [`csdx plugins`](#csdx-plugins)
-- [`csdx plugins:add PLUGIN`](#csdx-pluginsadd-plugin)
-- [`csdx plugins:inspect PLUGIN...`](#csdx-pluginsinspect-plugin)
-- [`csdx plugins:install PLUGIN`](#csdx-pluginsinstall-plugin)
-- [`csdx plugins:link PATH`](#csdx-pluginslink-path)
-- [`csdx plugins:remove [PLUGIN]`](#csdx-pluginsremove-plugin)
-- [`csdx plugins:reset`](#csdx-pluginsreset)
-- [`csdx plugins:uninstall [PLUGIN]`](#csdx-pluginsuninstall-plugin)
-- [`csdx plugins:unlink [PLUGIN]`](#csdx-pluginsunlink-plugin)
-- [`csdx plugins:update`](#csdx-pluginsupdate)
+* [`csdx audit`](#csdx-audit)
+* [`csdx audit:fix`](#csdx-auditfix)
+* [`csdx cm:stacks:audit`](#csdx-cmstacksaudit)
+* [`csdx cm:stacks:audit:fix`](#csdx-cmstacksauditfix)
+* [`csdx help [COMMANDS]`](#csdx-help-commands)
+* [`csdx plugins`](#csdx-plugins)
+* [`csdx plugins:add PLUGIN`](#csdx-pluginsadd-plugin)
+* [`csdx plugins:inspect PLUGIN...`](#csdx-pluginsinspect-plugin)
+* [`csdx plugins:install PLUGIN`](#csdx-pluginsinstall-plugin)
+* [`csdx plugins:link PATH`](#csdx-pluginslink-path)
+* [`csdx plugins:remove [PLUGIN]`](#csdx-pluginsremove-plugin)
+* [`csdx plugins:reset`](#csdx-pluginsreset)
+* [`csdx plugins:uninstall [PLUGIN]`](#csdx-pluginsuninstall-plugin)
+* [`csdx plugins:unlink [PLUGIN]`](#csdx-pluginsunlink-plugin)
+* [`csdx plugins:update`](#csdx-pluginsupdate)
 
 ## `csdx audit`
 
@@ -270,7 +267,7 @@ EXAMPLES
   $ csdx plugins
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.10/src/commands/plugins/index.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/index.ts)_
 
 ## `csdx plugins:add PLUGIN`
 
@@ -344,7 +341,7 @@ EXAMPLES
   $ csdx plugins:inspect myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.10/src/commands/plugins/inspect.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/inspect.ts)_
 
 ## `csdx plugins:install PLUGIN`
 
@@ -393,7 +390,7 @@ EXAMPLES
     $ csdx plugins:install someuser/someplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.10/src/commands/plugins/install.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/install.ts)_
 
 ## `csdx plugins:link PATH`
 
@@ -413,6 +410,7 @@ FLAGS
 
 DESCRIPTION
   Links a plugin into the CLI for development.
+
   Installation of a linked plugin will override a user-installed or core plugin.
 
   e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello'
@@ -423,7 +421,7 @@ EXAMPLES
   $ csdx plugins:link myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.10/src/commands/plugins/link.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/link.ts)_
 
 ## `csdx plugins:remove [PLUGIN]`
 
@@ -464,7 +462,7 @@ FLAGS
   --reinstall  Reinstall all plugins after uninstalling.
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.10/src/commands/plugins/reset.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/reset.ts)_
 
 ## `csdx plugins:uninstall [PLUGIN]`
 
@@ -492,7 +490,7 @@ EXAMPLES
   $ csdx plugins:uninstall myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.10/src/commands/plugins/uninstall.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/uninstall.ts)_
 
 ## `csdx plugins:unlink [PLUGIN]`
 
@@ -536,6 +534,5 @@ DESCRIPTION
   Update installed plugins.
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.10/src/commands/plugins/update.ts)_
-
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/update.ts)_
 <!-- commandsstop -->

@@ -3,36 +3,32 @@
 It is Contentstack’s CLI plugin to migrate rte. Using this command, you can copy existing value of HTML RTE into JSON RTE.
 
 <!-- toc -->
-
-- [@contentstack/cli-cm-migrate-rte](#contentstack@contentstack/cli-cm-migrate-rte)
-- [Usage](#usage)
-- [Commands](#commands)
+* [@contentstack/cli-cm-migrate-rte](#contentstackcli-cm-migrate-rte)
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g @contentstack/cli-cm-migrate-rte
 $ csdx COMMAND
 running command...
 $ csdx (--version)
-@contentstack/cli-cm-migrate-rte/1.4.18 darwin-arm64 node-v21.6.1
+@contentstack/cli-cm-migrate-rte/1.4.18 darwin-arm64 node-v18.17.1
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-
-- [`csdx cm:entries:migrate-html-rte`](#csdx-cmentriesmigrate-html-rte)
-- [`csdx cm:migrate-rte`](#csdx-cmmigrate-rte)
+* [`csdx cm:entries:migrate-html-rte`](#csdx-cmentriesmigrate-html-rte)
+* [`csdx cm:migrate-rte`](#csdx-cmmigrate-rte)
 
 ## `csdx cm:entries:migrate-html-rte`
 
@@ -45,7 +41,7 @@ USAGE
     <value>] [--batch-limit <value>]
 
 FLAGS
-  -a, --alias=<value>        Alias(name) for the @contentstack/management token
+  -a, --alias=<value>        Alias(name) for the management token
   -c, --config-path=<value>  Path to config file
   -y, --yes                  Agree to process the command with the current configuration
   --batch-limit=<value>      [default: 50] Provide batch limit for updating entries
@@ -106,7 +102,7 @@ USAGE
     <value>] [--batch-limit <value>]
 
 FLAGS
-  -a, --alias=<value>        Alias(name) for the @contentstack/management token
+  -a, --alias=<value>        Alias(name) for the management token
   -c, --config-path=<value>  Path to config file
   -y, --yes                  Agree to process the command with the current configuration
   --batch-limit=<value>      [default: 50] Provide batch limit for updating entries
@@ -153,5 +149,4 @@ EXAMPLES
 
   $ csdx cm:entries:migrate-html-rte --alias alias --content-type global_field_uid --global-field --html-path html-path --json-path json-path
 ```
-
 <!-- commandsstop -->

@@ -1,5 +1,5 @@
 import { expect } from '@oclif/test';
-import { fancy } from 'cli-dev-dependencies';
+import { fancy } from '@contentstack/cli-dev-dependencies';
 
 import { getTableFlags } from '../../../src/util';
 

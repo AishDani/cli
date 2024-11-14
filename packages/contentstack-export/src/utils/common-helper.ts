@@ -21,21 +21,21 @@ export const validateConfig = function (config: ExternalConfig) {
   } else if (
     !config.email &&
     !config.password &&
-    !config.@contentstack/management_token &&
+    !config.management_token &&
     config.source_stack &&
     !config.access_token &&
     !isAuthenticated()
   ) {
-    throw new Error('Kindly provide @contentstack/management_token or email and password');
+    throw new Error('Kindly provide management_token or email and password');
   } else if (
     config.email &&
     config.password &&
     !config.access_token &&
     config.source_stack &&
-    !config.@contentstack/management_token &&
+    !config.management_token &&
     !isAuthenticated()
   ) {
-    throw new Error('Kindly provide access_token or @contentstack/management_token');
+    throw new Error('Kindly provide access_token or management_token');
   } else if (!config.email && !config.password && config.preserveStackVersion) {
     throw new Error('Kindly provide Email and password for stack details');
   }
@@ -53,7 +53,7 @@ export const formatError = function (error: any) {
   if (error.errors && Object.keys(error.errors).length > 0) {
     Object.keys(error.errors).forEach((e) => {
       let entity = e;
-      if (e === 'authorization') entity = '@contentstack/management Token';
+      if (e === 'authorization') entity = 'Management Token';
       if (e === 'api_key') entity = 'Stack API key';
       if (e === 'uid') entity = 'Content Type';
       if (e === 'access_token') entity = 'Delivery Token';

@@ -15,10 +15,7 @@ class StackPublishCommand extends Command {
 
       this.publishEntriesCommand = new PublishEntriesCommand(this.entriesPublishReceiver);
       this.publishAssetsCommand = new PublishAssetsCommand(this.assetsPublishReceiver);
-      this.publishEntriesAndAssetsCommand = new PublishEntriesAndAssetsCommand(
-        this.entriesPublishReceiver,
-        this.assetsPublishReceiver,
-      );
+      this.publishEntriesAndAssetsCommand = new PublishEntriesAndAssetsCommand(this.entriesPublishReceiver, this.assetsPublishReceiver);
 
       this.optionController.setCommand(0, this.publishEntriesCommand);
       this.optionController.setCommand(1, this.publishAssetsCommand);
@@ -41,7 +38,7 @@ But, if retry-failed flag is set, then only a logfile is required`;
 
 StackPublishCommand.examples = [
   'General Usage',
-  'csdx cm:stacks:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS]',
+  'csdx cm:stacks:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS]',
   '',
   'Using --config or -c flag',
   'Generate a config file in the current working directory using `csdx cm:stacks:publish-configure -a [ALIAS]`',
@@ -52,10 +49,10 @@ StackPublishCommand.examples = [
   'csdx cm:stacks:publish --retry-failed [LOG FILE NAME]',
   '',
   'Using --branch flag',
-  'csdx cm:stacks:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --branch [BRANCH NAME]',
+  'csdx cm:stacks:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --branch [BRANCH NAME]',
   '',
   'Using --api-version flag',
-  'csdx cm:stacks:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --api-version [API VERSION]',
+  'csdx cm:stacks:publish --environments [ENVIRONMENT 1] [ENVIRONMENT 2] --locales [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --api-version [API VERSION]',
 ];
 
 StackPublishCommand.flags = []; // Same as entries and assets.
@@ -82,7 +79,7 @@ class OptionController {
 }
 
 class NoCommand {
-  execute() {}
+  execute() { }
 }
 
 class PublishEntriesCommand {

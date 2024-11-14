@@ -9,7 +9,7 @@ import { ConfigType, LogFn } from '../types';
 
 type CommpnOptions = {
   log: LogFn;
-  @contentstack/managementSdk: ContentstackClient;
+  managementSdk: ContentstackClient;
 };
 
 async function getOrganizations(
@@ -17,15 +17,15 @@ async function getOrganizations(
   skip = 0,
   organizations: Record<string, any>[] = [],
 ): Promise<Record<string, any>[]> {
-  const { log, @contentstack/managementSdk } = options;
+  const { log, managementSdk } = options;
   const configOrgUid = configHandler.get('oauthOrgUid');
 
   try {
     if (configOrgUid) {
-      const response = await @contentstack/managementSdk.organization(configOrgUid).fetch();
+      const response = await managementSdk.organization(configOrgUid).fetch();
       organizations.push(...[response]);
     } else {
-      const response = await @contentstack/managementSdk
+      const response = await managementSdk
         .organization()
         .fetchAll({ limit: 100, asc: 'name', include_count: true, skip });
       organizations.push(...response.items);

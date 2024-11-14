@@ -1,7 +1,7 @@
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
 import path from 'path';
-import { cliux, @contentstack/managementSDKClient } from '@contentstack/cli-utilities';
+import { cliux, managementSDKClient } from '@contentstack/cli-utilities';
 import { BranchDiffPayload, MergeSummary } from '../interfaces';
 import {
   askCompareBranch,
@@ -136,7 +136,7 @@ export const displayMergeSummary = (options) => {
 };
 
 export const executeMerge = async (apiKey, mergePayload, host): Promise<any> => {
-  const stackAPIClient = await (await @contentstack/managementSDKClient({ host })).stack({ api_key: apiKey });
+  const stackAPIClient = await (await managementSDKClient({ host })).stack({ api_key: apiKey });
   const mergeResponse = await executeMergeRequest(stackAPIClient, { params: mergePayload });
   if (mergeResponse.merge_details?.status === 'in_progress') {
     // TBD call the queue with the id

@@ -1,8 +1,8 @@
-import { cliux, @contentstack/managementSDKClient } from '@contentstack/cli-utilities';
+import { cliux, managementSDKClient } from '@contentstack/cli-utilities';
 
 export async function createBranch(host: string, apiKey: string, branch: { uid: string; source: string }) {
-  const @contentstack/managementAPIClient = await @contentstack/managementSDKClient({ host });
-  @contentstack/managementAPIClient
+  const managementAPIClient = await managementSDKClient({ host });
+  managementAPIClient
     .stack({ api_key: apiKey })
     .branch()
     .create({ branch })

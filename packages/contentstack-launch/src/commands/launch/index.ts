@@ -102,7 +102,7 @@ export default class Launch extends BaseCommand<typeof Launch> {
       $event: this.$event,
       config: this.sharedConfig,
       apolloClient: this.apolloClient,
-      @contentstack/managementSdk: this.@contentstack/managementSdk,
+      managementSdk: this.managementSdk,
       analyticsInfo: this.context.analyticsInfo,
     };
 
@@ -132,7 +132,7 @@ export default class Launch extends BaseCommand<typeof Launch> {
       $event: this.$event,
       config: this.sharedConfig,
       apolloClient: this.apolloClient,
-      @contentstack/managementSdk: this.@contentstack/managementSdk,
+      managementSdk: this.managementSdk,
       analyticsInfo: this.context.analyticsInfo,
     });
 

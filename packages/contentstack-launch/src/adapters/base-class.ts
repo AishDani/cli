@@ -49,16 +49,16 @@ export default class BaseClass {
   public projectCreationRetryCount: number = 0;
   public apolloLogsClient: ApolloClient<any> | undefined;
   public envVariables: Array<Record<string, any>> = [];
-  public @contentstack/managementSdk: ContentstackClient | undefined;
+  public managementSdk: ContentstackClient | undefined;
 
   constructor(options: AdapterConstructorInputs) {
-    const { log, exit, config, $event, apolloClient, @contentstack/managementSdk, analyticsInfo, apolloLogsClient } = options;
+    const { log, exit, config, $event, apolloClient, managementSdk, analyticsInfo, apolloLogsClient } = options;
     this.config = config;
     this.$event = $event;
     this.log = log || console.log;
     this.apolloClient = apolloClient;
     this.analyticsInfo = analyticsInfo;
-    this.@contentstack/managementSdk = @contentstack/managementSdk;
+    this.managementSdk = managementSdk;
     this.apolloLogsClient = apolloLogsClient;
     this.exit = exit || ((code: number = 0) => process.exit(code));
   }
@@ -118,7 +118,7 @@ export default class BaseClass {
    */
   async selectOrg(): Promise<void> {
     const organizations =
-      (await getOrganizations({ log: this.log, @contentstack/managementSdk: this.@contentstack/managementSdk as ContentstackClient })) || [];
+      (await getOrganizations({ log: this.log, managementSdk: this.managementSdk as ContentstackClient })) || [];
 
     const selectedOrgUid = this.config.flags.org;
 
@@ -252,7 +252,7 @@ export default class BaseClass {
    */
   async selectStack(): Promise<void> {
     const listOfStacks =
-      (await this.@contentstack/managementSdk
+      (await this.managementSdk
         ?.stack()
         .query({ organization_uid: this.config.currentConfig.organizationUid })
         .find()
@@ -285,7 +285,7 @@ export default class BaseClass {
    */
   async selectDeliveryToken(): Promise<any> {
     const listOfDeliveryTokens =
-      (await this.@contentstack/managementSdk
+      (await this.managementSdk
         ?.stack({ api_key: this.config.selectedStack.api_key })
         .deliveryToken()
         .query()

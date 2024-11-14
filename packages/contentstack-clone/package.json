@@ -3,7 +3,7 @@
   "description": "Contentstack stack clone plugin",
   "version": "1.10.7",
   "author": "Contentstack",
-  "bugs": "https://github.com/rohitmishra209/@contentstack/cli-cm-clone/issues",
+  "bugs": "https://github.com/rohitmishra209/cli-cm-clone/issues",
   "dependencies": {
     "@colors/colors": "^1.5.0",
     "@contentstack/cli-cm-export": "~1.11.6",
@@ -42,7 +42,7 @@
     "/oclif.manifest.json",
     "/src"
   ],
-  "homepage": "https://github.com/rohitmishra209/@contentstack/cli-cm-clone",
+  "homepage": "https://github.com/rohitmishra209/cli-cm-clone",
   "keywords": [
     "contentstack",
     "cli",

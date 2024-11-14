@@ -12,7 +12,7 @@ const locales = process.env.LOCALES.split(',');
 
 describe('AssetsPublish', () => {
   it('Should run the command when all the flags are passed', async () => {
-    const args = ['--environments', environments[0], '--locales', locales[0], '--alias', process.env.@contentstack/management_ALIAS, '--yes'];
+    const args = ['--environments', environments[0], '--locales', locales[0], '--alias', process.env.MANAGEMENT_ALIAS, '--yes'];
     const assetPublishSpy = sinon.spy(AssetsPublish.prototype, 'run');
     await AssetsPublish.run(args);
     expect(assetPublishSpy.calledOnce).to.be.true;

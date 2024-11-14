@@ -13,19 +13,19 @@ import {
 import { askTokenType } from '../../../utils/interactive';
 import { BaseCommand } from '../../../base-command';
 export default class TokensAddCommand extends BaseCommand<typeof TokensAddCommand> {
-  static description = 'Adds @contentstack/management/delivery tokens to your session to use it with other CLI commands';
+  static description = 'Adds management/delivery tokens to your session to use it with other CLI commands';
 
   static examples = [
     '$ csdx auth:tokens:add',
     '$ csdx auth:tokens:add -a <alias>',
     '$ csdx auth:tokens:add -k <stack api key>',
     '$ csdx auth:tokens:add --delivery',
-    '$ csdx auth:tokens:add --@contentstack/management',
+    '$ csdx auth:tokens:add --management',
     '$ csdx auth:tokens:add -e <environment>',
     '$ csdx auth:tokens:add --token <token>',
-    '$ csdx auth:tokens:add -a <alias> -k <stack api key> --@contentstack/management --token <@contentstack/management token>',
+    '$ csdx auth:tokens:add -a <alias> -k <stack api key> --management --token <management token>',
     '$ csdx auth:tokens:add -a <alias> -k <stack api key> --delivery -e <environment> --token <delivery token>',
-    '$ csdx auth:tokens:add --alias <alias> --stack-api-key <stack api key> --@contentstack/management --token <@contentstack/management token>',
+    '$ csdx auth:tokens:add --alias <alias> --stack-api-key <stack api key> --management --token <management token>',
     '$ csdx auth:tokens:add --alias <alias> --stack-api-key <stack api key> --delivery -e <environment> --token <delivery token>',
   ];
 
@@ -34,19 +34,19 @@ export default class TokensAddCommand extends BaseCommand<typeof TokensAddComman
     delivery: flags.boolean({
       char: 'd',
       description: 'Set this flag to save delivery token',
-      exclusive: ['@contentstack/management'],
+      exclusive: ['management'],
       parse: printFlagDeprecation(['-d'], ['--delivery']),
     }),
-    @contentstack/management: flags.boolean({
+    management: flags.boolean({
       char: 'm',
-      description: 'Set this flag to save @contentstack/management token',
+      description: 'Set this flag to save management token',
       exclusive: ['delivery', 'environment'],
-      parse: printFlagDeprecation(['-m'], ['--@contentstack/management']),
+      parse: printFlagDeprecation(['-m'], ['--management']),
     }),
     environment: flags.string({
       char: 'e',
       description: 'Environment name for delivery token',
-      exclusive: ['@contentstack/management'],
+      exclusive: ['management'],
     }),
     'stack-api-key': flags.string({ char: 'k', description: 'Stack API Key' }),
     yes: flags.boolean({ char: 'y', description: 'Use this flag to skip confirmation' }),
@@ -78,7 +78,7 @@ export default class TokensAddCommand extends BaseCommand<typeof TokensAddComman
   };
 
   static usage =
-    'auth:tokens:add [-a <value>] [--delivery] [--@contentstack/management] [-e <value>] [-k <value>] [-y] [--token <value>]';
+    'auth:tokens:add [-a <value>] [--delivery] [--management] [-e <value>] [-k <value>] [-y] [--token <value>]';
 
   async run(): Promise<any> {
     const { flags: addTokenFlags } = await this.parse(TokensAddCommand);
@@ -88,17 +88,17 @@ export default class TokensAddCommand extends BaseCommand<typeof TokensAddComman
     let apiKey = addTokenFlags['api-key'] || addTokenFlags['stack-api-key'];
     let token = addTokenFlags.token;
     let isDelivery = addTokenFlags.delivery;
-    let is@contentstack/management = addTokenFlags.@contentstack/management;
+    let isManagement = addTokenFlags.management;
     let environment = addTokenFlags.environment;
     const configKeyTokens = 'tokens';
 
-    if (!isDelivery && !is@contentstack/management && !Boolean(environment)) {
+    if (!isDelivery && !isManagement && !Boolean(environment)) {
       let tokenType = await askTokenType();
       isDelivery = tokenType === 'delivery';
-      is@contentstack/management = tokenType === '@contentstack/management';
+      isManagement = tokenType === 'management';
     }
 
-    const type = isDelivery || Boolean(environment) ? 'delivery' : '@contentstack/management';
+    const type = isDelivery || Boolean(environment) ? 'delivery' : 'management';
 
     this.logger.info(`adding ${type} token`);
 
@@ -136,19 +136,19 @@ export default class TokensAddCommand extends BaseCommand<typeof TokensAddComman
         });
       }
 
-      if (type === '@contentstack/management') {
+      if (type === 'management') {
         // FIXME - Once the SDK refresh token issue is resolved, need to revert this back to SDK call
         const httpClient = new HttpClient({ headers: { api_key: apiKey, authorization: token } });
 
         const response = (await httpClient.get(`https://${this.cmaHost}/v3/environments?limit=1`)).data;
 
         if (response?.error_code === 105) {
-          throw new Error(messageHandler.parse('CLI_AUTH_TOKENS_VALIDATION_INVALID_@contentstack/management_TOKEN'));
+          throw new Error(messageHandler.parse('CLI_AUTH_TOKENS_VALIDATION_INVALID_MANAGEMENT_TOKEN'));
         } else if (response?.error_message) {
           throw new Error(response.error_message);
         }
       }
-      if (is@contentstack/management) {
+      if (isManagement) {
         configHandler.set(`${configKeyTokens}.${alias}`, { token, apiKey, type });
       } else {
         configHandler.set(`${configKeyTokens}.${alias}`, { token, apiKey, environment, type });

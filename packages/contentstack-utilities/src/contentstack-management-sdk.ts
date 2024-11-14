@@ -3,7 +3,7 @@ import authHandler from './auth-handler';
 import { Agent } from 'node:https';
 import configHandler, { default as configStore } from './config-handler';
 
-class @contentstack/managementSDKInitiator {
+class ManagementSDKInitiator {
   private analyticsInfo: string;
 
   constructor() {}
@@ -85,7 +85,7 @@ class @contentstack/managementSDKInitiator {
       if (!option.headers) option.headers = {};
       option.headers['X-CS-CLI'] = this.analyticsInfo;
     }
-    if (!config.@contentstack/management_token) {
+    if (!config.management_token) {
       const authorisationType = configStore.get('authorisationType');
       if (authorisationType === 'BASIC') {
         option.authtoken = configStore.get('authtoken');
@@ -113,6 +113,6 @@ class @contentstack/managementSDKInitiator {
   }
 }
 
-export const @contentstack/managementSDKInitiator = new @contentstack/managementSDKInitiator();
-export default @contentstack/managementSDKInitiator.createAPIClient.bind(@contentstack/managementSDKInitiator);
+export const managementSDKInitiator = new ManagementSDKInitiator();
+export default managementSDKInitiator.createAPIClient.bind(managementSDKInitiator);
 export { ContentstackConfig, ContentstackClient };

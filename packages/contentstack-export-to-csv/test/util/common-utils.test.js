@@ -1,7 +1,7 @@
 const { fancy } = require('fancy-test');
 const { test, expect } = require('@oclif/test');
 const inquirer = require('inquirer');
-const { cliux, configHandler, ContentstackClient, @contentstack/managementSDKClient } = require('@contentstack/cli-utilities');
+const { cliux, configHandler, ContentstackClient, managementSDKClient } = require('@contentstack/cli-utilities');
 
 const mockData = require('../mock-data/common.mock.json');
 const { getStacks, chooseBranch } = require('../../src/util/index');
@@ -9,9 +9,9 @@ const { getStacks, chooseBranch } = require('../../src/util/index');
 const { cma } = configHandler.get('region');
 
 describe('common utils', () => {
-  let @contentstack/managementSdk;
+  let managementSdk;
   before(async () => {
-    @contentstack/managementSdk = await @contentstack/managementSDKClient({
+    managementSdk = await managementSDKClient({
       host: cma.replace('https://', ''),
     });
   });
@@ -30,7 +30,7 @@ describe('common utils', () => {
           });
         })
         .it('Returns list of stacks', async () => {
-          await getStacks(@contentstack/managementSdk, mockData.organizations[0].uid);
+          await getStacks(managementSdk, mockData.organizations[0].uid);
         });
     });
   });

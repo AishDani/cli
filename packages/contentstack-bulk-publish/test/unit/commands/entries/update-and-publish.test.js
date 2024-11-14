@@ -14,7 +14,7 @@ const contentTypes = process.env.CONTENT_TYPES.split(',');
 
 describe('EntriesUpdateAndPublish', () => {
   it('Should run the command when all the flags are passed', async () => {
-    const args = ['--content-types', contentTypes[0], '-e', environments[0], '--locales', locales[0], '-a', process.env.@contentstack/management_ALIAS, '--yes'];
+    const args = ['--content-types', contentTypes[0], '-e', environments[0], '--locales', locales[0], '-a', process.env.MANAGEMENT_ALIAS, '--yes'];
     const entriesUpdateAndPublishSpy = sinon.spy(EntriesUpdateAndPublish.prototype, 'run');
     await EntriesUpdateAndPublish.run(args);
     expect(entriesUpdateAndPublishSpy.calledOnce).to.be.true;

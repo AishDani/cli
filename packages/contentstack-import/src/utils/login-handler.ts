@@ -8,11 +8,11 @@
  */
 
 import { log } from './logger';
-import { @contentstack/managementSDKClient, isAuthenticated } from '@contentstack/cli-utilities';
+import { managementSDKClient, isAuthenticated } from '@contentstack/cli-utilities';
 import { ImportConfig } from '../types';
 
 const login = async (config: ImportConfig): Promise<any> => {
-  const client = await @contentstack/managementSDKClient(config);
+  const client = await managementSDKClient(config);
   if (config.email && config.password) {
     const { user: { authtoken = null } = {} } = await client.login({ email: config.email, password: config.password });
     if (authtoken) {
@@ -27,12 +27,12 @@ const login = async (config: ImportConfig): Promise<any> => {
     } else {
       throw new Error('Invalid auth token received after login');
     }
-  } else if (config.@contentstack/management_token) {
+  } else if (config.management_token) {
     return config;
   } else if (isAuthenticated()) {
     const stackAPIClient = client.stack({
       api_key: config.target_stack,
-      @contentstack/management_token: config.@contentstack/management_token,
+      management_token: config.management_token,
     });
     const stack = await stackAPIClient.fetch().catch((error: any) => {
       let errorstack_key = error?.errors?.api_key;

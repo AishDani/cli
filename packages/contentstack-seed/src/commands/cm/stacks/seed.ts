@@ -76,7 +76,7 @@ export default class SeedCommand extends Command {
     }),
     alias: flags.string({
       char: 'a',
-      description: 'Alias of the @contentstack/management token',
+      description: 'Alias of the management token',
     }),
     locale: flags.string({
       description: 'Master Locale of the stack',
@@ -89,10 +89,10 @@ export default class SeedCommand extends Command {
   async run() {
     try {
       const { flags: seedFlags } = await this.parse(SeedCommand);
-      const @contentstack/managementTokenAlias = seedFlags.alias;
+      const managementTokenAlias = seedFlags.alias;
 
-      if (!isAuthenticated() && !@contentstack/managementTokenAlias) {
-        this.error('You need to login or provide an alias for the @contentstack/management token. See: auth:login --help', {
+      if (!isAuthenticated() && !managementTokenAlias) {
+        this.error('You need to login or provide an alias for the management token. See: auth:login --help', {
           exit: 2,
           suggestions: ['https://www.contentstack.com/docs/developers/cli/authentication/'],
         });
@@ -108,15 +108,15 @@ export default class SeedCommand extends Command {
         fetchLimit: seedFlags['fetch-limit'],
         skipStackConfirmation: seedFlags['yes'],
         isAuthenticated: isAuthenticated(),
-        alias: @contentstack/managementTokenAlias,
+        alias: managementTokenAlias,
         master_locale: seedFlags['locale'],
       };
 
       const listOfTokens = configHandler.get('tokens');
 
-      if (@contentstack/managementTokenAlias && listOfTokens[@contentstack/managementTokenAlias]) {
-        options.@contentstack/managementToken = listOfTokens[@contentstack/managementTokenAlias].token;
-        options.stackUid = listOfTokens[@contentstack/managementTokenAlias].apiKey;
+      if (managementTokenAlias && listOfTokens[managementTokenAlias]) {
+        options.managementToken = listOfTokens[managementTokenAlias].token;
+        options.stackUid = listOfTokens[managementTokenAlias].apiKey;
       }
 
       const seeder = new ContentModelSeeder(options);
