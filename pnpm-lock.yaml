@@ -1043,7 +1043,7 @@ importers:
     specifiers:
       'cli-dev-dependencies': ^1.2.4
 
-      'marketplace-sdk': ^1.2.1
+      '@contentstack/marketplace-sdk': ^1.2.1
       '@oclif/core': ^3.26.5
       '@oclif/test': ^2.5.6
       '@types/chai': ^4.2.18
@@ -1091,7 +1091,7 @@ importers:
       winston: ^3.7.2
       xdg-basedir: ^4.0.0
     dependencies:
-      'marketplace-sdk': 1.2.3_debug@4.3.6
+      '@contentstack/marketplace-sdk': 1.2.3_debug@4.3.6
       '@oclif/core': 3.27.0
       axios: 1.7.7_debug@4.3.6
       chalk: 4.1.2
@@ -1825,7 +1825,7 @@ packages:
     resolution:
       { integrity: sha512-EpTKSXtUDhae/S0R4ltgwMsQ7k/f3kx+MrvdddtYH/1BNgn/juK/vlDG7FLAIgcO8/miyiPzrFnI5hpHxgfvIA== }
     dependencies:
-      'marketplace-sdk': 1.2.3_debug@4.3.6
+      '@contentstack/marketplace-sdk': 1.2.3_debug@4.3.6
       '@oclif/core': 3.27.0
       axios: 1.7.7_debug@4.3.6
       chalk: 4.1.2
@@ -1871,7 +1871,7 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /marketplace-sdk/1.2.3_debug@4.3.6:
+  /@contentstack/marketplace-sdk/1.2.3_debug@4.3.6:
     resolution:
       { integrity: sha512-6JEDEKkHfbKJttH0lBZcf+NnPzdk3PMcfxtsxV/wVq9zvD9Z+UPIXaLmrDX7XpDuMaqnqjdSxfBBB439nimCvQ== }
     dependencies:
