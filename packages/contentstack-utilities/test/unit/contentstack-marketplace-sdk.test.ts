@@ -3,7 +3,7 @@ import { fancy } from '@contentstack/cli-dev-dependencies';
 
 import authHandler from '../../src/auth-handler';
 import configStore from '../../src/config-handler';
-import marketplaceSDKClient, { marketplaceSDKInitiator } from '../../src/contentstack-marketplace-sdk';
+import marketplaceSDKClient, { marketplaceSDKInitiator } from '../../src/contentstack-@contentstack/marketplace-sdk';
 
 describe('MarketplaceSDKInitiator class', () => {
   const host = 'test.app-api.io';
