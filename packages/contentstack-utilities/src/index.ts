@@ -7,7 +7,7 @@ import marketplaceSDKClient, {
   marketplaceSDKInitiator,
   ContentstackMarketplaceClient,
   ContentstackMarketplaceConfig,
-} from './contentstack-marketplace-sdk';
+} from './contentstack-@contentstack/marketplace-sdk';
 
 export { LoggerService } from './logger';
 export { default as cliux } from './cli-ux';
