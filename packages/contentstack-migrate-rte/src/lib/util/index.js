@@ -18,7 +18,7 @@ const Validator = require('jsonschema').Validator;
 const configSchema = require('./config_schema.json');
 const { JSDOM } = require('jsdom');
 const collapseWithSpace = require('collapse-whitespace');
-const { htmlToJson } = require('json-rte-serializer');
+const { htmlToJson } = require('@contentstack/json-rte-serializer');
 const nodePath = require('path');
 const {
   cliux,
