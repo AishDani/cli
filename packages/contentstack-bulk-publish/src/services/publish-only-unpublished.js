@@ -1,6 +1,6 @@
 'use strict';
 
-const { cliux } = require('cli-utilities');
+const { cliux } = require('@contentstack/cli-utilities');
 
 const { start } = require('../producer/publish-unpublished-env');
 const { prettyPrint, formatError } = require('../util');

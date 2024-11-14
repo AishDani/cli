@@ -7,7 +7,7 @@
 
 import * as path from 'path';
 import { isEmpty, cloneDeep } from 'lodash';
-import { cliux, sanitizePath } from 'cli-utilities';
+import { cliux, sanitizePath } from '@contentstack/cli-utilities';
 import { GlobalFieldData } from 'management/types/stack/globalField';
 import { fsUtil, log, formatError, fileHelper, lookupExtension, removeReferenceFields } from '../../utils';
 import { ImportConfig, ModuleClassParams } from '../../types';

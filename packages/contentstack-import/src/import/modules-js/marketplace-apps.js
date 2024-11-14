@@ -16,7 +16,7 @@ const {
   isAuthenticated,
   HttpClientDecorator,
   OauthDecorator,
-} = require('cli-utilities');
+} = require('@contentstack/cli-utilities');
 
 const {
   log,

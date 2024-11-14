@@ -1,6 +1,6 @@
 import * as path from 'path';
-import { cliux, sanitizePath } from 'cli-utilities';
-import { default as ContentStackSeed } from 'cli-cm-seed/lib/commands/cm/stacks/seed';
+import { cliux, sanitizePath } from '@contentstack/cli-utilities';
+import { default as ContentStackSeed } from '@contentstack/cli-cm-seed/lib/commands/cm/stacks/seed';
 
 import { AppConfig } from '../config';
 import messageHandler from '../messages';

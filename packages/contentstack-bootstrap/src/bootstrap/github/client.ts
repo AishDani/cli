@@ -2,7 +2,7 @@ import { Stream } from 'stream';
 import * as zlib from 'zlib';
 import * as tar from 'tar';
 const mkdirp = require('mkdirp')
-import { HttpRequestConfig, HttpClient } from 'cli-utilities';
+import { HttpRequestConfig, HttpClient } from '@contentstack/cli-utilities';
 
 import GithubError from './github-error';
 import messageHandler from '../../messages';

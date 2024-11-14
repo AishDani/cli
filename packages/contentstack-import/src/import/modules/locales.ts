@@ -7,7 +7,7 @@
 
 import * as path from 'path';
 import { values, isEmpty, filter, pick } from 'lodash';
-import { cliux, sanitizePath } from 'cli-utilities';
+import { cliux, sanitizePath } from '@contentstack/cli-utilities';
 import { fsUtil, log, formatError, fileHelper } from '../../utils';
 import { ImportConfig, ModuleClassParams } from '../../types';
 import BaseClass from './base-class';

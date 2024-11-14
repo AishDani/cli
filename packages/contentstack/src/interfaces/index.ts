@@ -1,4 +1,4 @@
-import { Config, Plugin } from 'cli-utilities';
+import { Config, Plugin } from '@contentstack/cli-utilities';
 
 export interface PrintOptions {
   color?: string;

@@ -2,7 +2,7 @@ const path = require('path');
 const chalk = require('chalk');
 const { values } = require('lodash');
 const { executeTask, formatError, fileHelper, log } = require('../../utils');
-const { sanitizePath } = require('cli-utilities');
+const { sanitizePath } = require('@contentstack/cli-utilities');
 
 class EntriesExport {
   constructor(exportConfig, stackAPIClient) {

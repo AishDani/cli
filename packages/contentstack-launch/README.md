@@ -17,11 +17,11 @@ With Launch CLI, you can interact with the Contentstack Launch platform using th
 <!-- usage -->
 
 ```sh-session
-$ npm install -g cli-launch
+$ npm install -g @contentstack/cli-launch
 $ csdx COMMAND
 running command...
 $ csdx (--version|-v)
-cli-launch/1.2.0 darwin-arm64 node-v21.6.1
+@contentstack/cli-launch/1.2.0 darwin-arm64 node-v21.6.1
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND
@@ -40,7 +40,7 @@ $ npm run build
 $ csdx plugins:link <plugin path>
 
 NPM installation steps:
-$ csdx plugins:install cli-launch
+$ csdx plugins:install @contentstack/cli-launch
 $ csdx launch
 ```
 

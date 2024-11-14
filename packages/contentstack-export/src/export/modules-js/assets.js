@@ -11,7 +11,13 @@ const Promise = require('bluebird');
 const _ = require('lodash');
 const chalk = require('chalk');
 const progress = require('progress-stream');
-const { HttpClient, configHandler, validateUids, sanitizePath, validateFileName } = require('cli-utilities');
+const {
+  HttpClient,
+  configHandler,
+  validateUids,
+  sanitizePath,
+  validateFileName,
+} = require('@contentstack/cli-utilities');
 const { fileHelper, log, formatError } = require('../../utils');
 let { default: config } = require('../../config');
 

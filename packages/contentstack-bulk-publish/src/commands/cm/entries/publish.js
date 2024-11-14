@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 /* eslint-disable node/no-extraneous-require */
-const { Command } = require('cli-command');
-const { printFlagDeprecation, flags } = require('cli-utilities');
+const { Command } = require('@contentstack/cli-command');
+const { printFlagDeprecation, flags } = require('@contentstack/cli-utilities');
 const { start: startPublish } = require('../../../producer/publish-entries');
 const { start: startCrossPublish } = require('../../../producer/cross-publish');
 const store = require('../../../util/store.js');
-const { cliux } = require('cli-utilities');
+const { cliux } = require('@contentstack/cli-utilities');
 const configKey = 'publish_entries';
 const configKeyCrossEnv = 'cross_env_publish';
 const { prettyPrint, formatError } = require('../../../util');

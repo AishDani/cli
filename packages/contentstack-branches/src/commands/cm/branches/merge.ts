@@ -1,5 +1,5 @@
-import { Command } from 'cli-command';
-import { cliux, flags, isAuthenticated } from 'cli-utilities';
+import { Command } from '@contentstack/cli-command';
+import { cliux, flags, isAuthenticated } from '@contentstack/cli-utilities';
 import { setupMergeInputs, displayBranchStatus, handleErrorMsg, validateCompareData } from '../../../utils';
 import { MergeHandler } from '../../../branch';
 export default class BranchMergeCommand extends Command {

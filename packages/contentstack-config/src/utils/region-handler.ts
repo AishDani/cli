@@ -1,4 +1,4 @@
-import { configHandler } from 'cli-utilities';
+import { configHandler } from '@contentstack/cli-utilities';
 
 function validURL(str) {
   const pattern = new RegExp(

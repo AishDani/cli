@@ -6,10 +6,10 @@
 
 import promiseLimit from 'promise-limit';
 import * as path from 'path';
-import { isAuthenticated } from 'cli-utilities';
+import { isAuthenticated } from '@contentstack/cli-utilities';
 import { ExternalConfig, ExportConfig } from '../types';
 import { fsUtil } from './file-helper';
-import { sanitizePath } from 'cli-utilities';
+import { sanitizePath } from '@contentstack/cli-utilities';
 
 export const validateConfig = function (config: ExternalConfig) {
   if (!config.host || !config.cdn) {

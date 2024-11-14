@@ -1,7 +1,7 @@
 import * as process from 'process';
 import * as path from 'path';
-import ImportCommand from 'cli-cm-import';
-import { pathValidator, sanitizePath } from 'cli-utilities';
+import ImportCommand from '@contentstack/cli-cm-import';
+import { pathValidator, sanitizePath } from '@contentstack/cli-utilities';
 
 const STACK_FOLDER = 'stack';
 

@@ -1,5 +1,5 @@
-import { Command } from 'cli-command';
-import { messageHandler, flags, isAuthenticated } from 'cli-utilities';
+import { Command } from '@contentstack/cli-command';
+import { messageHandler, flags, isAuthenticated } from '@contentstack/cli-utilities';
 import { BranchOptions } from '../../../interfaces/index';
 import { BranchDiffHandler } from '../../../branch';
 import { handleErrorMsg } from '../../../utils';

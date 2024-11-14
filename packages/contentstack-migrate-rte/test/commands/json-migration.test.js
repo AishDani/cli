@@ -2,7 +2,7 @@ const { expect, test } = require('@oclif/test');
 const sinon = require('sinon');
 const qs = require('querystring');
 const nock = require('nock');
-const { cliux } = require('cli-utilities');
+const { cliux } = require('@contentstack/cli-utilities');
 const {
   getToken,
   getContentType,

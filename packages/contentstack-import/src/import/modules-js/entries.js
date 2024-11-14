@@ -20,7 +20,7 @@ const {
   lookupEntries,
 } = require('../../utils');
 const { default: config } = require('../../config');
-const { sanitizePath } = require('cli-utilities');
+const { sanitizePath } = require('@contentstack/cli-utilities');
 const addlogs = log;
 module.exports = class ImportEntries {
   mappedAssetUidPath;

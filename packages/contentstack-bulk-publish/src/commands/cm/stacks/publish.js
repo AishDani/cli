@@ -1,6 +1,6 @@
 'use strict';
 
-const { Command } = require('cli-command');
+const { Command } = require('@contentstack/cli-command');
 const { getSelectedCommand } = require('../../../util/command-helper');
 const AssetsPublishReceiverCommand = require('../assets/publish');
 const EntriesPublishReceiverCommand = require('../entries/publish');

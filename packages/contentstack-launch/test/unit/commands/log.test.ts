@@ -2,7 +2,7 @@
 import { describe, it } from 'mocha';
 import { expect } from 'chai';
 import { stub, createSandbox } from 'sinon';
-import { cliux } from 'cli-utilities';
+import { cliux } from '@contentstack/cli-utilities';
 import Logs from '../../../src/commands/launch/logs';
 import * as commonUtils from '../../../src/util/common-utility';
 import { logsMockData } from '../mock/index';

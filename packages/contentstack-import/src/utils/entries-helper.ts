@@ -7,7 +7,7 @@ import * as path from 'path';
 import * as _ from 'lodash';
 import config from '../config';
 import * as fileHelper from './file-helper';
-import { escapeRegExp, validateRegex } from 'cli-utilities';
+import { escapeRegExp, validateRegex } from '@contentstack/cli-utilities';
 
 import { EntryJsonRTEFieldDataType } from '../types/entries';
 

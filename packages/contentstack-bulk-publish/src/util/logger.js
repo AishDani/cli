@@ -1,4 +1,4 @@
-const { sanitizePath } = require('cli-utilities');
+const { sanitizePath } = require('@contentstack/cli-utilities');
 const path = require('path');
 const winston = require('winston');
 const cwd = process.cwd();

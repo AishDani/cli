@@ -1,4 +1,4 @@
-import { Command } from 'cli-command';
+import { Command } from '@contentstack/cli-command';
 import {
   cliux,
   printFlagDeprecation,
@@ -7,7 +7,7 @@ import {
   FlagInput,
   ArgInput,
   args,
-} from 'cli-utilities';
+} from '@contentstack/cli-utilities';
 import { Region } from '../../../interfaces';
 import { regionHandler, interactive } from '../../../utils';
 import { Args, BaseCommand } from '../../../base-command';

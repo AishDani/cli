@@ -1,4 +1,4 @@
-cli-cm-import
+@contentstack/cli-cm-import
 
 It is Contentstack’s CLI plugin to import content in the stack. To learn how to export and import content in Contentstack, refer to the [Migration guide](https://www.contentstack.com/docs/developers/cli/migration/).
 
@@ -45,11 +45,11 @@ For switching to AZURE-EU region update the hosts at config/default.js
 <!-- usage -->
 
 ```sh-session
-$ npm install -g cli-cm-import
+$ npm install -g @contentstack/cli-cm-import
 $ csdx COMMAND
 running command...
 $ csdx (--version)
-cli-cm-import/1.16.5 darwin-arm64 node-v21.6.1
+@contentstack/cli-cm-import/1.16.5 darwin-arm64 node-v21.6.1
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND

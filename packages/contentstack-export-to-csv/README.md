@@ -1,4 +1,4 @@
-# cli-cm-export-to-csv
+# @contentstack/cli-cm-export-to-csv
 
 The cm:export-to-csv command allows you to export the following data into a CSV file:
 
@@ -17,11 +17,11 @@ Refer to the [Export Content to .CSV](https://www.contentstack.com/docs/develope
 # Usage
 
 ```sh-session
-$ npm install -g cli-cm-export-to-csv
+$ npm install -g @contentstack/cli-cm-export-to-csv
 $ csdx COMMAND
 running command...
 $ csdx (-v|--version|version)
-cli-cm-export-to-csv/0.1.0-beta linux-x64 node-v12.18.4
+@contentstack/cli-cm-export-to-csv/0.1.0-beta linux-x64 node-v12.18.4
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND

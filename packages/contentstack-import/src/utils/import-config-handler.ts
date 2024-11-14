@@ -1,7 +1,7 @@
 import merge from 'merge';
 import * as path from 'path';
 import { omit, filter, includes, isArray } from 'lodash';
-import { configHandler, isAuthenticated, cliux, sanitizePath } from 'cli-utilities';
+import { configHandler, isAuthenticated, cliux, sanitizePath } from '@contentstack/cli-utilities';
 import defaultConfig from '../config';
 import { readFile, fileExistsSync } from './file-helper';
 import { askContentDir, askAPIKey } from './interactive';

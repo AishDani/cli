@@ -3,8 +3,8 @@ const path = require('path');
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 const fs = require('fs');
-let { default: exportCmd } = require('cli-cm-export');
-let { default: importCmd } = require('cli-cm-import');
+let { default: exportCmd } = require('@contentstack/cli-cm-export');
+let { default: importCmd } = require('@contentstack/cli-cm-import');
 const { CustomAbortController } = require('./abort-controller');
 const prompt = require('prompt');
 const colors = require('@colors/colors/safe');
@@ -21,7 +21,7 @@ const {
   Clone,
   HandleBranchCommand,
 } = require('../helpers/command-helpers');
-const { configHandler } = require('cli-utilities');
+const { configHandler } = require('@contentstack/cli-utilities');
 
 let client = {};
 let config;

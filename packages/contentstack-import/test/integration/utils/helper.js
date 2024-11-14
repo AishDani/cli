@@ -2,8 +2,8 @@ const fs = require('fs');
 const _ = require('lodash');
 const https = require('https');
 const config = require('../../../src/config/default');
-const { Command } = require('cli-command');
-const { managementSDKClient } = require('cli-utilities');
+const { Command } = require('@contentstack/cli-command');
+const { managementSDKClient } = require('@contentstack/cli-utilities');
 const pjson = require('../../../package.json');
 const { REGIONS } = require('../../config.json');
 

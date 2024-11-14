@@ -11,7 +11,7 @@ const mkdirp = require('mkdirp');
 const Promise = require('bluebird');
 let { default: config } = require('../../config');
 const { fileHelper, log, uploadAssetHelper } = require('../../utils');
-const { sanitizePath, validateUids, validateFileName } = require('cli-utilities');
+const { sanitizePath, validateUids, validateFileName } = require('@contentstack/cli-utilities');
 
 module.exports = class ImportAssets {
   assets;

@@ -8,7 +8,7 @@ const path = require('path');
 const mkdirp = require('mkdirp');
 const merge = require('lodash/merge');
 const { default: config } = require('../../config');
-const { managementSDKClient, isAuthenticated } = require('cli-utilities');
+const { managementSDKClient, isAuthenticated } = require('@contentstack/cli-utilities');
 const { log, fileHelper, formatError } = require('../../utils');
 
 class ExportStack {

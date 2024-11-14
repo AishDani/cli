@@ -1,8 +1,8 @@
 import merge from 'lodash/merge';
 import isEmpty from 'lodash/isEmpty';
 import { existsSync, readFileSync } from 'fs';
-import { Command } from 'cli-command';
-import { Flags, FlagInput, Interfaces, cliux, ux, PrintOptions } from 'cli-utilities';
+import { Command } from '@contentstack/cli-command';
+import { Flags, FlagInput, Interfaces, cliux, ux, PrintOptions } from '@contentstack/cli-utilities';
 
 import config from './config';
 import { Logger } from './util';

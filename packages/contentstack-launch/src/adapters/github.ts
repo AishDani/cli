@@ -6,7 +6,7 @@ import split from 'lodash/split';
 import { exec } from 'child_process';
 import replace from 'lodash/replace';
 import includes from 'lodash/includes';
-import { configHandler, cliux as ux } from 'cli-utilities';
+import { configHandler, cliux as ux } from '@contentstack/cli-utilities';
 
 import { print } from '../util';
 import BaseClass from './base-class';

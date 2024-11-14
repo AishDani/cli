@@ -5,7 +5,7 @@ import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
 import unionWith from 'lodash/unionWith';
 import find from 'lodash/find';
-import { cliux, messageHandler, managementSDKClient } from 'cli-utilities';
+import { cliux, messageHandler, managementSDKClient } from '@contentstack/cli-utilities';
 import isArray from 'lodash/isArray';
 import { diff } from 'just-diff';
 

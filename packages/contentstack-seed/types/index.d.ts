@@ -1,1 +1,1 @@
-declare module 'cli-cm-import';
+declare module '@contentstack/cli-cm-import';

@@ -1,5 +1,5 @@
-import { Command } from 'cli-command';
-import { FlagInput, Flags, Interfaces, LoggerService } from 'cli-utilities';
+import { Command } from '@contentstack/cli-command';
+import { FlagInput, Flags, Interfaces, LoggerService } from '@contentstack/cli-utilities';
 
 export type Args<T extends typeof Command> = Interfaces.InferredArgs<T['args']>;
 export type Flags<T extends typeof Command> = Interfaces.InferredFlags<(typeof BaseCommand)['baseFlags'] & T['flags']>;

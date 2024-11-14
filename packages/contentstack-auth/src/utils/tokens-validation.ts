@@ -1,5 +1,5 @@
-import { messageHandler } from 'cli-utilities';
-import { LoggerService } from 'cli-utilities';
+import { messageHandler } from '@contentstack/cli-utilities';
+import { LoggerService } from '@contentstack/cli-utilities';
 /**
  * Validate environment
  * @param contentStackClient

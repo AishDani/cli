@@ -16,7 +16,7 @@ import {
   isAuthenticated,
   marketplaceSDKClient,
   ContentstackMarketplaceClient,
-} from 'cli-utilities';
+} from '@contentstack/cli-utilities';
 
 import { trace } from '../../utils/log';
 import { askEncryptionKey, getLocationName } from '../../utils/interactive';

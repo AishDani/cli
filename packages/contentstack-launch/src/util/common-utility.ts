@@ -2,7 +2,7 @@ import map from 'lodash/map';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
 import { ApolloClient } from '@apollo/client/core';
-import { cliux as ux, ContentstackClient, FlagInput, configHandler } from 'cli-utilities';
+import { cliux as ux, ContentstackClient, FlagInput, configHandler } from '@contentstack/cli-utilities';
 
 import { projectsQuery } from '../graphql';
 import { ConfigType, LogFn } from '../types';

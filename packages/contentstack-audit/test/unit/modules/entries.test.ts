@@ -2,7 +2,7 @@ import fs from 'fs';
 import { resolve } from 'path';
 import { expect } from '@oclif/test';
 import cloneDeep from 'lodash/cloneDeep';
-import { ux } from 'cli-utilities';
+import { ux } from '@contentstack/cli-utilities';
 import { fancy } from 'cli-dev-dependencies';
 
 import config from '../../../src/config';

@@ -1,5 +1,5 @@
 import * as figlet from 'figlet';
-import { cliux, Help } from 'cli-utilities';
+import { cliux, Help } from '@contentstack/cli-utilities';
 export default class MyHelpClass extends Help {
   constructor(config, opts) {
     super(config, opts);

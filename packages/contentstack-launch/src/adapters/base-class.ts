@@ -16,7 +16,7 @@ import includes from 'lodash/includes';
 import cloneDeep from 'lodash/cloneDeep';
 import { ApolloClient } from '@apollo/client/core';
 import { writeFileSync, existsSync, readFileSync } from 'fs';
-import { cliux as ux, ContentstackClient } from 'cli-utilities';
+import { cliux as ux, ContentstackClient } from '@contentstack/cli-utilities';
 
 import config from '../config';
 import { print, GraphqlApiClient, LogPolling, getOrganizations } from '../util';

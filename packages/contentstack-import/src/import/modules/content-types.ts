@@ -11,7 +11,7 @@ import { fsUtil, log, formatError, schemaTemplate, lookupExtension, lookUpTaxono
 import { ImportConfig, ModuleClassParams } from '../../types';
 import BaseClass, { ApiOptions } from './base-class';
 import { updateFieldRules } from '../../utils/content-type-helper';
-import { sanitizePath } from 'cli-utilities';
+import { sanitizePath } from '@contentstack/cli-utilities';
 
 export default class ContentTypesImport extends BaseClass {
   private cTsMapperPath: string;

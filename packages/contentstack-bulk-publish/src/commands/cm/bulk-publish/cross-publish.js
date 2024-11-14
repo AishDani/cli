@@ -1,6 +1,6 @@
 /* eslint-disable node/no-extraneous-require */
-const { Command } = require('cli-command');
-const { cliux, printFlagDeprecation, flags, isAuthenticated } = require('cli-utilities');
+const { Command } = require('@contentstack/cli-command');
+const { cliux, printFlagDeprecation, flags, isAuthenticated } = require('@contentstack/cli-utilities');
 const { start } = require('../../../producer/cross-publish');
 const store = require('../../../util/store.js');
 const configKey = 'cross_env_publish';

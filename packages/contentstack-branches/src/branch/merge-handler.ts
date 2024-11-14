@@ -1,7 +1,7 @@
 import os from 'os';
 import path from 'path';
 import forEach from 'lodash/forEach';
-import { cliux } from 'cli-utilities';
+import { cliux } from '@contentstack/cli-utilities';
 import { MergeInputOptions, MergeSummary } from '../interfaces';
 import {
   selectMergeStrategy,

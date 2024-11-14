@@ -1,5 +1,5 @@
 {
-  "name": "cli-launch",
+  "name": "@contentstack/cli-launch",
   "version": "1.2.0",
   "description": "Launch related operations",
   "author": "Contentstack CLI",
@@ -18,8 +18,8 @@
   ],
   "dependencies": {
     "@apollo/client": "^3.7.9",
-    "cli-command": "~1.2.19",
-    "cli-utilities": "~1.7.1",
+    "@contentstack/cli-command": "~1.2.19",
+    "@contentstack/cli-utilities": "~1.7.1",
     "@oclif/core": "^3.26.5",
     "@oclif/plugin-help": "^5",
     "@oclif/plugin-plugins": "^5.0.0",

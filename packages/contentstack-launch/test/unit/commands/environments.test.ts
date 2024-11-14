@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha';
 import Environments from '../../../src/commands/launch/environments';
-import { cliux } from 'cli-utilities';
+import { cliux } from '@contentstack/cli-utilities';
 import { testFlags } from '../mock';
 import sinon, { stub } from 'sinon';
 import { config } from 'dotenv';

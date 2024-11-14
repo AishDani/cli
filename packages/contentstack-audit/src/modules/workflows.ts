@@ -2,7 +2,7 @@ import { join, resolve } from 'path';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { cloneDeep } from 'lodash';
 import { LogFn, ConfigType, ContentTypeStruct, CtConstructorParam, ModuleConstructorParam, Workflow } from '../types';
-import { sanitizePath, ux } from 'cli-utilities';
+import { sanitizePath, ux } from '@contentstack/cli-utilities';
 
 import auditConfig from '../config';
 import { $t, auditMsg, commonMsg } from '../messages';

@@ -1,15 +1,15 @@
-# cli-migration
+# @contentstack/cli-migration
 
 The Contentstack CLI’s “Migration” plugin allows developers to automate the content migration process and easily migrate your content from your system to Contentstack.
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/cli-migration.svg)](https://npmjs.org/package/cli-migration)
-[![Downloads/week](https://img.shields.io/npm/dw/cli-migration.svg)](https://npmjs.org/package/cli-migration)
-[![License](https://img.shields.io/npm/l/cli-migration.svg)](https://github.com/***REMOVED***/cli-migration/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@contentstack/cli-migration.svg)](https://npmjs.org/package/@contentstack/cli-migration)
+[![Downloads/week](https://img.shields.io/npm/dw/@contentstack/cli-migration.svg)](https://npmjs.org/package/@contentstack/cli-migration)
+[![License](https://img.shields.io/npm/l/@contentstack/cli-migration.svg)](https://github.com/***REMOVED***/@contentstack/cli-migration/blob/master/package.json)
 
 <!-- toc -->
 
-- [cli-migration](#contentstackcli-migration)
+- [@contentstack/cli-migration](#contentstack@contentstack/cli-migration)
 - [Usage](#usage)
 - [Commands](#commands)
 <!-- tocstop -->
@@ -19,11 +19,11 @@ The Contentstack CLI’s “Migration” plugin allows developers to automate th
 <!-- usage -->
 
 ```sh-session
-$ npm install -g cli-migration
+$ npm install -g @contentstack/cli-migration
 $ csdx COMMAND
 running command...
 $ csdx (--version)
-cli-migration/1.6.1 darwin-arm64 node-v21.6.1
+@contentstack/cli-migration/1.6.1 darwin-arm64 node-v21.6.1
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND

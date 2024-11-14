@@ -1,5 +1,5 @@
-const { managementSDKClient, isAuthenticated } = require('cli-utilities');
-const { Command } = require('cli-command');
+const { managementSDKClient, isAuthenticated } = require('@contentstack/cli-utilities');
+const { Command } = require('@contentstack/cli-command');
 const command = new Command();
 
 async function getStack(data) {

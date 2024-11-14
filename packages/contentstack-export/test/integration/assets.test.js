@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const uniqBy = require('lodash/uniqBy');
 const { test } = require('@oclif/test');
-const { cliux: cliUX, messageHandler } = require('cli-utilities');
+const { cliux: cliUX, messageHandler } = require('@contentstack/cli-utilities');
 
 const { default: config } = require('../../lib/config');
 const modules = config.modules;

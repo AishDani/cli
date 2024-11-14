@@ -4,7 +4,7 @@ const path = require('path');
 const logFileDir = 'logs';
 const dummyDir = 'test/dummy/';
 
-import { sanitizePath } from 'cli-utilities';
+import { sanitizePath } from '@contentstack/cli-utilities';
 
 if (!fs.existsSync(path.join(__dirname, logFileDir))) {
   fs.mkdirSync(path.join(__dirname, logFileDir));

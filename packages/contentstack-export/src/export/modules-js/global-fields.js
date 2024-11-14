@@ -10,7 +10,7 @@ const mkdirp = require('mkdirp');
 const { merge } = require('lodash');
 const { formatError, log, fileHelper } = require('../../utils');
 const { default: config } = require('../../config');
-const { sanitizePath } = require('cli-utilities');
+const { sanitizePath } = require('@contentstack/cli-utilities');
 
 module.exports = class ExportGlobalFields {
   limit = 100;

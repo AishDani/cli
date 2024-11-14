@@ -2,7 +2,7 @@ let fs = require('fs');
 let { existsSync } = require('fs');
 let path = require('path');
 let crypto = require('crypto');
-const { pathValidator, FsUtility, sanitizePath } = require('cli-utilities');
+const { pathValidator, FsUtility, sanitizePath } = require('@contentstack/cli-utilities');
 
 module.exports = async ({ migration, config }) => {
   let updateEnvironments = {

@@ -1,7 +1,7 @@
 import path from 'path';
 import { ExportConfig } from '../types';
 import { makeDirectory } from './file-helper';
-import { sanitizePath } from 'cli-utilities';
+import { sanitizePath } from '@contentstack/cli-utilities';
 
 export default async function setupExportDir(exportConfig: ExportConfig) {
   makeDirectory(exportConfig.exportDir);

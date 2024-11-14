@@ -1,5 +1,5 @@
-import { Command } from 'cli-command';
-import { cliux, formatError } from 'cli-utilities';
+import { Command } from '@contentstack/cli-command';
+import { cliux, formatError } from '@contentstack/cli-utilities';
 import { BaseCommand } from '../../base-command';
 
 export default class WhoamiCommand extends BaseCommand<typeof WhoamiCommand> {

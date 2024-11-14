@@ -9,7 +9,7 @@ const apiVersionForNRP = '3.2';
 const nrpApiVersionWarning = `Provided apiVersion is invalid. ${apiVersionForNRP} is only supported value. Continuing with regular bulk-publish for now.`;
 
 const { getLoggerInstance, addLogs, getLogsDirPath } = require('../util/logger');
-const { sanitizePath } = require('cli-utilities');
+const { sanitizePath } = require('@contentstack/cli-utilities');
 const logsDir = getLogsDirPath();
 
 let logger;

@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { authHandler, interactive } from '../../src/utils';
-import { CLIError, cliux } from 'cli-utilities';
+import { CLIError, cliux } from '@contentstack/cli-utilities';
 import { User } from '../../src/interfaces';
 import * as config from '../config.json';
 

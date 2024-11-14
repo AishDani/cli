@@ -1,5 +1,5 @@
-import { Command } from 'cli-command';
-import { cliux, messageHandler, managementSDKClient, flags, isAuthenticated } from 'cli-utilities';
+import { Command } from '@contentstack/cli-command';
+import { cliux, messageHandler, managementSDKClient, flags, isAuthenticated } from '@contentstack/cli-utilities';
 import { getbranchesList, getbranchConfig, interactive, handleErrorMsg } from '../../../utils/index';
 import chalk from 'chalk';
 export default class BranchListCommand extends Command {

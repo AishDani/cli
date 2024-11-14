@@ -3,7 +3,7 @@ const path = require('path');
 const chalk = require('chalk');
 const { cloneDeep, find, findIndex } = require('lodash');
 const { fileHelper, log, executeTask, formatError, schemaTemplate, lookupExtension } = require('../../utils');
-const { sanitizePath } = require('cli-utilities');
+const { sanitizePath } = require('@contentstack/cli-utilities');
 
 class ContentTypesImport {
   constructor(importConfig, stackAPIClient) {

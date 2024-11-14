@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { ContentstackClient } from 'cli-utilities';
+import { ContentstackClient } from '@contentstack/cli-utilities';
 import { setupBranches, setupExportDir, log, formatError, writeExportMetaFile } from '../utils';
 import startModuleExport from './modules';
 import startJSModuleExport from './modules-js';

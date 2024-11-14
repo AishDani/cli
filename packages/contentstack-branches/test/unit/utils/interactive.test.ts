@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { describe, it, beforeEach, afterEach } from 'mocha';
 import { stub, assert } from 'sinon';
-import { cliux, messageHandler } from 'cli-utilities';
+import { cliux, messageHandler } from '@contentstack/cli-utilities';
 import { interactive } from '../../../src/utils';
 import {mockData} from '../mock/data'
 

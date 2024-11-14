@@ -1,14 +1,14 @@
 <!-- Insert Nodejs CI here -->
 <!-- Insert Audit version here -->
 
-# cli-audit
+# @contenstack/cli-audit
 
 Audit plugin
 
 ## How to install this plugin
 
 ```shell
-$ csdx plugins:install cli-audit
+$ csdx plugins:install @contenstack/cli-audit
 ```
 
 ## How to use this plugin
@@ -16,11 +16,11 @@ $ csdx plugins:install cli-audit
 <!-- usage -->
 
 ```sh-session
-$ npm install -g cli-audit
+$ npm install -g @contenstack/cli-audit
 $ csdx COMMAND
 running command...
 $ csdx (--version|-v)
-cli-audit/1.6.5 darwin-arm64 node-v21.6.1
+@contenstack/cli-audit/1.6.5 darwin-arm64 node-v21.6.1
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND

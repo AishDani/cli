@@ -7,7 +7,7 @@ import filter from 'lodash/filter';
 import includes from 'lodash/includes';
 import isEmpty from 'lodash/isEmpty';
 import { basename, resolve } from 'path';
-import { cliux, configHandler, HttpClient, ux } from 'cli-utilities';
+import { cliux, configHandler, HttpClient, ux } from '@contentstack/cli-utilities';
 import { createReadStream, existsSync, PathLike, statSync } from 'fs';
 
 import { print } from '../util';

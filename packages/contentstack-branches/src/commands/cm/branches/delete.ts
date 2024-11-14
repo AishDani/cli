@@ -1,5 +1,5 @@
-import { Command } from 'cli-command';
-import { messageHandler, flags, cliux, isAuthenticated } from 'cli-utilities';
+import { Command } from '@contentstack/cli-command';
+import { messageHandler, flags, cliux, isAuthenticated } from '@contentstack/cli-utilities';
 import { deleteBranch } from '../../../utils/delete-branch';
 import { interactive, handleErrorMsg } from '../../../utils';
 

@@ -4,9 +4,9 @@ const { test } = require('cli-dev-dependencies');
 
 const { getEnvData, getStackDetailsByRegion } = require('./utils/helper');
 const { DEFAULT_TIMEOUT, PRINT_LOGS, ALIAS_NAME } = require('./config.json');
-const LogoutCommand = require('cli-auth/lib/commands/auth/logout').default;
-const RemoveTokenCommand = require('cli-auth/lib/commands/auth/tokens/remove').default;
-const { cliux: CliUx, messageHandler, configHandler } = require('cli-utilities');
+const LogoutCommand = require('@contenstack/cli-auth/lib/commands/auth/logout').default;
+const RemoveTokenCommand = require('@contenstack/cli-auth/lib/commands/auth/tokens/remove').default;
+const { cliux: CliUx, messageHandler, configHandler } = require('@contentstack/cli-utilities');
 const { DELIMITER, KEY_VAL_DELIMITER } = process.env;
 
 const { ENC_CONFIG_NAME } = getEnvData();

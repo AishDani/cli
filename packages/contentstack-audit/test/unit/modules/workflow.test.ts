@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import { fancy } from 'fancy-test';
 import { expect } from '@oclif/test';
 import cloneDeep from 'lodash/cloneDeep';
-import { ux } from 'cli-utilities';
+import { ux } from '@contentstack/cli-utilities';
 
 import config from '../../../src/config';
 import { Workflows } from '../../../src/modules';

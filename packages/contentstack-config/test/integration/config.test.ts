@@ -2,7 +2,7 @@ import * as path from "path";
 import { expect, test } from "@oclif/test";
 // @ts-ignore
 import { Helper } from "./utils";
-import { cliux, messageHandler } from "cli-utilities";
+import { cliux, messageHandler } from "@contentstack/cli-utilities";
 // @ts-ignore
 import { PRINT_LOGS, CDA, CMA, REGION_NAME } from "./config.json";
 

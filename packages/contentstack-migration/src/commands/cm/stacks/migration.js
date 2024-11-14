@@ -6,7 +6,7 @@
 // Dependencies
 const Listr = require('listr');
 const { resolve, extname } = require('path');
-const { Command } = require('cli-command');
+const { Command } = require('@contentstack/cli-command');
 const { waterfall } = require('async');
 const { Parser } = require('../../../modules');
 const { ActionList } = require('../../../actions');
@@ -20,7 +20,7 @@ const {
   isAuthenticated,
   pathValidator,
   sanitizePath,
-} = require('cli-utilities');
+} = require('@contentstack/cli-utilities');
 
 const { ApiError, SchemaValidator, MigrationError, FieldValidator } = require('../../../validators');
 

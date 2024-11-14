@@ -17,7 +17,7 @@ const {
   messageHandler,
   managementSDKClient,
   ContentstackClient,
-} = require('cli-utilities');
+} = require('@contentstack/cli-utilities');
 
 const directory = './data';
 const delimeter = os.platform() === 'win32' ? '\\' : '/';

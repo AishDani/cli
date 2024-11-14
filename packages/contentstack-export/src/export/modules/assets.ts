@@ -11,7 +11,7 @@ import includes from 'lodash/includes';
 import progress from 'progress-stream';
 import { createWriteStream } from 'node:fs';
 import { resolve as pResolve } from 'node:path';
-import { FsUtility, getDirectories, configHandler } from 'cli-utilities';
+import { FsUtility, getDirectories, configHandler } from '@contentstack/cli-utilities';
 
 import { ModuleClassParams } from '../../types';
 import config from '../../config';

@@ -3,7 +3,7 @@ import find from 'lodash/find';
 import forEach from 'lodash/forEach';
 import isArray from 'lodash/isArray';
 import includes from 'lodash/includes';
-import { Flags, FlagInput, cliux as ux } from 'cli-utilities';
+import { Flags, FlagInput, cliux as ux } from '@contentstack/cli-utilities';
 
 import { BaseCommand } from '../../base-command';
 import { environmentsQuery } from '../../graphql';

@@ -3,7 +3,7 @@
 /* eslint-disable complexity */
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
-const { configHandler } = require('cli-utilities');
+const { configHandler } = require('@contentstack/cli-utilities');
 const { getQueue } = require('../util/queue');
 const defaults = require('../config/defaults.json');
 const { performBulkUnPublish, UnpublishEntry, UnpublishAsset, initializeLogger } = require('../consumer/publish');
@@ -12,7 +12,7 @@ const { validateFile } = require('../util/fs');
 const queue = getQueue();
 const entryQueue = getQueue();
 const assetQueue = getQueue();
-const { Command } = require('cli-command');
+const { Command } = require('@contentstack/cli-command');
 const command = new Command();
 const { isEmpty } = require('../util');
 

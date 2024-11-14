@@ -1,7 +1,7 @@
 const { fancy } = require('fancy-test');
 const { test, expect } = require('@oclif/test');
 const inquirer = require('inquirer');
-const { cliux, configHandler, ContentstackClient, managementSDKClient } = require('cli-utilities');
+const { cliux, configHandler, ContentstackClient, managementSDKClient } = require('@contentstack/cli-utilities');
 
 const mockData = require('../mock-data/common.mock.json');
 const { getStacks, chooseBranch } = require('../../src/util/index');

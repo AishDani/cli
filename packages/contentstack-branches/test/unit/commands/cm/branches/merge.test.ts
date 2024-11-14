@@ -2,7 +2,7 @@ import { describe, it, beforeEach, afterEach } from 'mocha';
 import { expect } from 'chai';
 import { stub, assert } from 'sinon';
 import MergeCommand from '../../../../../src/commands/cm/branches/merge';
-import { cliux } from 'cli-utilities';
+import { cliux } from '@contentstack/cli-utilities';
 import { mockData } from '../../../mock/data';
 import * as mergeHelper from '../../../../../src/utils/merge-helper';
 import { MergeHandler } from '../../../../../src/branch/index';

@@ -4,7 +4,7 @@ import EventEmitter from 'events';
 import { dirname, resolve } from 'path';
 import includes from 'lodash/includes';
 import { ApolloClient } from '@apollo/client/core';
-import { Command } from 'cli-command';
+import { Command } from '@contentstack/cli-command';
 import {
   Flags,
   FlagInput,
@@ -15,7 +15,7 @@ import {
   ContentstackClient,
   managementSDKClient,
   managementSDKInitiator,
-} from 'cli-utilities';
+} from '@contentstack/cli-utilities';
 
 import config from './config';
 import { getLaunchHubUrl, GraphqlApiClient, Logger } from './util';

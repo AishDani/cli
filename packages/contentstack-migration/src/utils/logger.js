@@ -4,7 +4,7 @@ const { createLogger, format, transports } = require('winston');
 const { resolve, join } = require('path');
 const { slice } = Array.prototype;
 const { stringify } = JSON;
-const { pathValidator, sanitizePath } = require('cli-utilities');
+const { pathValidator, sanitizePath } = require('@contentstack/cli-utilities');
 
 const { combine, label, printf, colorize } = format;
 

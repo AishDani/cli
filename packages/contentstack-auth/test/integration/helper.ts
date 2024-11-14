@@ -1,4 +1,4 @@
-import { Command } from 'cli-command';
+import { Command } from '@contentstack/cli-command';
 
 export interface MockSTDIN {
   /** Queue up data to be read by the stream. Results in data (and possibly end) events being dispatched. */

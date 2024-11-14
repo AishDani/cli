@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { execFileSync } = require('child_process');
 const path = require('path');
-const { sanitizePath } = require('cli-utilities');
+const { sanitizePath } = require('@contentstack/cli-utilities');
 const os = require('os');
 const { builtinModules } = require('module');
 

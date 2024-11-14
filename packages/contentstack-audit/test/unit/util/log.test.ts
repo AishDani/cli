@@ -3,7 +3,7 @@ import winston from 'winston';
 import { resolve } from 'path';
 import { fancy } from 'fancy-test';
 import { expect } from '@oclif/test';
-import { cliux as ux } from 'cli-utilities';
+import { cliux as ux } from '@contentstack/cli-utilities';
 import { FileTransportInstance } from 'winston/lib/winston/transports';
 
 import { Logger, print } from '../../../src/util';

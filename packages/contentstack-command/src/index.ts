@@ -1,6 +1,6 @@
 import { URL } from 'url';
 import * as ContentstackDeliverySDK from 'contentstack';
-import { configHandler, CLIError, Command, cliux } from 'cli-utilities';
+import { configHandler, CLIError, Command, cliux } from '@contentstack/cli-utilities';
 
 import { Region } from './interfaces';
 

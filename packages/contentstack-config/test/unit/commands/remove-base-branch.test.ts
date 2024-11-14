@@ -4,7 +4,7 @@ import { stub } from 'sinon';
 import RemoveBranchConfigCommand from '../../../src/commands/config/remove/base-branch';
 import { interactive } from '../../../src/utils';
 import { removeConfigMockData } from '../mock';
-import { cliux, configHandler } from 'cli-utilities';
+import { cliux, configHandler } from '@contentstack/cli-utilities';
 
 describe('Delete config', () => {
   it('Delete config with all flags, should be successful', async function () {

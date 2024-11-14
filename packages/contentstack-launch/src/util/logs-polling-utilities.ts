@@ -1,5 +1,5 @@
 import EventEmitter from 'events';
-import { ux } from 'cli-utilities';
+import { ux } from '@contentstack/cli-utilities';
 import { ApolloClient, ObservableQuery } from '@apollo/client/core';
 
 import { LogPollingInput, ConfigType } from '../types';

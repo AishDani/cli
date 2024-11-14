@@ -1,7 +1,7 @@
 const path = require('path');
 const chalk = require('chalk');
 const { formatError, log, fileHelper } = require('../../utils');
-const { sanitizePath } = require('cli-utilities');
+const { sanitizePath } = require('@contentstack/cli-utilities');
 class LocaleExport {
   constructor(exportConfig, stackAPIClient) {
     this.stackAPIClient = stackAPIClient;

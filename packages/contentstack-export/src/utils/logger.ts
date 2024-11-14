@@ -8,7 +8,7 @@ import * as winston from 'winston';
 import * as path from 'path';
 import mkdirp from 'mkdirp';
 import { ExportConfig } from '../types';
-import { sanitizePath } from 'cli-utilities'
+import { sanitizePath } from '@contentstack/cli-utilities'
 const slice = Array.prototype.slice;
 
 const ansiRegexPattern = [

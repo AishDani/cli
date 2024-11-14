@@ -1,6 +1,6 @@
-import { cliux, flags, configHandler, FlagInput } from 'cli-utilities';
+import { cliux, flags, configHandler, FlagInput } from '@contentstack/cli-utilities';
 import { interactive } from '../../../utils';
-import { Command } from 'cli-command';
+import { Command } from '@contentstack/cli-command';
 
 export default class RemoveEarlyAccessHeader extends Command {
   static description = 'Remove Early Access header';

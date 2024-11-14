@@ -1,7 +1,7 @@
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
 import path from 'path';
-import { cliux, managementSDKClient } from 'cli-utilities';
+import { cliux, managementSDKClient } from '@contentstack/cli-utilities';
 import { BranchDiffPayload, MergeSummary } from '../interfaces';
 import {
   askCompareBranch,

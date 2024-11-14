@@ -1,6 +1,6 @@
 import * as shortUUID from 'short-uuid';
 import * as path from 'path';
-import { configHandler, pathValidator, sanitizePath } from 'cli-utilities';
+import { configHandler, pathValidator, sanitizePath } from '@contentstack/cli-utilities';
 import { machineIdSync } from 'node-machine-id';
 
 export default class CsdxContext {

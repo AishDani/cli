@@ -2,8 +2,8 @@ import {
   cliux, 
   managementSDKClient,
   isAuthenticated
-} from 'cli-utilities';
-import {LoggerService} from 'cli-utilities'
+} from '@contentstack/cli-utilities';
+import {LoggerService} from '@contentstack/cli-utilities'
 // TBD: run region command if region is not there
 
 export default async function (opts): Promise<void> {

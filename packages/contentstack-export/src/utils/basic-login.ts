@@ -15,7 +15,7 @@ const {
   cliux,
   configHandler,
   authHandler,
-} = require('cli-utilities');
+} = require('@contentstack/cli-utilities');
 
 const login = async (config: ExternalConfig): Promise<any> => {
   const client = await managementSDKClient(config);

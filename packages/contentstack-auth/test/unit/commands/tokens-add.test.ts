@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import { configHandler, cliux, logger } from 'cli-utilities';
+import { configHandler, cliux, logger } from '@contentstack/cli-utilities';
 import TokensAddCommand from '../../../src/commands/auth/tokens/add';
 import { tokenValidation } from '../../../src/utils';
 import { stub, assert } from 'sinon';

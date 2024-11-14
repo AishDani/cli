@@ -1,6 +1,6 @@
 const winston = require('winston');
 const path = require('path');
-const { sanitizePath } = require('cli-utilities');
+const { sanitizePath } = require('@contentstack/cli-utilities');
 module.exports = class MigrationLogger {
   constructor(filePath) {
     this.filePath = path.join(sanitizePath(filePath), 'migration-logs');

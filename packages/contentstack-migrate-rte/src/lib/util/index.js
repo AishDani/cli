@@ -1,4 +1,4 @@
-const { Command } = require('cli-command');
+const { Command } = require('@contentstack/cli-command');
 const command = new Command();
 const chalk = require('chalk');
 const {
@@ -20,7 +20,13 @@ const { JSDOM } = require('jsdom');
 const collapseWithSpace = require('collapse-whitespace');
 const { htmlToJson } = require('json-rte-serializer');
 const nodePath = require('path');
-const { cliux, managementSDKClient, isAuthenticated, doesBranchExist, pathValidator } = require('cli-utilities');
+const {
+  cliux,
+  managementSDKClient,
+  isAuthenticated,
+  doesBranchExist,
+  pathValidator,
+} = require('@contentstack/cli-utilities');
 const packageValue = require('../../../package.json');
 const isBlank = (variable) => {
   return isNil(variable) || isEmpty(variable);

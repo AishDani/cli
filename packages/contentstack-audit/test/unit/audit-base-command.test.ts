@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import { fancy } from 'fancy-test';
 import { PassThrough } from 'stream';
 import { expect } from '@oclif/test';
-import { ux, cliux } from 'cli-utilities';
+import { ux, cliux } from '@contentstack/cli-utilities';
 
 import { AuditBaseCommand } from '../../src/audit-base-command';
 import { ContentType, Entries, GlobalField, Extensions, Workflows } from '../../src/modules';

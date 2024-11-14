@@ -1,7 +1,7 @@
 import { resolve } from 'path';
-import { AuditFix } from 'cli-audit';
-import messages, { $t } from 'cli-audit/lib/messages';
-import { addLocale, cliux, ContentstackClient, Logger } from 'cli-utilities';
+import { AuditFix } from '@contenstack/cli-audit';
+import messages, { $t } from '@contenstack/cli-audit/lib/messages';
+import { addLocale, cliux, ContentstackClient, Logger } from '@contentstack/cli-utilities';
 
 import startModuleImport from './modules';
 import startJSModuleImport from './modules-js';

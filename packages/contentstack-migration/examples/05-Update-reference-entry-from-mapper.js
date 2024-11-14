@@ -1,7 +1,7 @@
 const fs = require('fs');
 const chalk = require('chalk');
 const path = require('path');
-const { validateRegex } = require('cli-utilities');
+const { validateRegex } = require('@contentstack/cli-utilities');
 
 module.exports = async ({ migration, stackSDKInstance, managementAPIClient, config }) => {
   const modules = ['entries', 'assets', 'extensions', 'marketplace_apps'];

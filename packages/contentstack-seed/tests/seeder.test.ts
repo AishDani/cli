@@ -2,7 +2,7 @@ jest.mock('../src/seed/github/client');
 jest.mock('../src/seed/contentstack/client');
 jest.mock('../src/seed/interactive');
 jest.mock('tmp');
-jest.mock('cli-utilities');
+jest.mock('@contentstack/cli-utilities');
 jest.mock('inquirer');
 
 import GitHubClient from '../src/seed/github/client';
@@ -11,7 +11,7 @@ import ContentModelSeeder, { ContentModelSeederOptions } from '../src/seed';
 import { inquireOrganization, inquireProceed, inquireStack, inquireRepo } from '../src/seed/interactive';
 
 import * as tmp from 'tmp';
-import { cliux } from 'cli-utilities';
+import { cliux } from '@contentstack/cli-utilities';
 import * as config from './config.json';
 
 const org_name = 'Test Organization';

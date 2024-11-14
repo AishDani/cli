@@ -1,9 +1,9 @@
 import * as path from 'path';
-import { ContentstackClient } from 'cli-utilities';
+import { ContentstackClient } from '@contentstack/cli-utilities';
 import { log, formatError, fsUtil, executeTask } from '../../utils';
 import { ExportConfig, ModuleClassParams } from '../../types';
 import BaseClass from './base-class';
-import { sanitizePath } from 'cli-utilities';
+import { sanitizePath } from '@contentstack/cli-utilities';
 
 export default class ContentTypesExport extends BaseClass {
   private stackAPIClient: ReturnType<ContentstackClient['stack']>;

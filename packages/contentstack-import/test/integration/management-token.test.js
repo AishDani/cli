@@ -3,11 +3,11 @@ const { promises: fsPromises } = fs;
 const path = require('path');
 const { expect, test } = require('@oclif/test');
 const { test: customTest } = require('cli-dev-dependencies');
-const { messageHandler, configHandler } = require('cli-utilities');
-const LoginCommand = require('cli-auth/lib/commands/auth/login').default;
-const AddTokenCommand = require('cli-auth/lib/commands/auth/tokens/add').default;
-const RegionSetCommand = require('cli-config/lib/commands/config/set/region').default;
-const ExportCommand = require('cli-cm-export/src/commands/cm/stacks/export');
+const { messageHandler, configHandler } = require('@contentstack/cli-utilities');
+const LoginCommand = require('@contenstack/cli-auth/lib/commands/auth/login').default;
+const AddTokenCommand = require('@contenstack/cli-auth/lib/commands/auth/tokens/add').default;
+const RegionSetCommand = require('@contentstack/cli-config/lib/commands/config/set/region').default;
+const ExportCommand = require('@contentstack/cli-cm-export/src/commands/cm/stacks/export');
 
 const {
   getStackDetailsByRegion,

@@ -1,5 +1,5 @@
-const { Command } = require('cli-command');
-const { printFlagDeprecation, flags } = require('cli-utilities');
+const { Command } = require('@contentstack/cli-command');
+const { printFlagDeprecation, flags } = require('@contentstack/cli-utilities');
 const { isEmpty } = require('lodash');
 const chalk = require('chalk');
 let {

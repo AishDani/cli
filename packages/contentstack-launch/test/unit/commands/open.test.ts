@@ -1,7 +1,7 @@
 import { describe, it } from 'mocha';
 import { stub, mock as sinonMock, assert } from 'sinon';
 import Open from '../../../src/commands/launch/open';
-import { cliux } from 'cli-utilities';
+import { cliux } from '@contentstack/cli-utilities';
 import { testFlags } from '../mock';
 import { expect } from 'chai';
 import { config } from 'dotenv';

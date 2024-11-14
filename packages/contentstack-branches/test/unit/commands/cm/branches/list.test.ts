@@ -4,7 +4,7 @@ import { stub } from 'sinon';
 import BranchListCommand from '../../../../../src/commands/cm/branches/index';
 import { branchMockData } from '../../../mock/data';
 import { interactive } from '../../../../../src/utils';
-import { cliux } from 'cli-utilities';
+import { cliux } from '@contentstack/cli-utilities';
 
 describe('List branches', () => {
   it('List branches with all flags, should be successful', async function () {

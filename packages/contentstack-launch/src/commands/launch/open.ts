@@ -2,7 +2,7 @@ import open from 'open';
 import map from 'lodash/map';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
-import { FlagInput, Flags, cliux as ux } from 'cli-utilities';
+import { FlagInput, Flags, cliux as ux } from '@contentstack/cli-utilities';
 
 import { BaseCommand } from '../../base-command';
 import { environmentsQuery } from '../../graphql';

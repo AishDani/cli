@@ -1,5 +1,5 @@
-const { Command } = require('cli-command');
-const { printFlagDeprecation, cliux, flags } = require('cli-utilities');
+const { Command } = require('@contentstack/cli-command');
+const { printFlagDeprecation, cliux, flags } = require('@contentstack/cli-utilities');
 
 const store = require('../../../util/store.js');
 const { getStack } = require('../../../util/client.js');

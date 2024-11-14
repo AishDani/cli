@@ -1,4 +1,4 @@
-# cli-auth
+# @contenstack/cli-auth
 
 It is Contentstack’s CLI plugin to perform authentication-related activities. To get started with authentication, refer to the [CLI’s Authentication documentation](https://www.contentstack.com/docs/developers/cli/authentication)
 
@@ -6,7 +6,7 @@ It is Contentstack’s CLI plugin to perform authentication-related activities. 
 
 <!-- toc -->
 
-- [cli-auth](#contentstackcli-auth)
+- [@contenstack/cli-auth](#contentstack@contenstack/cli-auth)
 - [Usage](#usage)
 - [Commands](#commands)
 <!-- tocstop -->
@@ -16,11 +16,11 @@ It is Contentstack’s CLI plugin to perform authentication-related activities. 
 <!-- usage -->
 
 ```sh-session
-$ npm install -g cli-auth
+$ npm install -g @contenstack/cli-auth
 $ csdx COMMAND
 running command...
 $ csdx (--version)
-cli-auth/1.3.20 darwin-arm64 node-v21.6.1
+@contenstack/cli-auth/1.3.20 darwin-arm64 node-v21.6.1
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND

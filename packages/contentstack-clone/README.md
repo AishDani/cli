@@ -1,10 +1,10 @@
-# cli-cm-clone
+# @contentstack/cli-cm-clone
 
 It is Contentstack’s CLI plugin to clone a stack. Using this command, you can export a stack’s content/schema to a new or existing stack. Refer to the [Clone a Stack](https://www.contentstack.com/docs/developers/cli/clone-a-stack/) documentation to learn more.
 
 <!-- toc -->
 
-- [cli-cm-clone](#contentstackcli-cm-clone)
+- [@contentstack/cli-cm-clone](#contentstack@contentstack/cli-cm-clone)
 - [Usage](#usage)
 - [Commands](#commands)
 <!-- tocstop -->
@@ -14,11 +14,11 @@ It is Contentstack’s CLI plugin to clone a stack. Using this command, you can 
 <!-- usage -->
 
 ```sh-session
-$ npm install -g cli-cm-clone
+$ npm install -g @contentstack/cli-cm-clone
 $ csdx COMMAND
 running command...
 $ csdx (--version)
-cli-cm-clone/1.10.7 darwin-arm64 node-v21.6.1
+@contentstack/cli-cm-clone/1.10.7 darwin-arm64 node-v21.6.1
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND
@@ -28,7 +28,7 @@ USAGE
 <!-- usagestop -->
 
 ```sh-session
-$ npm install -g cli-cm-clone
+$ npm install -g @contentstack/cli-cm-clone
 $ csdx COMMAND
 running command...
 $ csdx --help [COMMAND]

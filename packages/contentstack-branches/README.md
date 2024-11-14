@@ -1,11 +1,11 @@
-# cli-cm-branches
+# @contenstack/cli-cm-branches
 
 It is Contentstack’s CLI plugin to compare and merge content.
 [![License](https://img.shields.io/npm/l/cli)](https://github.com/contentstack/cli/blob/main/LICENSE)
 
 <!-- toc -->
 
-- [cli-cm-branches](#contentstackcli-cm-branches)
+- [@contenstack/cli-cm-branches](#contentstack@contenstack/cli-cm-branches)
 - [Usage](#usage)
 - [Commands](#commands)
 <!-- tocstop -->
@@ -35,11 +35,11 @@ For switching to AZURE-NA region update the hosts at config/default.js
 <!-- usage -->
 
 ```sh-session
-$ npm install -g cli-cm-branches
+$ npm install -g @contenstack/cli-cm-branches
 $ csdx COMMAND
 running command...
 $ csdx (--version)
-cli-cm-branches/1.1.2 darwin-arm64 node-v21.6.1
+@contenstack/cli-cm-branches/1.1.2 darwin-arm64 node-v21.6.1
 $ csdx --help [COMMAND]
 USAGE
   $ csdx COMMAND

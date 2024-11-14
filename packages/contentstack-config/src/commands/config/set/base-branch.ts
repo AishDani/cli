@@ -1,5 +1,5 @@
-import { Command } from 'cli-command';
-import { cliux, flags, configHandler, FlagInput } from 'cli-utilities';
+import { Command } from '@contentstack/cli-command';
+import { cliux, flags, configHandler, FlagInput } from '@contentstack/cli-utilities';
 import { interactive } from '../../../utils';
 
 export default class BranchSetCommand extends Command {

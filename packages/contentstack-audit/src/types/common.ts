@@ -1,4 +1,4 @@
-import { ux } from "cli-utilities";
+import { ux } from "@contentstack/cli-utilities";
 
 type IFlags = typeof ux.table.Flags;
 type IncludeFlags<T, K extends keyof T> = Pick<T, K>;

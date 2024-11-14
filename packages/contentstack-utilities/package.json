@@ -1,5 +1,5 @@
 {
-  "name": "cli-utilities",
+  "name": "@contentstack/cli-utilities",
   "version": "1.7.1",
   "description": "Utilities for contentstack projects",
   "main": "lib/index.js",

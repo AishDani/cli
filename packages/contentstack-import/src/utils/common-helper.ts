@@ -7,7 +7,7 @@
 
 import * as _ from 'lodash';
 import * as path from 'path';
-import { HttpClient, managementSDKClient, isAuthenticated, sanitizePath } from 'cli-utilities';
+import { HttpClient, managementSDKClient, isAuthenticated, sanitizePath } from '@contentstack/cli-utilities';
 import { readFileSync, readdirSync, readFile } from './file-helper';
 import chalk from 'chalk';
 import { log } from './logger';
