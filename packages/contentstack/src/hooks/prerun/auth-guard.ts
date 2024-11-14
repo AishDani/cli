@@ -1,6 +1,6 @@
 import { 
   cliux, 
-  managementSDKClient,
+  @contentstack/managementSDKClient,
   isAuthenticated
 } from '@contentstack/cli-utilities';
 import {LoggerService} from '@contentstack/cli-utilities'
@@ -24,7 +24,7 @@ export default async function (opts): Promise<void> {
       cliux.error('Please login to execute the command');
       this.exit();
     }
-    const client = await managementSDKClient({host: region.cma})
+    const client = await @contentstack/managementSDKClient({host: region.cma})
     try {
       const result = await client.getUser();
       if (!result) {

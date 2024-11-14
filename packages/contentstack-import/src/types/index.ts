@@ -6,7 +6,7 @@ export interface AuthOptions {
   contentstackClient: ContentstackClient;
 }
 
-export interface ContentStackManagementClient {
+export interface ContentStack@contentstack/managementClient {
   contentstackClient: object;
 }
 

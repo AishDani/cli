@@ -1,8 +1,8 @@
 import { HttpClient } from './http-client';
 
-export const addLocale = async (apiKey, managementToken, host) => {
+export const addLocale = async (apiKey, @contentstack/managementToken, host) => {
   const httpClient = new HttpClient({
-    headers: { api_key: apiKey, authorization: managementToken },
+    headers: { api_key: apiKey, authorization: @contentstack/managementToken },
   });
 
   const { data } = await httpClient.post(`https://${host}/v3/locales`, {

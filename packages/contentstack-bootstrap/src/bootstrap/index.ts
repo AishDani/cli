@@ -14,7 +14,7 @@ export interface BootstrapOptions {
   cloneDirectory: string;
   seedParams: SeedParams;
   appConfig: AppConfig;
-  managementAPIClient: any;
+  @contentstack/managementAPIClient: any;
   region: any;
   accessToken?: string;
   appType: string;
@@ -27,8 +27,8 @@ export interface SeedParams {
   org?: string;
   stackName?: string;
   yes?: string;
-  managementTokenAlias?: string | undefined;
-  managementToken?: string | undefined;
+  @contentstack/managementTokenAlias?: string | undefined;
+  @contentstack/managementToken?: string | undefined;
 }
 
 /**
@@ -47,14 +47,14 @@ export default class Bootstrap {
 
   private region: any;
 
-  private managementAPIClient: any;
+  private @contentstack/managementAPIClient: any;
 
   private cloneDirectory: string;
 
   constructor(public options: BootstrapOptions) {
     this.region = options.region;
     this.appConfig = options.appConfig;
-    this.managementAPIClient = options.managementAPIClient;
+    this.@contentstack/managementAPIClient = options.@contentstack/managementAPIClient;
     this.repo = GitHubClient.parsePath(options.appConfig.source);
     if (options.appConfig.branch) {
       this.repo.branch = options.appConfig.branch;
@@ -95,8 +95,8 @@ export default class Bootstrap {
       if (this.options.seedParams.yes) {
         cmd.push('-y', this.options.seedParams.yes);
       }
-      if (this.options.seedParams.managementTokenAlias) {
-        cmd.push('--alias', this.options.seedParams.managementTokenAlias);
+      if (this.options.seedParams.@contentstack/managementTokenAlias) {
+        cmd.push('--alias', this.options.seedParams.@contentstack/managementTokenAlias);
       }
       if (this.options.master_locale) {
         cmd.push('--locale', this.options.master_locale);
@@ -105,13 +105,13 @@ export default class Bootstrap {
       const result = await ContentStackSeed.run(cmd);
       if (result && result.api_key) {
         await setupEnvironments(
-          this.managementAPIClient,
+          this.@contentstack/managementAPIClient,
           result.api_key,
           this.appConfig,
           this.cloneDirectory,
           this.region,
           this.options.livePreviewEnabled as boolean,
-          this.options.seedParams.managementToken as string,
+          this.options.seedParams.@contentstack/managementToken as string,
         );
       } else {
         throw new Error(messageHandler.parse('CLI_BOOTSTRAP_NO_API_KEY_FOUND'));

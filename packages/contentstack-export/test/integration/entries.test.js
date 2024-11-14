@@ -62,7 +62,7 @@ module.exports = (region) => {
           });
       });
 
-      describe('cm:stacks:export entries [management-token]', () => {
+      describe('cm:stacks:export entries [@contentstack/management-token]', () => {
         test
           .timeout(DEFAULT_TIMEOUT || 600000) // NOTE setting default timeout as 10 minutes
           .stdout({ print: PRINT_LOGS || false })
@@ -104,7 +104,7 @@ module.exports = (region) => {
 
     afterEach(async () => {
       await cleanUp(path.join(__dirname, '..', '..', `${EXPORT_PATH}_${stack}`));
-      defaultConfig.management_token = undefined;
+      defaultConfig.@contentstack/management_token = undefined;
       defaultConfig.branch = undefined;
       defaultConfig.branches = [];
     });

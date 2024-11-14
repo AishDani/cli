@@ -86,7 +86,7 @@ module.exports = (region) => {
 
       after(async () => {
         await cleanUp(path.join(__dirname, '..', '..', `${IMPORT_PATH}_${stack}`));
-        defaultConfig.management_token = null;
+        defaultConfig.@contentstack/management_token = null;
         defaultConfig.branch = null;
         defaultConfig.branches = [];
         defaultConfig.moduleName = null;

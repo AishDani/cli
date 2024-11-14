@@ -1,12 +1,12 @@
 const { Command } = require('@contentstack/cli-command');
 const {
   configHandler,
-  managementSDKClient,
+  @contentstack/managementSDKClient,
   flags,
   isAuthenticated,
   cliux,
   doesBranchExist,
-  isManagementTokenValid,
+  is@contentstack/managementTokenValid,
 } = require('@contentstack/cli-utilities');
 const util = require('../../util');
 const config = require('../../util/config');
@@ -21,7 +21,7 @@ class ExportToCsvCommand extends Command {
     }),
     alias: flags.string({
       char: 'a',
-      description: 'Alias of the management token',
+      description: 'Alias of the @contentstack/management token',
     }),
     org: flags.string({
       multiple: false,
@@ -74,7 +74,7 @@ class ExportToCsvCommand extends Command {
 
   async run() {
     try {
-      let action, managementAPIClient;
+      let action, @contentstack/managementAPIClient;
       const {
         flags: {
           org,
@@ -84,7 +84,7 @@ class ExportToCsvCommand extends Command {
           'stack-api-key': stackAPIKey,
           locale: locale,
           'content-type': contentTypesFlag,
-          alias: managementTokenAlias,
+          alias: @contentstack/managementTokenAlias,
           branch: branchUid,
           'team-uid': teamUid,
           'taxonomy-uid': taxonomyUID,
@@ -92,8 +92,8 @@ class ExportToCsvCommand extends Command {
         },
       } = await this.parse(ExportToCsvCommand);
 
-      if (!managementTokenAlias) {
-        managementAPIClient = await managementSDKClient({ host: this.cmaHost });
+      if (!@contentstack/managementTokenAlias) {
+        @contentstack/managementAPIClient = await @contentstack/managementSDKClient({ host: this.cmaHost });
         if (!isAuthenticated()) {
           this.error(config.CLI_EXPORT_CSV_ENTRIES_ERROR, {
             exit: 2,
@@ -117,16 +117,16 @@ class ExportToCsvCommand extends Command {
             let language;
             let contentTypes = [];
 
-            if (managementTokenAlias) {
-              const { stackDetails, apiClient } = await this.getAliasDetails(managementTokenAlias, stackName);
-              managementAPIClient = apiClient;
+            if (@contentstack/managementTokenAlias) {
+              const { stackDetails, apiClient } = await this.getAliasDetails(@contentstack/managementTokenAlias, stackName);
+              @contentstack/managementAPIClient = apiClient;
               stack = stackDetails;
             } else {
-              stack = await this.getStackDetails(managementAPIClient, stackAPIKey, org);
+              stack = await this.getStackDetails(@contentstack/managementAPIClient, stackAPIKey, org);
             }
 
-            stackAPIClient = this.getStackClient(managementAPIClient, stack);
-            await this.checkAndUpdateBranchDetail(branchUid, stack, stackAPIClient, managementAPIClient);
+            stackAPIClient = this.getStackClient(@contentstack/managementAPIClient, stack);
+            await this.checkAndUpdateBranchDetail(branchUid, stack, stackAPIClient, @contentstack/managementAPIClient);
 
             const contentTypeCount = await util.getContentTypeCount(stackAPIClient);
 
@@ -200,11 +200,11 @@ class ExportToCsvCommand extends Command {
             if (org) {
               organization = { uid: org, name: orgName || org };
             } else {
-              organization = await util.chooseOrganization(managementAPIClient, action); // prompt for organization
+              organization = await util.chooseOrganization(@contentstack/managementAPIClient, action); // prompt for organization
             }
 
-            const orgUsers = await util.getOrgUsers(managementAPIClient, organization.uid, this);
-            const orgRoles = await util.getOrgRoles(managementAPIClient, organization.uid, this);
+            const orgUsers = await util.getOrgUsers(@contentstack/managementAPIClient, organization.uid, this);
+            const orgRoles = await util.getOrgRoles(@contentstack/managementAPIClient, organization.uid, this);
             const mappedUsers = util.getMappedUsers(orgUsers);
             const mappedRoles = util.getMappedRoles(orgRoles);
             const listOfUsers = util.cleanOrgUsers(orgUsers, mappedUsers, mappedRoles);
@@ -227,10 +227,10 @@ class ExportToCsvCommand extends Command {
             if (org) {
               organization = { uid: org, name: orgName || org };
             } else {
-              organization = await util.chooseOrganization(managementAPIClient, action); // prompt for organization
+              organization = await util.chooseOrganization(@contentstack/managementAPIClient, action); // prompt for organization
             }
 
-            await util.exportTeams(managementAPIClient, organization, teamUid, delimiter);
+            await util.exportTeams(@contentstack/managementAPIClient, organization, teamUid, delimiter);
           } catch (error) {
             if (error.message || error.errorMessage) {
               cliux.error(util.formatError(error));
@@ -242,15 +242,15 @@ class ExportToCsvCommand extends Command {
         case 'taxonomies': {
           let stack;
           let stackAPIClient;
-          if (managementTokenAlias) {
-            const { stackDetails, apiClient } = await this.getAliasDetails(managementTokenAlias, stackName);
-            managementAPIClient = apiClient;
+          if (@contentstack/managementTokenAlias) {
+            const { stackDetails, apiClient } = await this.getAliasDetails(@contentstack/managementTokenAlias, stackName);
+            @contentstack/managementAPIClient = apiClient;
             stack = stackDetails;
           } else {
-            stack = await this.getStackDetails(managementAPIClient, stackAPIKey, org);
+            stack = await this.getStackDetails(@contentstack/managementAPIClient, stackAPIKey, org);
           }
 
-          stackAPIClient = this.getStackClient(managementAPIClient, stack);
+          stackAPIClient = this.getStackClient(@contentstack/managementAPIClient, stack);
           await this.createTaxonomyAndTermCsvFile(stackAPIClient, stackName, stack, taxonomyUID, delimiter);
           break;
         }
@@ -266,18 +266,18 @@ class ExportToCsvCommand extends Command {
     return (string || '').split(' ').join('_').toLowerCase();
   }
 
-  getStackClient(managementAPIClient, stack) {
+  getStackClient(@contentstack/managementAPIClient, stack) {
     const stackInit = {
       api_key: stack.apiKey,
     };
     if (stack?.branch_uid) stackInit['branch_uid'] = stack.branch_uid;
     if (stack.token) {
-      return managementAPIClient.stack({
+      return @contentstack/managementAPIClient.stack({
         ...stackInit,
-        management_token: stack.token,
+        @contentstack/management_token: stack.token,
       });
     }
-    return managementAPIClient.stack(stackInit);
+    return @contentstack/managementAPIClient.stack(stackInit);
   }
 
   getStackBranches(stackAPIClient) {
@@ -294,9 +294,9 @@ class ExportToCsvCommand extends Command {
    * @param {string} branchUid
    * @param {object} stack
    * @param {*} stackAPIClient
-   * @param {*} managementAPIClient
+   * @param {*} @contentstack/managementAPIClient
    */
-  async checkAndUpdateBranchDetail(branchUid, stack, stackAPIClient, managementAPIClient) {
+  async checkAndUpdateBranchDetail(branchUid, stack, stackAPIClient, @contentstack/managementAPIClient) {
     if (branchUid) {
       try {
         const branchExists = await doesBranchExist(stackAPIClient, branchUid);
@@ -304,7 +304,7 @@ class ExportToCsvCommand extends Command {
           throw new Error(branchExists.errorMessage);
         }
         stack.branch_uid = branchUid;
-        stackAPIClient = this.getStackClient(managementAPIClient, stack);
+        stackAPIClient = this.getStackClient(@contentstack/managementAPIClient, stack);
       } catch (error) {
         if (error?.message || error?.errorMessage) {
           cliux.error(util.formatError(error));
@@ -314,45 +314,45 @@ class ExportToCsvCommand extends Command {
     } else {
       const stackBranches = await this.getStackBranches(stackAPIClient);
       if (stackBranches === undefined) {
-        stackAPIClient = this.getStackClient(managementAPIClient, stack);
+        stackAPIClient = this.getStackClient(@contentstack/managementAPIClient, stack);
       } else {
         const { branch } = await util.chooseBranch(stackBranches);
         stack.branch_uid = branch;
-        stackAPIClient = this.getStackClient(managementAPIClient, stack);
+        stackAPIClient = this.getStackClient(@contentstack/managementAPIClient, stack);
       }
     }
   }
 
   /**
    * fetch stack details from alias token
-   * @param {string} managementTokenAlias
+   * @param {string} @contentstack/managementTokenAlias
    * @param {string} stackName
    * @returns
    */
-  async getAliasDetails(managementTokenAlias, stackName) {
+  async getAliasDetails(@contentstack/managementTokenAlias, stackName) {
     let apiClient, stackDetails;
     const listOfTokens = configHandler.get('tokens');
-    if (managementTokenAlias && listOfTokens[managementTokenAlias]) {
-      const checkManagementTokenValidity = await isManagementTokenValid(
-        listOfTokens[managementTokenAlias].apiKey,
-        listOfTokens[managementTokenAlias].token,
+    if (@contentstack/managementTokenAlias && listOfTokens[@contentstack/managementTokenAlias]) {
+      const check@contentstack/managementTokenValidity = await is@contentstack/managementTokenValid(
+        listOfTokens[@contentstack/managementTokenAlias].apiKey,
+        listOfTokens[@contentstack/managementTokenAlias].token,
       );
-      if (checkManagementTokenValidity.hasOwnProperty('message')) {
-        throw checkManagementTokenValidity.valid === 'failedToCheck'
-          ? checkManagementTokenValidity.message
-          : `error: Management token or stack API key is invalid. ${checkManagementTokenValidity.message}`;
+      if (check@contentstack/managementTokenValidity.hasOwnProperty('message')) {
+        throw check@contentstack/managementTokenValidity.valid === 'failedToCheck'
+          ? check@contentstack/managementTokenValidity.message
+          : `error: @contentstack/management token or stack API key is invalid. ${check@contentstack/managementTokenValidity.message}`;
       }
-      apiClient = await managementSDKClient({
+      apiClient = await @contentstack/managementSDKClient({
         host: this.cmaHost,
-        management_token: listOfTokens[managementTokenAlias].token,
+        @contentstack/management_token: listOfTokens[@contentstack/managementTokenAlias].token,
       });
       stackDetails = {
-        name: stackName || managementTokenAlias,
-        apiKey: listOfTokens[managementTokenAlias].apiKey,
-        token: listOfTokens[managementTokenAlias].token,
+        name: stackName || @contentstack/managementTokenAlias,
+        apiKey: listOfTokens[@contentstack/managementTokenAlias].apiKey,
+        token: listOfTokens[@contentstack/managementTokenAlias].token,
       };
-    } else if (managementTokenAlias) {
-      this.error('Provided management token alias not found in your config.!');
+    } else if (@contentstack/managementTokenAlias) {
+      this.error('Provided @contentstack/management token alias not found in your config.!');
     }
     return {
       apiClient,
@@ -362,12 +362,12 @@ class ExportToCsvCommand extends Command {
 
   /**
    * fetch stack details on basis of the selected org and stack
-   * @param {*} managementAPIClient
+   * @param {*} @contentstack/managementAPIClient
    * @param {string} stackAPIKey
    * @param {string} org
    * @returns
    */
-  async getStackDetails(managementAPIClient, stackAPIKey, org) {
+  async getStackDetails(@contentstack/managementAPIClient, stackAPIKey, org) {
     let organization, stackDetails;
 
     if (!isAuthenticated()) {
@@ -380,12 +380,12 @@ class ExportToCsvCommand extends Command {
     if (org) {
       organization = { uid: org };
     } else {
-      organization = await util.chooseOrganization(managementAPIClient); // prompt for organization
+      organization = await util.chooseOrganization(@contentstack/managementAPIClient); // prompt for organization
     }
     if (!stackAPIKey) {
-      stackDetails = await util.chooseStack(managementAPIClient, organization.uid); // prompt for stack
+      stackDetails = await util.chooseStack(@contentstack/managementAPIClient, organization.uid); // prompt for stack
     } else {
-      stackDetails = await util.chooseStack(managementAPIClient, organization.uid, stackAPIKey);
+      stackDetails = await util.chooseStack(@contentstack/managementAPIClient, organization.uid, stackAPIKey);
     }
     return stackDetails;
   }
@@ -455,10 +455,10 @@ ExportToCsvCommand.examples = [
   'csdx cm:export-to-csv',
   '',
   'Exporting entries to CSV',
-  'csdx cm:export-to-csv --action <entries> --locale <locale> --alias <management-token-alias> --content-type <content-type>',
+  'csdx cm:export-to-csv --action <entries> --locale <locale> --alias <@contentstack/management-token-alias> --content-type <content-type>',
   '',
   'Exporting entries to CSV with stack name provided and branch name provided',
-  'csdx cm:export-to-csv --action <entries> --locale <locale> --alias <management-token-alias> --content-type <content-type> --stack-name <stack-name> --branch <branch-name>',
+  'csdx cm:export-to-csv --action <entries> --locale <locale> --alias <@contentstack/management-token-alias> --content-type <content-type> --stack-name <stack-name> --branch <branch-name>',
   '',
   'Exporting organization users to CSV',
   'csdx cm:export-to-csv --action <users> --org <org-uid>',
@@ -482,13 +482,13 @@ ExportToCsvCommand.examples = [
   'csdx cm:export-to-csv --action <teams> --org <org-uid> --team-uid <team-uid> --org-name <org-name>',
   '',
   'Exporting taxonomies and related terms to a .CSV file with the provided taxonomy UID',
-  'csdx cm:export-to-csv --action <taxonomies> --alias <management-token-alias> --taxonomy-uid <taxonomy-uid>',
+  'csdx cm:export-to-csv --action <taxonomies> --alias <@contentstack/management-token-alias> --taxonomy-uid <taxonomy-uid>',
   '',
   'Exporting taxonomies and respective terms to a .CSV file',
-  'csdx cm:export-to-csv --action <taxonomies> --alias <management-token-alias>',
+  'csdx cm:export-to-csv --action <taxonomies> --alias <@contentstack/management-token-alias>',
   '',
   'Exporting taxonomies and respective terms to a .CSV file with a delimiter',
-  'csdx cm:export-to-csv --action <taxonomies> --alias <management-token-alias> --delimiter <delimiter>',
+  'csdx cm:export-to-csv --action <taxonomies> --alias <@contentstack/management-token-alias> --delimiter <delimiter>',
 ];
 
 module.exports = ExportToCsvCommand;

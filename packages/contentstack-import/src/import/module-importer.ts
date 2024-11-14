@@ -9,21 +9,21 @@ import { ImportConfig, Modules } from '../types';
 import { backupHandler, log, validateBranch, masterLocalDetails, sanitizeStack, initLogger, trace } from '../utils';
 
 class ModuleImporter {
-  private managementAPIClient: ContentstackClient;
+  private @contentstack/managementAPIClient: ContentstackClient;
   private importConfig: ImportConfig;
   private stackAPIClient: any;
 
-  constructor(managementAPIClient: ContentstackClient, importConfig: ImportConfig) {
-    this.managementAPIClient = managementAPIClient;
-    this.stackAPIClient = this.managementAPIClient.stack({
+  constructor(@contentstack/managementAPIClient: ContentstackClient, importConfig: ImportConfig) {
+    this.@contentstack/managementAPIClient = @contentstack/managementAPIClient;
+    this.stackAPIClient = this.@contentstack/managementAPIClient.stack({
       api_key: importConfig.apiKey,
-      management_token: importConfig.management_token,
+      @contentstack/management_token: importConfig.@contentstack/management_token,
     });
     this.importConfig = importConfig;
   }
 
   async start(): Promise<any> {
-    if (!this.importConfig.management_token) {
+    if (!this.importConfig.@contentstack/management_token) {
       const stackName: Record<string, unknown> = await this.stackAPIClient.fetch();
       this.importConfig.stackName = stackName.name as string;
     }
@@ -31,8 +31,8 @@ class ModuleImporter {
       await validateBranch(this.stackAPIClient, this.importConfig, this.importConfig.branchName);
     }
 
-    if (this.importConfig.management_token) {
-      await addLocale(this.importConfig.apiKey, this.importConfig.management_token, this.importConfig.host);
+    if (this.importConfig.@contentstack/management_token) {
+      await addLocale(this.importConfig.apiKey, this.importConfig.@contentstack/management_token, this.importConfig.host);
     }
 
     const backupDir = await backupHandler(this.importConfig);

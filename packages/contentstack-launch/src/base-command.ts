@@ -13,8 +13,8 @@ import {
   configHandler,
   isAuthenticated,
   ContentstackClient,
-  managementSDKClient,
-  managementSDKInitiator,
+  @contentstack/managementSDKClient,
+  @contentstack/managementSDKInitiator,
 } from '@contentstack/cli-utilities';
 
 import config from './config';
@@ -30,7 +30,7 @@ export abstract class BaseCommand<T extends typeof Command> extends Command {
   protected $event!: EventEmitter;
   protected sharedConfig!: ConfigType;
   protected apolloClient!: ApolloClient<any>;
-  protected managementSdk!: ContentstackClient;
+  protected @contentstack/managementSdk!: ContentstackClient;
   protected apolloLogsClient!: ApolloClient<any>;
 
   protected flags!: Flags<T>;
@@ -166,7 +166,7 @@ export abstract class BaseCommand<T extends typeof Command> extends Command {
   }
 
   /**
-   * @methods prepareApiClients - Prepare Api Clients (Management SDK and apollo client)
+   * @methods prepareApiClients - Prepare Api Clients (@contentstack/management SDK and apollo client)
    *
    * @return {*}  {Promise<void>}
    * @memberof BaseCommand
@@ -196,8 +196,8 @@ export abstract class BaseCommand<T extends typeof Command> extends Command {
    * @memberof BaseCommand
    */
   async initCmaSDK() {
-    managementSDKInitiator.init(this.context);
-    this.managementSdk = await managementSDKClient({
+    @contentstack/managementSDKInitiator.init(this.context);
+    this.@contentstack/managementSdk = await @contentstack/managementSDKClient({
       host: this.sharedConfig.host,
     });
   }

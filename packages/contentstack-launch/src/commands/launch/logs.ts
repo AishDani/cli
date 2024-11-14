@@ -101,7 +101,7 @@ export default class Logs extends BaseCommand<typeof Logs> {
         log: this.log,
         flags: this.flags,
         config: this.sharedConfig,
-        managementSdk: this.managementSdk,
+        @contentstack/managementSdk: this.@contentstack/managementSdk,
       });
       await this.prepareApiClients(); // NOTE update org-id in header
       await selectProject({

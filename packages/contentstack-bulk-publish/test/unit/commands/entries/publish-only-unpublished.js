@@ -24,7 +24,7 @@ describe('EntriesPublishOnlyUnpublished', () => {
       '--source-env',
       environments[0],
       '-a',
-      process.env.MANAGEMENT_ALIAS,
+      process.env.@contentstack/management_ALIAS,
       '--yes',
     ];
     const entriesPublishOnlyUnpublishedSpy = sinon.spy(EntriesPublishOnlyUnpublished.prototype, 'run');

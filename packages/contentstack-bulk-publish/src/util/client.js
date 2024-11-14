@@ -1,4 +1,4 @@
-const { managementSDKClient, isAuthenticated } = require('@contentstack/cli-utilities');
+const { @contentstack/managementSDKClient, isAuthenticated } = require('@contentstack/cli-utilities');
 const { Command } = require('@contentstack/cli-command');
 const command = new Command();
 
@@ -10,8 +10,8 @@ async function getStack(data) {
   const stackOptions = {};
   if (data.alias) {
     const tokenDetails = command.getToken(data.alias);
-    options.management_token = tokenDetails.token;
-    stackOptions.management_token = tokenDetails.token;
+    options.@contentstack/management_token = tokenDetails.token;
+    stackOptions.@contentstack/management_token = tokenDetails.token;
     stackOptions.api_key = tokenDetails.apiKey;
   } else if (data.stackApiKey) {
     if (!isAuthenticated()) {
@@ -21,8 +21,8 @@ async function getStack(data) {
     }
     stackOptions.api_key = data.stackApiKey;
   }
-  const managementClient = await managementSDKClient(options);
-  const stack = managementClient.stack(stackOptions);
+  const @contentstack/managementClient = await @contentstack/managementSDKClient(options);
+  const stack = @contentstack/managementClient.stack(stackOptions);
   stack.alias = data.alias;
   stack.host = data.host;
   return stack;

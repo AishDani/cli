@@ -277,7 +277,7 @@ ARGUMENTS
 FLAGS
   -d, --cda=<value>   Custom host to set for content delivery API, if this flag is added then cma, ui-host and name
                       flags are required
-  -m, --cma=<value>   Custom host to set for content management API, , if this flag is added then cda, ui-host and name
+  -m, --cma=<value>   Custom host to set for content @contentstack/management API, , if this flag is added then cda, ui-host and name
                       flags are required
   -n, --name=<value>  Name for the region, if this flag is added then cda, cma and ui-host flags are required
   --ui-host=<value>   Custom UI host to set for CLI, if this flag is added then cda, cma and name flags are required

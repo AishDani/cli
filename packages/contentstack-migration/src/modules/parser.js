@@ -15,12 +15,12 @@ const { getMapInstance, get } = _map;
 // Constants
 const {
   actionMapper,
-  MANAGEMENT_SDK,
-  MANAGEMENT_TOKEN,
+  @contentstack/management_SDK,
+  @contentstack/management_TOKEN,
   AUTH_TOKEN,
   API_KEY,
   BRANCH,
-  MANAGEMENT_CLIENT,
+  @contentstack/management_CLIENT,
   SOURCE_BRANCH,
 } = constants;
 
@@ -32,12 +32,12 @@ class Parser {
     let typeErrors = [];
     // migrations
     try {
-      const stackSDKInstance = get(MANAGEMENT_SDK, mapInstance);
-      const managementToken = get(MANAGEMENT_TOKEN, mapInstance);
+      const stackSDKInstance = get(@contentstack/management_SDK, mapInstance);
+      const @contentstack/managementToken = get(@contentstack/management_TOKEN, mapInstance);
       const authToken = get(AUTH_TOKEN, mapInstance);
       const apiKey = get(API_KEY, mapInstance);
       const branch = get(BRANCH, mapInstance);
-      const managementAPIClient = get(MANAGEMENT_CLIENT, mapInstance);
+      const @contentstack/managementAPIClient = get(@contentstack/management_CLIENT, mapInstance);
       const externalConfigPath = get('config-path', mapInstance);
       const externalConfig = get('config', mapInstance);
       let externalFileConfig;
@@ -48,8 +48,8 @@ class Parser {
       await migrationFunc({
         migration,
         stackSDKInstance,
-        managementAPIClient,
-        managementToken,
+        @contentstack/managementAPIClient,
+        @contentstack/managementToken,
         authToken,
         apiKey,
         branch,

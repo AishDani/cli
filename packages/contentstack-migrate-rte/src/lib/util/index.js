@@ -22,7 +22,7 @@ const { htmlToJson } = require('@contentstack/json-rte-serializer');
 const nodePath = require('path');
 const {
   cliux,
-  managementSDKClient,
+  @contentstack/managementSDKClient,
   isAuthenticated,
   doesBranchExist,
   pathValidator,
@@ -42,8 +42,8 @@ async function getStack(data) {
   if (data.token) {
     const tokenDetails = data.token;
     stackOptions['api_key'] = tokenDetails.apiKey;
-    options['management_token'] = tokenDetails.token; // need to pass management token so that the sdk doesn't get configured with authtoken (throws error in case of oauth, if the provided stack doesn't belong to the org selected while logging in with oauth)
-    stackOptions['management_token'] = tokenDetails.token;
+    options['@contentstack/management_token'] = tokenDetails.token; // need to pass @contentstack/management token so that the sdk doesn't get configured with authtoken (throws error in case of oauth, if the provided stack doesn't belong to the org selected while logging in with oauth)
+    stackOptions['@contentstack/management_token'] = tokenDetails.token;
   }
   if (data.stackApiKey) {
     if (!isAuthenticated()) {
@@ -54,7 +54,7 @@ async function getStack(data) {
     stackOptions['api_key'] = data.stackApiKey;
   }
   if (data.branch) options.branchName = data.branch;
-  const client = await managementSDKClient(options);
+  const client = await @contentstack/managementSDKClient(options);
   const stack = client.stack(stackOptions);
 
   stack.host = data.host;
@@ -144,7 +144,7 @@ function getToken(alias) {
   try {
     return command.getToken(alias);
   } catch (error) {
-    throw new Error('Invalid alias provided for the management token.');
+    throw new Error('Invalid alias provided for the @contentstack/management token.');
   }
 }
 function getContentType(stack, contentTypeUid) {

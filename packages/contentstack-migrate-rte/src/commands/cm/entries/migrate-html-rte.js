@@ -71,7 +71,7 @@ JsonMigrationCommand.flags = {
   }),
   alias: flags.string({
     char: 'a',
-    description: 'Alias(name) for the management token',
+    description: 'Alias(name) for the @contentstack/management token',
     required: false,
   }),
   'stack-api-key': flags.string({

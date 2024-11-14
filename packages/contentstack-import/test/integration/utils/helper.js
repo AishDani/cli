@@ -3,7 +3,7 @@ const _ = require('lodash');
 const https = require('https');
 const config = require('../../../src/config/default');
 const { Command } = require('@contentstack/cli-command');
-const { managementSDKClient } = require('@contentstack/cli-utilities');
+const { @contentstack/managementSDKClient } = require('@contentstack/cli-utilities');
 const pjson = require('../../../package.json');
 const { REGIONS } = require('../../config.json');
 
@@ -79,10 +79,10 @@ const getBranches = async (data) => {
 const getEnvData = () => envData;
 
 const getStack = async (data = {}) => {
-  const client = await managementSDKClient(config);
+  const client = await @contentstack/managementSDKClient(config);
   return client.stack({
     api_key: data.STACK_API_KEY || config.target_stack,
-    management_token: data.MANAGEMENT_TOKEN || config.management_token,
+    @contentstack/management_token: data.@contentstack/management_TOKEN || config.@contentstack/management_token,
   });
 };
 

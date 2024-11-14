@@ -15,7 +15,7 @@ const chalk = require('chalk');
 const isEmpty = require('lodash/isEmpty');
 const {
   printFlagDeprecation,
-  managementSDKClient,
+  @contentstack/managementSDKClient,
   flags,
   isAuthenticated,
   pathValidator,
@@ -31,12 +31,12 @@ const { get, set, getMapInstance, resetMapInstance } = _map;
 const {
   requests: _requests,
   actionMapper,
-  MANAGEMENT_SDK,
-  MANAGEMENT_TOKEN,
+  @contentstack/management_SDK,
+  @contentstack/management_TOKEN,
   AUTH_TOKEN,
   API_KEY,
   BRANCH,
-  MANAGEMENT_CLIENT,
+  @contentstack/management_CLIENT,
 } = constants;
 
 class MigrationCommand extends Command {
@@ -57,12 +57,12 @@ class MigrationCommand extends Command {
     const multi = migrationCommandFlags.multiple || migrationCommandFlags.multi;
     const authtoken = isAuthenticated();
     const apiKey = migrationCommandFlags['api-key'] || migrationCommandFlags['stack-api-key'];
-    const alias = migrationCommandFlags['alias'] || migrationCommandFlags['management-token-alias'];
+    const alias = migrationCommandFlags['alias'] || migrationCommandFlags['@contentstack/management-token-alias'];
     const config = migrationCommandFlags['config'];
 
     if (!authtoken && !alias) {
       this.log(
-        "AuthToken is not present in local drive, Hence use 'csdx auth:login' command for login or provide management token alias",
+        "AuthToken is not present in local drive, Hence use 'csdx auth:login' command for login or provide @contentstack/management token alias",
       );
       this.exit();
     }
@@ -89,27 +89,27 @@ class MigrationCommand extends Command {
       set('config', mapInstance, configObj);
     }
 
-    const APIClient = await managementSDKClient({ host: this.cmaHost });
+    const APIClient = await @contentstack/managementSDKClient({ host: this.cmaHost });
     let stackSDKInstance;
     if (branch) {
       set(BRANCH, mapInstance, branch);
     }
 
     if (alias) {
-      let managementToken = this.getToken(alias);
-      if (managementToken) {
-        set(MANAGEMENT_TOKEN, mapInstance, managementToken);
-        set(API_KEY, mapInstance, managementToken.apiKey);
+      let @contentstack/managementToken = this.getToken(alias);
+      if (@contentstack/managementToken) {
+        set(@contentstack/management_TOKEN, mapInstance, @contentstack/managementToken);
+        set(API_KEY, mapInstance, @contentstack/managementToken.apiKey);
         if (branch) {
           stackSDKInstance = APIClient.stack({
-            management_token: managementToken.token,
-            api_key: managementToken.apiKey,
+            @contentstack/management_token: @contentstack/managementToken.token,
+            api_key: @contentstack/managementToken.apiKey,
             branch_uid: branch,
           });
         } else {
           stackSDKInstance = APIClient.stack({
-            management_token: managementToken.token,
-            api_key: managementToken.apiKey,
+            @contentstack/management_token: @contentstack/managementToken.token,
+            api_key: @contentstack/managementToken.apiKey,
           });
         }
       }
@@ -126,8 +126,8 @@ class MigrationCommand extends Command {
       }
     }
 
-    set(MANAGEMENT_SDK, mapInstance, stackSDKInstance);
-    set(MANAGEMENT_CLIENT, mapInstance, APIClient);
+    set(@contentstack/management_SDK, mapInstance, stackSDKInstance);
+    set(@contentstack/management_CLIENT, mapInstance, APIClient);
 
     if (!(await installModules(filePath, multi))) {
       this.log(`Error: Failed to install dependencies for the specified scripts.`);
@@ -251,7 +251,7 @@ MigrationCommand.flags = {
   }),
   alias: flags.string({
     char: 'a',
-    description: 'Use this flag to add the management token alias.',
+    description: 'Use this flag to add the @contentstack/management token alias.',
   }),
   'file-path': flags.string({
     description: 'Use this flag to provide the path of the file of the migration script provided by the user.',
@@ -290,11 +290,11 @@ MigrationCommand.flags = {
     parse: printFlagDeprecation(['-A', '--authtoken']),
     hidden: true,
   }),
-  'management-token-alias': flags.string({
-    description: 'alias of the management token',
+  '@contentstack/management-token-alias': flags.string({
+    description: 'alias of the @contentstack/management token',
     exclusive: ['authtoken'],
     hidden: true,
-    parse: printFlagDeprecation(['--management-token-alias'], ['-a', '--alias']),
+    parse: printFlagDeprecation(['--@contentstack/management-token-alias'], ['-a', '--alias']),
   }),
   filePath: flags.string({
     char: 'n',

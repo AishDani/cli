@@ -1,7 +1,7 @@
 import cliux from './cli-ux';
 import HttpClient from './http-client';
 import configHandler from './config-handler';
-import * as ContentstackManagementSDK from 'management';
+import * as Contentstack@contentstack/managementSDK from '@contentstack/management';
 import messageHandler from './message-handler';
 const http = require('http');
 const url = require('url');
@@ -396,8 +396,8 @@ class AuthHandler {
           authorization: `Bearer ${accessToken}`,
         };
 
-        const managementAPIClient = ContentstackManagementSDK.client(param);
-        managementAPIClient
+        const @contentstack/managementAPIClient = Contentstack@contentstack/managementSDK.client(param);
+        @contentstack/managementAPIClient
           .getUser()
           .then((user) => {
             data.email = user?.email || '';

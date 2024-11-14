@@ -8,14 +8,14 @@ const { map: _map, safePromise, successHandler, errorHandler, constants, errorHe
 // Map methods
 const { get, getMapInstance, getDataWithAction } = _map;
 const mapInstance = getMapInstance();
-const { ContentType, MANAGEMENT_SDK, actions: _actions } = constants;
+const { ContentType, @contentstack/management_SDK, actions: _actions } = constants;
 
 class ContentTypeService {
   constructor() {
     // Stores actions required for moveField function
     this.moveFieldActions = [];
     this.base = new Base();
-    this.stackSDKInstance = get(MANAGEMENT_SDK, mapInstance);
+    this.stackSDKInstance = get(@contentstack/management_SDK, mapInstance);
   }
 
   async fetchContentType(callsite, id) {

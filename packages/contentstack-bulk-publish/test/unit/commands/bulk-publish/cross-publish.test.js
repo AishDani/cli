@@ -22,7 +22,7 @@ describe('CrossPublish', () => {
       '--locale',
       locales[0],
       '--alias',
-      process.env.MANAGEMENT_ALIAS,
+      process.env.@contentstack/management_ALIAS,
       '--delivery-token',
       process.env.DELIVERY_TOKEN,
       '--onlyAssets',
@@ -43,7 +43,7 @@ describe('CrossPublish', () => {
       '--locale',
       locales[0],
       '--alias',
-      process.env.MANAGEMENT_ALIAS,
+      process.env.@contentstack/management_ALIAS,
       '--onlyAssets',
       '--yes',
     ];

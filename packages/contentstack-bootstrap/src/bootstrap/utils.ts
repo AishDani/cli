@@ -19,28 +19,28 @@ interface EnviornmentVariables {
  * Create delivery token
  * Create enviroment
  */
-let managementTokenResult: any;
+let @contentstack/managementTokenResult: any;
 export const setupEnvironments = async (
-  managementAPIClient: any,
+  @contentstack/managementAPIClient: any,
   api_key: string,
   appConfig: AppConfig,
   clonedDirectory: string,
   region: any,
   livePreviewEnabled: boolean,
-  managementToken?: string,
+  @contentstack/managementToken?: string,
 ) => {
-  const environmentResult = await managementAPIClient
-    .stack({ api_key, management_token: managementToken })
+  const environmentResult = await @contentstack/managementAPIClient
+    .stack({ api_key, @contentstack/management_token: @contentstack/managementToken })
     .environment()
     .query()
     .find();
 
-  //create management token if not present
-  if(!managementToken){
-    const managementBody = {
+  //create @contentstack/management token if not present
+  if(!@contentstack/managementToken){
+    const @contentstack/managementBody = {
       "token":{
           "name":"sample app",
-          "description":"This is a sample management token.",
+          "description":"This is a sample @contentstack/management token.",
           "scope":[
               {
                   "module":"content_type",
@@ -63,13 +63,13 @@ export const setupEnvironments = async (
           "is_email_notification_enabled":false
       }
   }
-  managementTokenResult = await managementAPIClient
+  @contentstack/managementTokenResult = await @contentstack/managementAPIClient
     .stack({ api_key: api_key })
-    .managementToken()
-    .create(managementBody);
-  if(!managementTokenResult.uid){
+    .@contentstack/managementToken()
+    .create(@contentstack/managementBody);
+  if(!@contentstack/managementTokenResult.uid){
     cliux.print(
-      `Info: Failed to generate a management token.\nNote: Management token is not available in your plan. Please contact the admin for support.`,
+      `Info: Failed to generate a @contentstack/management token.\nNote: @contentstack/management token is not available in your plan. Please contact the admin for support.`,
       {
         color: 'yellow',
       },
@@ -101,13 +101,13 @@ export const setupEnvironments = async (
           },
         };
         try {
-          const tokenResult = !managementToken
-            ? await managementAPIClient
+          const tokenResult = !@contentstack/managementToken
+            ? await @contentstack/managementAPIClient
                 .stack({ api_key })
                 .deliveryToken()
                 .create(body, livePreviewEnabled ? { create_with_preview_token: true } : {})
             : {};
-          if (livePreviewEnabled && !tokenResult.preview_token && !managementToken) {
+          if (livePreviewEnabled && !tokenResult.preview_token && !@contentstack/managementToken) {
             cliux.print(
               `Info: Failed to generate a preview token for the ${environment.name} environment.\nNote: Live Preview using a preview token is not available in your plan. Please contact the admin for support.`,
               {
@@ -186,7 +186,7 @@ const envFileHandler = async (
   let customHost;
   let previewHost: string;
   let appHost: string;
-  const managementAPIHost = region?.cma?.substring('8');
+  const @contentstack/managementAPIHost = region?.cma?.substring('8');
   const regionName = region && region.name && region.name.toLowerCase();
   previewHost = region?.uiHost?.substring(8)?.replace('app', 'rest-preview');
   const cdnHost = region?.cda?.substring('8');
@@ -229,7 +229,7 @@ const envFileHandler = async (
             }\nCONTENTSTACK_PREVIEW_HOST=${previewHost}\nCONTENTSTACK_APP_HOST=${appHost}\n`
           : '\n'
       }CONTENTSTACK_ENVIRONMENT=${environmentVariables.environment}\nCONTENTSTACK_API_HOST=${
-        customHost ? customHost : managementAPIHost
+        customHost ? customHost : @contentstack/managementAPIHost
       }${
         !isUSRegion && !customHost ? '\nCONTENTSTACK_REGION=' + region.name : ''
       }\nCONTENTSTACK_LIVE_PREVIEW=${livePreviewEnabled}\nCONTENTSTACK_LIVE_EDIT_TAGS=false`;
@@ -249,10 +249,10 @@ const envFileHandler = async (
       }CONTENTSTACK_ENVIRONMENT=${environmentVariables.environment}${
         !isUSRegion && !customHost ? '\nCONTENTSTACK_REGION=' + region.name : ''
       }\nCONTENTSTACK_LIVE_PREVIEW=${livePreviewEnabled}\nCONTENTSTACK_LIVE_EDIT_TAGS=false\nCONTENTSTACK_API_HOST=${
-        customHost ? customHost : managementAPIHost
+        customHost ? customHost : @contentstack/managementAPIHost
       }${
         !isUSRegion && !customHost ? '\nCONTENTSTACK_REGION=' + region.name : ''
-      }\nCONTENTSTACK_APP_HOST=${appHost}\nCONTENTSTACK_MANAGEMENT_TOKEN=${managementTokenResult.uid}\nCONTENTSTACK_HOST=${cdnHost}`;
+      }\nCONTENTSTACK_APP_HOST=${appHost}\nCONTENTSTACK_@contentstack/management_TOKEN=${@contentstack/managementTokenResult.uid}\nCONTENTSTACK_HOST=${cdnHost}`;
       result = await writeEnvFile(content, filePath);
     case 'gatsby':
     case 'gatsby-starter':
@@ -268,7 +268,7 @@ const envFileHandler = async (
           : '\n'
       }\nCONTENTSTACK_ENVIRONMENT=${
         environmentVariables.environment
-      }\nCONTENTSTACK_API_HOST=${managementAPIHost}\nCONTENTSTACK_LIVE_PREVIEW=${livePreviewEnabled}`;
+      }\nCONTENTSTACK_API_HOST=${@contentstack/managementAPIHost}\nCONTENTSTACK_LIVE_PREVIEW=${livePreviewEnabled}`;
       result = await writeEnvFile(content, filePath);
       break;
     case 'angular':
@@ -299,7 +299,7 @@ const envFileHandler = async (
             }\nCONTENTSTACK_PREVIEW_HOST=${previewHost}\nCONTENTSTACK_APP_HOST=${appHost}\n`
           : '\n'
       }CONTENTSTACK_ENVIRONMENT=${environmentVariables.environment}\nCONTENTSTACK_API_HOST=${
-        customHost ? customHost : managementAPIHost
+        customHost ? customHost : @contentstack/managementAPIHost
       }${
         !isUSRegion && !customHost ? '\nCONTENTSTACK_REGION=' + region.name : ''
       }\nCONTENTSTACK_LIVE_PREVIEW=${livePreviewEnabled}\nCONTENTSTACK_LIVE_EDIT_TAGS=false`;
@@ -325,7 +325,7 @@ const envFileHandler = async (
       }\nCONTENTSTACK_ENVIRONMENT=${environmentVariables.environment}${
         !isUSRegion && !customHost ? '\nCONTENTSTACK_REGION=' + region.name : ''
       }\nCONTENTSTACK_API_HOST=${
-        customHost ? customHost : managementAPIHost
+        customHost ? customHost : @contentstack/managementAPIHost
       }\nCONTENTSTACK_LIVE_PREVIEW=${livePreviewEnabled}\n\nCONTENTSTACK_LIVE_EDIT_TAGS=false`;
       result = await writeEnvFile(content, filePath);
       break;

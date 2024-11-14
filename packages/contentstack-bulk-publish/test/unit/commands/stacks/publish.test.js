@@ -14,7 +14,7 @@ const contentTypes = process.env.CONTENT_TYPES.split(',');
 
 describe('StackPublish', () => {
 	it('Should run the command when all the flags are passed', async () => {
-		const args = ['--content-types', contentTypes[0], '--environments', environments[0], '--locales', locales[0], '--alias', process.env.MANAGEMENT_ALIAS, '--yes'];
+		const args = ['--content-types', contentTypes[0], '--environments', environments[0], '--locales', locales[0], '--alias', process.env.@contentstack/management_ALIAS, '--yes'];
 		const stackPublishSpy = sinon.spy(StackPublish.prototype, 'run');
 		const inquireStub = stub(inquirer, 'prompt').resolves(process.env.STACK_PUBLISH_PROMPT_ANSWER.trim() || 'Publish Entries and Assets');
 		await StackPublish.run(args);

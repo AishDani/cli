@@ -38,6 +38,8 @@
     "@contentstack/cli-launch": "~1.2.0",
     "@contentstack/cli-migration": "~1.6.1",
     "@contentstack/cli-utilities": "~1.7.1",
+    "@contentstack/management": "~1.17.0",
+
     "@oclif/core": "^3.26.5",
     "@oclif/plugin-help": "^5",
     "@oclif/plugin-not-found": "^2.4.0",
@@ -106,7 +108,7 @@
         "description": "Perform authentication-related activities"
       },
       "cm": {
-        "description": "Perform content management activities"
+        "description": "Perform content @contentstack/management activities"
       },
       "config": {
         "description": "Perform configuration related activities"

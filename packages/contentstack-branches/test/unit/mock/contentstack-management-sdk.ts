@@ -1,5 +1,5 @@
-import { AnyProperty } from 'management/types/utility/fields';
-import { Pagination } from 'management/types/utility/pagination';
+import { AnyProperty } from '@contentstack/management/types/utility/fields';
+import { Pagination } from '@contentstack/management/types/utility/pagination';
 
 type QueryType = {
   find: () => Promise<void> | Promise<never>;

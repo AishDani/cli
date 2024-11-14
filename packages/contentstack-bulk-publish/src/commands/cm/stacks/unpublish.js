@@ -49,7 +49,7 @@ class UnpublishCommand extends Command {
             config.alias = updatedFlags.alias;
           } catch (error) {
             this.error(
-              `The configured management token alias ${updatedFlags.alias} has not been added yet. Add it using 'csdx auth:tokens:add -a ${updatedFlags.alias}'`,
+              `The configured @contentstack/management token alias ${updatedFlags.alias} has not been added yet. Add it using 'csdx auth:tokens:add -a ${updatedFlags.alias}'`,
               { exit: 2 },
             );
           }
@@ -165,7 +165,7 @@ Note: --only-assets can be used to unpublish only assets and --only-entries can 
 UnpublishCommand.flags = {
   alias: flags.string({
     char: 'a',
-    description: 'Alias(name) for the management token',
+    description: 'Alias(name) for the @contentstack/management token',
   }),
   'stack-api-key': flags.string({
     char: 'k',
@@ -265,7 +265,7 @@ UnpublishCommand.flags = {
 
 UnpublishCommand.examples = [
   'General Usage',
-  'csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] ----delivery-token [DELIVERY TOKEN]',
+  'csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [@contentstack/management TOKEN ALIAS] ----delivery-token [DELIVERY TOKEN]',
   '',
   'Using --config or -c flag',
   'Generate a config file at the current working directory using `csdx cm:bulk-publish:configure --alias [ALIAS]`',
@@ -286,7 +286,7 @@ UnpublishCommand.examples = [
   'csdx cm:stacks:unpublish --contentType [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --only-entries (Will unpublish only entries, (from CONTENT TYPE) from the source environment)',
   '',
   'Using --branch flag',
-  'csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [MANAGEMENT TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]',
+  'csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --alias [@contentstack/management TOKEN ALIAS] --delivery-token [DELIVERY TOKEN] --branch [BRANCH NAME]',
   '',
   'Using --stack-api-key flag',
   'csdx cm:stacks:unpublish --bulk-unpublish --content-type [CONTENT TYPE] --environment [SOURCE ENV] --locale [LOCALE] --stack-api-key [STACK API KEY] --delivery-token [DELIVERY TOKEN]',

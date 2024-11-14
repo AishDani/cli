@@ -31,9 +31,9 @@ module.exports = (region) => {
         stackDetails[stack].ALIAS_NAME,
         '-k',
         stackDetails[stack].STACK_API_KEY,
-        '--management',
+        '--@contentstack/management',
         '--token',
-        stackDetails[stack].MANAGEMENT_TOKEN,
+        stackDetails[stack].@contentstack/management_TOKEN,
         '-y',
       ])
       .it(`Adding token for ${stack}`, (_, done) => {

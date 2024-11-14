@@ -9,7 +9,7 @@ export function entryCreateUpdateScript(contentType) {
   const omit = require('lodash/omit');
   const compact = require('lodash/compact')
   const isPlainObject = require('lodash/isPlainObject');
-  module.exports = async ({ migration, stackSDKInstance, managementAPIClient, config, branch, apiKey }) => {
+  module.exports = async ({ migration, stackSDKInstance, @contentstack/managementAPIClient, config, branch, apiKey }) => {
     const keysToRemove = [
       'content_type_uid',
       'created_at',
@@ -393,7 +393,7 @@ export function entryCreateUpdateScript(contentType) {
     const checkAndDownloadAsset = async function (cAsset) {
       if (cAsset) {
         const assetUID = cAsset.uid;
-        const bAssetDetail = await managementAPIClient
+        const bAssetDetail = await @contentstack/managementAPIClient
           .stack({ api_key: stackSDKInstance.api_key, branch_uid: branch })
           .asset(assetUID)
           .fetch()
@@ -405,7 +405,7 @@ export function entryCreateUpdateScript(contentType) {
           return false;
         }
         else {
-          const cAssetDetail = await managementAPIClient
+          const cAssetDetail = await @contentstack/managementAPIClient
             .stack({ api_key: stackSDKInstance.api_key, branch_uid: compareBranch })
             .asset(assetUID)
             .fetch()
@@ -425,7 +425,7 @@ export function entryCreateUpdateScript(contentType) {
             if (!fs.existsSync(assetFolderPath)) fs.mkdirSync(assetFolderPath);
             const assetFilePath = path.resolve(assetFolderPath, cAsset.filename);
             const assetWriterStream = fs.createWriteStream(assetFilePath);
-            const data = await managementAPIClient
+            const data = await @contentstack/managementAPIClient
               .stack({ api_key: stackSDKInstance.api_key, branch_uid: compareBranch })
               .asset(assetUID)
               .download({ url, responseType: 'stream' })
@@ -445,7 +445,7 @@ export function entryCreateUpdateScript(contentType) {
   
     const uploadAssets = async function () {
       const assetFolderMap = JSON.parse(fs.readFileSync(path.resolve(filePath, 'folder-mapper.json'), 'utf8'));
-      const stackAPIClient = managementAPIClient.stack({ api_key: stackSDKInstance.api_key, branch_uid: branch });
+      const stackAPIClient = @contentstack/managementAPIClient.stack({ api_key: stackSDKInstance.api_key, branch_uid: branch });
       for (let i = 0; i < downloadedAssets?.length; i++) {
         const asset = downloadedAssets[i];
         let requestOption = {};
@@ -483,7 +483,7 @@ export function entryCreateUpdateScript(contentType) {
         include_count: true,
       };
   
-      const entriesSearchResponse = await managementAPIClient
+      const entriesSearchResponse = await @contentstack/managementAPIClient
         .stack({ api_key: stackSDKInstance.api_key, branch_uid: branchName })
         .contentType(contentType)
         .entry()
@@ -511,7 +511,7 @@ export function entryCreateUpdateScript(contentType) {
   
         let baseBranchEntries = await getEntries(branch, '${contentType}');
   
-        let contentType = await managementAPIClient
+        let contentType = await @contentstack/managementAPIClient
           .stack({ api_key: stackSDKInstance.api_key, branch_uid: compareBranch })
           .contentType('${contentType}')
           .fetch();
@@ -562,7 +562,7 @@ export function entryCreateUpdateScript(contentType) {
               let baseEntryRef = getValueByPath(baseEntry, references[i]);
   
               if (compareEntryRef && compareEntryRef.length > 0 && baseEntryRef && baseEntryRef.length >= 0) {
-                let compareRefEntry = await managementAPIClient
+                let compareRefEntry = await @contentstack/managementAPIClient
                   .stack({ api_key: stackSDKInstance.api_key, branch_uid: compareBranch })
                   .contentType(compareEntryRef[0]._content_type_uid)
                   .entry(compareEntryRef[0].uid)

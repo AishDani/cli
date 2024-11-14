@@ -1,9 +1,9 @@
-import { client, ContentstackClient, ContentstackConfig } from 'management';
+import { client, ContentstackClient, ContentstackConfig } from '@contentstack/management';
 import authHandler from './auth-handler';
 import { Agent } from 'node:https';
 import configHandler, { default as configStore } from './config-handler';
 
-class ManagementSDKInitiator {
+class @contentstack/managementSDKInitiator {
   private analyticsInfo: string;
 
   constructor() {}
@@ -85,7 +85,7 @@ class ManagementSDKInitiator {
       if (!option.headers) option.headers = {};
       option.headers['X-CS-CLI'] = this.analyticsInfo;
     }
-    if (!config.management_token) {
+    if (!config.@contentstack/management_token) {
       const authorisationType = configStore.get('authorisationType');
       if (authorisationType === 'BASIC') {
         option.authtoken = configStore.get('authtoken');
@@ -113,6 +113,6 @@ class ManagementSDKInitiator {
   }
 }
 
-export const managementSDKInitiator = new ManagementSDKInitiator();
-export default managementSDKInitiator.createAPIClient.bind(managementSDKInitiator);
+export const @contentstack/managementSDKInitiator = new @contentstack/managementSDKInitiator();
+export default @contentstack/managementSDKInitiator.createAPIClient.bind(@contentstack/managementSDKInitiator);
 export { ContentstackConfig, ContentstackClient };

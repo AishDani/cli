@@ -1,5 +1,5 @@
 module.exports = {
-  alias: 'Placeholder Management Token Alias',
+  alias: 'Placeholder @contentstack/management Token Alias',
   publish_unpublished_env: {
     contentTypes: ['placeholder content type'],
     sourceEnv: 'placeholder source env',

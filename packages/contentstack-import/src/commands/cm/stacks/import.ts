@@ -3,7 +3,7 @@ import { Command } from '@contentstack/cli-command';
 import {
   messageHandler,
   printFlagDeprecation,
-  managementSDKClient,
+  @contentstack/managementSDKClient,
   flags,
   FlagInput,
   ContentstackClient,
@@ -22,9 +22,9 @@ export default class ImportCommand extends Command {
     `csdx cm:stacks:import --config <path/of/config/dir>`,
     `csdx cm:stacks:import --module <single module name>`,
     `csdx cm:stacks:import --module <single module name> --backup-dir <backup dir>`,
-    `csdx cm:stacks:import --alias <management_token_alias>`,
-    `csdx cm:stacks:import --alias <management_token_alias> --data-dir <path/of/export/destination/dir>`,
-    `csdx cm:stacks:import --alias <management_token_alias> --config <path/of/config/file>`,
+    `csdx cm:stacks:import --alias <@contentstack/management_token_alias>`,
+    `csdx cm:stacks:import --alias <@contentstack/management_token_alias> --data-dir <path/of/export/destination/dir>`,
+    `csdx cm:stacks:import --alias <@contentstack/management_token_alias> --config <path/of/config/file>`,
     `csdx cm:stacks:import --branch <branch name>  --yes --skip-audit`,
   ];
 
@@ -54,12 +54,12 @@ export default class ImportCommand extends Command {
     }),
     alias: flags.string({
       char: 'a',
-      description: 'alias of the management token',
+      description: 'alias of the @contentstack/management token',
     }),
-    'management-token-alias': flags.string({
-      description: 'alias of the management token',
+    '@contentstack/management-token-alias': flags.string({
+      description: 'alias of the @contentstack/management token',
       hidden: true,
-      parse: printFlagDeprecation(['--management-token-alias'], ['-a', '--alias']),
+      parse: printFlagDeprecation(['--@contentstack/management-token-alias'], ['-a', '--alias']),
     }),
     'auth-token': flags.boolean({
       char: 'A',
@@ -132,8 +132,8 @@ export default class ImportCommand extends Command {
       importConfig.host = this.cmaHost;
       backupDir = importConfig.cliLogsPath || importConfig.backupDir;
 
-      const managementAPIClient: ContentstackClient = await managementSDKClient(importConfig);
-      const moduleImporter = new ModuleImporter(managementAPIClient, importConfig);
+      const @contentstack/managementAPIClient: ContentstackClient = await @contentstack/managementSDKClient(importConfig);
+      const moduleImporter = new ModuleImporter(@contentstack/managementAPIClient, importConfig);
       const result = await moduleImporter.start();
 
       if (!result?.noSuccessMsg) {

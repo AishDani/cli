@@ -77,8 +77,8 @@ class CloneHandler {
     this.pathDir = opt.pathDir;
     process.stdin.setMaxListeners(50);
   }
-  setClient(managementSDKClient) {
-    client = managementSDKClient;
+  setClient(@contentstack/managementSDKClient) {
+    client = @contentstack/managementSDKClient;
   }
 
   handleOrgSelection(options = {}) {
@@ -138,7 +138,7 @@ class CloneHandler {
       try {
         const stackAPIClient = client.stack({
           api_key: config.target_stack ? config.target_stack : config.source_stack,
-          management_token: config.management_token,
+          @contentstack/management_token: config.@contentstack/management_token,
         });
 
         // NOTE validate if source branch is exist
